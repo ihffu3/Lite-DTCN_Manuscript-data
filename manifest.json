@@ -4,84 +4,89 @@
   "scope": "published source and summary data; generated figures excluded",
   "files": [
     {
+      "path": ".gitattributes",
+      "bytes": 14,
+      "sha256": "a79691a93b46e49ce460c26ef22afcc03d6eca1e63bf2edbc20e96159510f6c9"
+    },
+    {
       "path": ".gitignore",
-      "bytes": 99,
-      "sha256": "adc00aa2160fd6fc61aae720134a6bcae9b1a8423e83975bb53a8e5983a7e3e3"
+      "bytes": 86,
+      "sha256": "fcd50e1c81179d0b9d6d6372a7625ab609fe69010e167684261838f7d210e508"
     },
     {
       "path": "config/contracts.json",
-      "bytes": 13680,
-      "sha256": "dcacaa68769cf2e039ed42ee6e8fbcaba570194d29a4ccb2a5331cb0608402dd"
+      "bytes": 13414,
+      "sha256": "2c1454a442ffc3fcc990c8af43db64bef2b47daa0ee8ef33b37698abcffc1c20"
     },
     {
       "path": "config/formal_protocol.json",
-      "bytes": 33868,
-      "sha256": "0313336670b34448f7d14fee8a3a0ffb975c866852212493818a00c059ee9424"
+      "bytes": 33162,
+      "sha256": "429adb845999cfcd75771bef82e80a88a243230ee428eac26deab2eeb746809c"
     },
     {
       "path": "config/resource_limited/candidate_choices.json",
-      "bytes": 9981,
-      "sha256": "a2e29afa3c0a9ac9e69798f4abdd59993d97ea36420e7f5b68a6187cd791b04b"
+      "bytes": 9769,
+      "sha256": "f5a0be3daf9b87824ae11e5596c5c3932185712f5d3135d28d62b3018b49a160"
     },
     {
       "path": "config/resource_limited/classical_choices.json",
-      "bytes": 4231,
-      "sha256": "ce8d280b99b4094f357605384fadd703cc75149775939c8cdfea8d3202927733"
+      "bytes": 4150,
+      "sha256": "94f2011176df7198574517e545d40810cd43e4d9811194eee55ce1cf6438cd22"
     },
     {
       "path": "data/summary/classical_complexity.csv",
-      "bytes": 2880,
-      "sha256": "c44dd9ed088cc0af68242a18fe178fed411436307e738dc9bc17cb254eff87e9"
+      "bytes": 2855,
+      "sha256": "f07033fad7d641fceca379e15d95eafa666e0bd5dcce07e8d98c4a4b44db8ed7"
     },
     {
       "path": "data/summary/deployment_scope.csv",
-      "bytes": 2397,
-      "sha256": "0b1b7fe63ff6bb96dc259dddfad11aaab856c2fa454099c777961105669d120c"
+      "bytes": 2384,
+      "sha256": "7e73d8313e7dd19ec11001e956def5363799af3400a558ca99e1c688c948870d"
     },
     {
       "path": "data/summary/development_candidate_scores.csv",
-      "bytes": 3558,
-      "sha256": "b43eec6a377980a9da67366f3e530b465ed1359b91a00260685ddc473b397d50"
+      "bytes": 3533,
+      "sha256": "0d6e751f7846698b3232f9e56fe7be36ae578962a4a2775fda0eb283d4297ec8"
     },
     {
       "path": "data/summary/facts.csv",
-      "bytes": 353468,
-      "sha256": "7c4eb93ff6a8cffce788a47f25d9d2979bf958b0e3d4a1d4bcdf1e88ebcf304a"
+      "bytes": 351583,
+      "sha256": "b2b81c9303b7411c718fbf3ee4917e46fa83f8f80c34ca10abca065fd0a45bdd"
     },
     {
       "path": "data/summary/lite_vs_lmmse_dominance.csv",
-      "bytes": 591,
-      "sha256": "8c532f8029089455f20d8ec1a71c83216f8d48764d3d9fd2d413c68d2453a3ce"
+      "bytes": 578,
+      "sha256": "54ddf2e5e1ec60627d141e6665550e47ebe70774af249e0a75c41744e8324a1b"
     },
     {
       "path": "data/summary/low_speed_rate_gains.csv",
-      "bytes": 2420,
-      "sha256": "cfe2182dd5cfc955fd958e4c7e3d0284a2bcd5b4982acfbc7760d39b6d92e81a"
+      "bytes": 2377,
+      "sha256": "5c9a74f8a917b0575e57f1ab38f4c2fc30336445a363ac09fb9640fffd3ec600"
     },
     {
       "path": "data/summary/nmse_se_300_snr10_rzf.csv",
-      "bytes": 1225,
-      "sha256": "488edc64405638b41f331daeafb3d3616662efdbc812d0f67889f9b1a0663d60"
+      "bytes": 1208,
+      "sha256": "0391c5cf8c1c29b98a63e9a57178c340c757ef2dc5e963f7fe3a0b6683613a4b"
     },
     {
       "path": "data/summary/pareto_membership.csv",
-      "bytes": 7873,
-      "sha256": "37df8b4bcf86e8a8dd8f5fac7d3a4bcd834a716173c10fdd42b7e19792d14387"
+      "bytes": 7721,
+      "sha256": "18cb134354f02b69ee2de38091920f2593d7dead00267431acaa9d3102d85ed9"
     },
     {
       "path": "data/summary/shared_grid_nmse.csv",
-      "bytes": 1300,
-      "sha256": "eaeac5dfdf32fe8d031bcbdefeba8fd8d8b93bd17b938cf4fa91e9d392f3abc6"
+      "bytes": 1263,
+      "sha256": "a9ca9f52d99818b60f59e628b6b6bbbbbd947edc7870873178fe1afe1514ed0f"
     },
     {
       "path": "README.md",
-      "bytes": 4667,
-      "sha256": "9f6bef5eef3411f4fbf0bb2e4600390647533f6f97c7158220ca55940dd8ceeb"
+      "bytes": 4617,
+      "sha256": "89809a3fb8079d2a5040ee3f8ef89062764402ea7787c19bb575c7abdbb76219"
     },
     {
       "path": "requirements.txt",
-      "bytes": 213,
-      "sha256": "54d057e1fe456594d0f0ba2ddba33a84fb2395b51b7cb91010ad7b83f457491c"
+      "bytes": 207,
+      "sha256": "8795b3869616152b4461bc5ce9bdfa8ca818a950cea68d881117a49675855e38"
     },
     {
       "path": "revision/__init__.py",
@@ -165,8 +170,8 @@
     },
     {
       "path": "revision/code/data/__init__.py",
-      "bytes": 58,
-      "sha256": "960fed1015644339d51bf5979c0f7743f403e9ed6f90daa27fcf90a10d794f74"
+      "bytes": 57,
+      "sha256": "19aa6e673ba1fb3b9ec261b2e296fe6a35c3643843890a633d39f57b17bcd45c"
     },
     {
       "path": "revision/code/data/densify_qd_track_preserving_knots.m",
@@ -230,8 +235,8 @@
     },
     {
       "path": "scripts/verify_manifest.py",
-      "bytes": 1139,
-      "sha256": "deacf24d99af4af09e6ea977c9c8fc5408604f22615316e171b4c1e5eb1cd31d"
+      "bytes": 1110,
+      "sha256": "2d49f7de4d8b058ca829e0a2f1334b673a635ee64f37455cdf851b3fd45e6d63"
     }
   ]
 }
