@@ -15,8 +15,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 7007,
-      "sha256": "50e88ff6898e8844c850555c87adad2bf20e2da45af21d92e84a6c3809daab22"
+      "bytes": 8929,
+      "sha256": "d9a385bf5579bafbbe5ded1bc898251006ce54af4c83789ef83bec8e6d528e3b"
     },
     {
       "path": "config/contracts.json",
@@ -37,6 +37,16 @@
       "path": "config/resource_limited/classical_choices.json",
       "bytes": 4150,
       "sha256": "94f2011176df7198574517e545d40810cd43e4d9811194eee55ce1cf6438cd22"
+    },
+    {
+      "path": "data/summary/a4_amplitude_summary.csv",
+      "bytes": 19090,
+      "sha256": "92d7cbf46f98bdc8a1c35040465a47ebc07bc41c045013819777e7555b4bc101"
+    },
+    {
+      "path": "data/summary/a4_matched_outdated_gains.csv",
+      "bytes": 11890,
+      "sha256": "8e6cee6da7740b729eec27b590fea13a1fce8eb637c0abfd7657066ab805400a"
     },
     {
       "path": "data/summary/a7a_same_backend_environment.csv",
@@ -74,6 +84,16 @@
       "sha256": "05b422b0f4924eef1443675f557efbafd4b382423d7cf808ebba9fb040099b4a"
     },
     {
+      "path": "data/summary/c2_paired_vs_fresh_a05_c0.csv",
+      "bytes": 6742,
+      "sha256": "e4c98253c4c7f3a5ab1f1258b82d0501d7a32ae48d81959c7ef5a660df4e450e"
+    },
+    {
+      "path": "data/summary/c2_test_summary.csv",
+      "bytes": 3965,
+      "sha256": "e4f6b1caa474bb24721a9573d4863a0021088a81707bad58f1c00ff7f43de100"
+    },
+    {
       "path": "data/summary/classical_complexity.csv",
       "bytes": 2855,
       "sha256": "f07033fad7d641fceca379e15d95eafa666e0bd5dcce07e8d98c4a4b44db8ed7"
@@ -95,8 +115,8 @@
     },
     {
       "path": "data/summary/facts.csv",
-      "bytes": 510272,
-      "sha256": "a14bc0388ae4a19941b3007546d81be0ae6507af5ee2fda1ce08a83a7e335df5"
+      "bytes": 789427,
+      "sha256": "cf01e176b691453c08a9e7454c13baf0e5e4be5b600b9d327eb9e58fb4d1b996"
     },
     {
       "path": "data/summary/lite_vs_lmmse_dominance.csv",
@@ -117,6 +137,11 @@
       "path": "data/summary/nmse_se_300_snr10_rzf.csv",
       "bytes": 1208,
       "sha256": "0391c5cf8c1c29b98a63e9a57178c340c757ef2dc5e963f7fe3a0b6683613a4b"
+    },
+    {
+      "path": "data/summary/original_f26_formal_panel_crosscheck.csv",
+      "bytes": 1334,
+      "sha256": "471e31e690ae4a1f0c26f2aea9f64821c5df1921e61c03e2392192a8df1dee2a"
     },
     {
       "path": "data/summary/pareto_membership.csv",
