@@ -1,0 +1,5 @@
+speed_kmh,history_snr_label,horizon_steps,horizon_ms,method,n_environments,mean_environment_nmse_db,pooled_nmse_db,reference_only,source_model_label
+30,clean history (∞),4,2.0,Lite,30,-9.104427652689546,-9.154363913460768,True,Original-F26-Lite
+30,clean history (∞),4,2.0,PC-Wiener,30,-36.48169422209947,-36.64439823065142,True,PC-Wiener
+300,clean history (∞),4,2.0,Lite,30,-0.5985585457146,-1.28505366907716,True,Original-F26-Lite
+300,clean history (∞),4,2.0,PC-Wiener,30,-1.7338056975625509,-2.8982980781389007,True,PC-Wiener
