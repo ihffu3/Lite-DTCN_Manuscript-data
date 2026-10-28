@@ -14,6 +14,11 @@
       "sha256": "fcd50e1c81179d0b9d6d6372a7625ab609fe69010e167684261838f7d210e508"
     },
     {
+      "path": "README.md",
+      "bytes": 5768,
+      "sha256": "efae036fd91b1956862e34c9664a3cde609cfed8cc3540b41f8b1fc9f91c43a6"
+    },
+    {
       "path": "config/contracts.json",
       "bytes": 13414,
       "sha256": "2c1454a442ffc3fcc990c8af43db64bef2b47daa0ee8ef33b37698abcffc1c20"
@@ -34,9 +39,29 @@
       "sha256": "94f2011176df7198574517e545d40810cd43e4d9811194eee55ce1cf6438cd22"
     },
     {
+      "path": "data/summary/ber_environment_bootstrap_ci.csv",
+      "bytes": 9801,
+      "sha256": "f4e5fccc09ffecdcebc38aa61899bccade30ba926106ea69bbcbe9e8be0eeb05"
+    },
+    {
+      "path": "data/summary/ber_environment_group_records.csv",
+      "bytes": 50429,
+      "sha256": "cce0d850b21821c637d6e6de826f43fcbf439b92eda3f577ddf657e3202188cb"
+    },
+    {
+      "path": "data/summary/ber_paired_difference_bootstrap_ci.csv",
+      "bytes": 6862,
+      "sha256": "05b422b0f4924eef1443675f557efbafd4b382423d7cf808ebba9fb040099b4a"
+    },
+    {
       "path": "data/summary/classical_complexity.csv",
       "bytes": 2855,
       "sha256": "f07033fad7d641fceca379e15d95eafa666e0bd5dcce07e8d98c4a4b44db8ed7"
+    },
+    {
+      "path": "data/summary/core_nmse_environment_stats_seed42.csv",
+      "bytes": 40289,
+      "sha256": "7e64067c55f94c2c04d7c533c61397ed1d848a03712b37a5a4698f6bd3f2d0ad"
     },
     {
       "path": "data/summary/deployment_scope.csv",
@@ -50,8 +75,8 @@
     },
     {
       "path": "data/summary/facts.csv",
-      "bytes": 351583,
-      "sha256": "b2b81c9303b7411c718fbf3ee4917e46fa83f8f80c34ca10abca065fd0a45bdd"
+      "bytes": 487542,
+      "sha256": "9ea066914acdba4cfb030e1624f4b81283c045d1ce472c0f7be890e82d8962d5"
     },
     {
       "path": "data/summary/lite_vs_lmmse_dominance.csv",
@@ -64,6 +89,11 @@
       "sha256": "5c9a74f8a917b0575e57f1ab38f4c2fc30336445a363ac09fb9640fffd3ec600"
     },
     {
+      "path": "data/summary/neural_nmse_environment_stats_seedwise.csv",
+      "bytes": 45621,
+      "sha256": "e09b45bc7f8251983a6aa53978303c82e622ac5d3b657c3e2ca3a8dc3a80f389"
+    },
+    {
       "path": "data/summary/nmse_se_300_snr10_rzf.csv",
       "bytes": 1208,
       "sha256": "0391c5cf8c1c29b98a63e9a57178c340c757ef2dc5e963f7fe3a0b6683613a4b"
@@ -74,14 +104,14 @@
       "sha256": "18cb134354f02b69ee2de38091920f2593d7dead00267431acaa9d3102d85ed9"
     },
     {
+      "path": "data/summary/registered_paired_nmse_contrasts_reused.csv",
+      "bytes": 9868,
+      "sha256": "2ce73d6bb83e862d1f55f25520fc9fc6453336b2359921204b35de21d0a4bf2e"
+    },
+    {
       "path": "data/summary/shared_grid_nmse.csv",
       "bytes": 1263,
       "sha256": "a9ca9f52d99818b60f59e628b6b6bbbbbd947edc7870873178fe1afe1514ed0f"
-    },
-    {
-      "path": "README.md",
-      "bytes": 4617,
-      "sha256": "89809a3fb8079d2a5040ee3f8ef89062764402ea7787c19bb575c7abdbb76219"
     },
     {
       "path": "requirements.txt",

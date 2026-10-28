@@ -27,6 +27,12 @@ Candidate selection uses a separate validation metric. `validation_score` is the
 
 In `nmse_se_300_snr10_rzf.csv`, `nmse_gain_db` is outdated-CSI NMSE in dB minus predicted-CSI NMSE in dB, so positive values indicate lower NMSE. `sum_se_gain` is predicted-CSI RZF sum spectral efficiency minus outdated-CSI RZF sum spectral efficiency, in bit/s/Hz, so positive values indicate a rate gain. Perfect CSI is an evaluation reference under the same link implementation; it is not an asserted capacity bound.
 
+## Environment-level uncertainty update
+
+The added NMSE tables report environment means, sample SDs and post-hoc pointwise 95% percentile-bootstrap intervals, conditional on each fitted model. The independent units are 30 environment groups per D1 condition; users and overlapping prediction windows are nested. Training seeds remain separate. The NMSE summaries use 10,000 environment resamples and PCG64 seed 20261028. `registered_paired_nmse_contrasts_reused.csv` retains the original primary-three and secondary-31 contrast intervals without replacing their analysis.
+
+The BER files contain 36 cell intervals, 24 Lite-minus-comparator paired-difference intervals and the underlying 20-environment error/bit counts per cell. Each panel uses the same 10,000 sampled environment indices across methods (PCG64 seed 20261029). These are pointwise descriptive intervals, with no simultaneous-coverage or new significance-test claim. The reanalysis used Python 3.13.5 and NumPy 2.1.3. These tables reuse completed clean-history predictions; they contain no result from the local follow-up training or noisy-history evaluation that is still in progress.
+
 ## Environment and data generation
 
 The recorded reference environment used Python 3.10.20, NumPy 2.2.6, SciPy 1.15.3, and PyTorch 2.5.1 (the recorded installation used the CUDA 12.1 wheel). `requirements.txt` lists the corresponding Python package versions. The MATLAB adapters were recorded with MATLAB R2025b (25.2.0.2998904) and QuaDRiGa 2.8.1-0. Channel generation requires a separately obtained and installed QuaDRiGa distribution and its MATLAB dependencies. These environment notes identify the recorded setup; they do not establish portability across platforms.
