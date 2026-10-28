@@ -1,0 +1,266 @@
+{
+  "schema_version": "1.3",
+  "status": "development_interface_frozen",
+  "scientific_root": "revision",
+  "raw": {
+    "storage": "MATLAB -v7 MAT files, one independent environment group per file; scipy.io.loadmat reader; no v7.3 implicit axis reversal",
+    "H": {
+      "axes": [
+        "time",
+        "user",
+        "tx_antenna",
+        "subcarrier"
+      ],
+      "dtype": "complex64",
+      "scale": "physical channel including pathloss; no per-file energy normalization"
+    },
+    "time_s": [
+      "time"
+    ],
+    "position_m": [
+      "time",
+      "user",
+      "xyz"
+    ],
+    "velocity_mps": [
+      "time",
+      "user",
+      "xyz"
+    ],
+    "acceleration_mps2": [
+      "time",
+      "user",
+      "xyz"
+    ],
+    "orientation_rad": [
+      "time",
+      "user",
+      "yaw_pitch_roll"
+    ],
+    "path_power": [
+      "time",
+      "user",
+      "path"
+    ],
+    "path_delay_s": [
+      "time",
+      "user",
+      "path"
+    ],
+    "path_statistics": "Store at observed time grid; powers sum absolute-squared coefficients across Tx, delays with explicit antenna averaging. Save original shape and merge/path-index caveat. Optional dense path coefficients only for QA, never required to retain all dense antenna coefficients.",
+    "meta_json_required": [
+      "schema_version",
+      "dataset",
+      "environment_id",
+      "realization_id",
+      "user_group_id",
+      "split",
+      "topology",
+      "scenario",
+      "speed_kmh",
+      "trajectory",
+      "seed",
+      "generator_version",
+      "config_hash",
+      "array",
+      "delay_reference",
+      "source_grid",
+      "interpolation",
+      "synthetic_fixture",
+      "bs_position_m"
+    ],
+    "topology_new": "downlink_mu_miso_bs8_ue1",
+    "topology_old": "legacy_simo",
+    "legacy_bridge": "D0 remains read-only; Nt label forbidden on its receive array. Historical replays explicitly named legacy_audit."
+  },
+  "physics": {
+    "fc_hz": 3500000000.0,
+    "dt_s": 0.0005,
+    "n_tx": 8,
+    "n_rx_per_user": 1,
+    "n_users": 4,
+    "n_subcarriers": 32,
+    "subcarrier_spacing_hz": 30000.0,
+    "subcarrier_indices": "-16,...,15; frequency offsets relative to carrier",
+    "bs_position_m": [
+      0.0,
+      0.0,
+      25.0
+    ],
+    "ue_height_m": 1.5,
+    "bs_array": "8 identical vertically polarized omni elements, half-wavelength ULA centered along local y; fixed yaw=0, pitch=0, roll=0; put array on layout.tx_array",
+    "ue_array": "one identical omni element on layout.rx_array",
+    "delay_reference": "QuaDRiGa use_absolute_delays=true; store seconds and setting explicitly",
+    "channel_convention": "y_k=sum_j h_k w_j s_j+n_k; H stores row channel, no conjugation on read. Conjugation occurs in beam/precoder construction.",
+    "grouping": "All four users belong to the same BS layout/environment and synchronized clock. One group is one independent statistical unit. No independent-file CSI concatenation to invent a shared environment.",
+    "variable_speed_route": "Avoid local get_channels(update_rate) movement-profile vmax bug; explicit dense spatial channel then official track time interpolation/channel interpolation. Validate real-channel interpolation and segment merge in T09; do not patch original QuaDRiGa.",
+    "sampling_gate": "T09 must measure position/time/speed consistency, Nyquist margin and dense-grid sensitivity; no claim of interpolation-free generation without evidence.",
+    "bs_position_default_scenario": "UMa",
+    "bs_positions_m": {
+      "UMa": [
+        0.0,
+        0.0,
+        25.0
+      ],
+      "UMi": [
+        0.0,
+        0.0,
+        10.0
+      ]
+    },
+    "scenario_validity": {
+      "horizontal_distance_m": [
+        10.0,
+        5000.0
+      ],
+      "bs_height_m": {
+        "UMa": 25.0,
+        "UMi": 10.0
+      },
+      "ue_height_m": [
+        1.5,
+        22.5
+      ],
+      "source": "Pinned QuaDRiGa 2.8.1 config/3GPP_38.901_UMa_NLOS.conf and UMi_NLOS.conf headers (TR38.901 v16.1.0)"
+    }
+  },
+  "window": {
+    "history_order": "oldest_to_newest",
+    "history_length": 10,
+    "horizon_steps": [
+      1,
+      2,
+      4,
+      8
+    ],
+    "horizon_ms": [
+      0.5,
+      1.0,
+      2.0,
+      4.0
+    ],
+    "origin_index": "t",
+    "history_indices": "t-L+1,...,t",
+    "target_index": "t+h",
+    "common_origin_start": 19,
+    "origin_end": "T-1-h",
+    "development_stride": 1,
+    "ablation_lengths": [
+      2,
+      3,
+      5,
+      10,
+      20
+    ],
+    "rule": "Construct within one realization and user only. All methods/lengths for a condition share origins starting at19, including 20-frame ablation. Formal stride may be frozen at T18 after measured cache budget; no test-dependent subsampling.",
+    "row_keys": [
+      "environment_id",
+      "realization_id",
+      "user_group_id",
+      "user_id",
+      "t_index",
+      "target_index",
+      "horizon_steps",
+      "horizon_ms"
+    ]
+  },
+  "normalization": {
+    "fit_split": "train only",
+    "representation": "stack([H.real,H.imag],axis=-1); RI axis last; shape [B,L,Nt,Nf,2]",
+    "statistics": "one global real mean/std and imaginary mean/std fitted over mixed training records; equal environment contribution when lengths differ; no per-test-speed statistics",
+    "std_floor": 1e-12,
+    "shared_models": "same mixed-training normalizer and one set of weights for all conditions",
+    "dedicated_models": "also use same D1 mixed-training normalizer to simplify fair scaling; D0 legacy bridge uses separately labeled legacy stats",
+    "inverse": "predictions always inverse-transformed before physical metrics/link use; preserve normalizer hash and train environment IDs"
+  },
+  "neural": {
+    "import_namespace": "revision.code",
+    "forward_signature": "forward(history, conditions=None)",
+    "history": "torch float32 [B,L,Nt,Nf,2], normalized with frozen train stats",
+    "conditions": "optional float tensor[B,2] columns [current_speed_kmh,horizon_ms]; raw units; conditioned model scales by [300,4] internally. tau-only must ignore speed entirely. No future actual speed/CSI.",
+    "output": "torch float32 [B,Nt,Nf,2] normalized direct target",
+    "fit": "runner owns train/validation loop, optimizer, sampler and resume; modules have no import-time file IO/training",
+    "batch_isolation": "During evaluation each row may depend only on its own observed history/known conditions; replacing other batch rows must not change its prediction. In particular prohibit mean-over-batch learned graphs that can expose later forecast origins.",
+    "prediction_adapter": "runner predicts with one checkpoint, inverse normalizes to complex64 physical CSI, caches with full row keys and status; rejects nonfinite without dropping samples"
+  },
+  "classical": {
+    "fit_signature": "fit(training_records, config)",
+    "record": "dict with H complex[T,U,Nt,Nf], time_s[T], metadata including split/environment/realization/user_group IDs",
+    "config": "includes history_length,horizon_steps and preselected method settings; fit must reject records whose split is not train",
+    "predict_signature": "predict(history, conditions=None, horizon_steps=None)",
+    "history": "complex physical [B,L,Nt,Nf] oldest_to_newest; no target argument",
+    "return": "dict(prediction=complex[B,Nt,Nf], status=list[str] length B, diagnostics=dict)",
+    "horizon_override": "integer h>=1 for shared mixed-training deployment; no new fit on unknown-speed test data",
+    "precision": "complex128/float64 internal fitting and metrics; save float64 fitted parameters. Explain loading and conditioning. Do not silently cast legacy AR fit to float32.",
+    "baseline_status": "Empirical finite-history LMMSE, featurewise AR-Kalman and temporal ESPRIT are declared adaptations, not full multidimensional oracle implementations.",
+    "failures": "predefined persistence fallback plus explicit status/diagnostics; never remove failed rows from summary"
+  },
+  "core_api": {
+    "complex_to_ri": "complex ndarray -> real ndarray with final dimension2, preserve precision",
+    "ri_to_complex": "real ndarray final dimension2 -> complex ndarray, reject malformed/nonfinite",
+    "window_indices": "(n_time,history_length,horizon_steps,origin_start=19,stride=1)->(history_indices[B,L],target_indices[B]); synthetic short fixtures must explicitly pass a smaller valid origin, None forbidden",
+    "build_windows": "(record,history_length,horizon_steps,origin_start=19,stride=1)->dict(X,Y,rows); X/Y are physical RI arrays, grouped users, row IDs; no cross-record concatenation; explicit smaller origin only for labeled fixtures",
+    "fit_normalizer": "(training_records)->Normalizer(mean[2],std[2],training_environment_ids); reject non-train records",
+    "Normalizer": "transform(ri),inverse(ri),to_dict(); immutable statistics and deterministic sha256 property",
+    "prediction_metrics": "(prediction_complex,target_complex)->dict(error_energy,target_energy,prediction_energy,n_elements,nmse,nmse_db,correlation,status)",
+    "aggregate_metrics": "list of per-environment metric dicts -> dict(mean_environment_nmse_db,pooled_nmse_db,n_environments,n_invalid); invalid counted and mean not silently recomputed on surviving subset",
+    "paired_bootstrap": "(differences[S,E],n_bootstrap=2000,seed=...)->dict(mean,ci_low,ci_high,n_seeds,n_environments); resample seed and environment axes as crossed factors, not S*E independent observations; support S=1"
+  },
+  "metrics": {
+    "nmse": "sum(abs(pred-target)^2)/sum(abs(target)^2), complex128 accumulation",
+    "primary_aggregation": "pool time/subcarrier/antenna/user energies within environment first, then10log10 per environment, then equal-weight environment average; seed axis separate",
+    "pooled": "10log10(sum_environment error_energy / sum_environment target_energy), supplementary",
+    "correlation": "abs(sum(conj(target)*prediction))/sqrt(target_energy*prediction_energy)",
+    "zero_target": "status=zero_target_energy; NMSE/correlation undefined NaN; never floor away or silently filter",
+    "zero_prediction": "positive target: NMSE=1,dB=0; correlation undefined NaN with explicit status, deployment fallback defined by link",
+    "exact_prediction": "NMSE=0,dB=-inf without residual clipping; explicit perfect_prediction status; serializers must preserve special-value status",
+    "nonfinite": "raise ValueError at numerical API boundary; run failure with counted rows, never drop samples",
+    "long_table_required": [
+      "run_id",
+      "method",
+      "topology",
+      "scenario",
+      "speed_kmh",
+      "trajectory",
+      "horizon_ms",
+      "training_seed",
+      "environment_id",
+      "user_group_id",
+      "metric",
+      "value",
+      "unit",
+      "aggregation",
+      "n_samples",
+      "status"
+    ]
+  },
+  "prediction_cache": {
+    "format": "NPZ shards complex64 physical prediction, row index table, metadata JSON; lossless compression only",
+    "required_hashes": [
+      "checkpoint",
+      "config",
+      "code",
+      "data_manifest",
+      "normalizer",
+      "protocol"
+    ],
+    "rule": "Do not replace complex predictions with averages. Shard to bound RAM; storage/stride frozen before formal test. No silent float16 quantization."
+  },
+  "link": {
+    "input": "true_future and prediction [B,U,Nt,Nf] complex physical; transpose each subcarrier to H[U,Nt]",
+    "channel_scale": "single positive scalar g=sqrt(mean(abs(H_train)^2)) from mixed D1 train, no centering; evaluate H/g and prediction/g. g common across all models/test conditions, recorded separately from RI normalizer.",
+    "power_per_subcarrier": 1.0,
+    "noise_variance": "10^(-snr_db/10), circular CN(0,variance); SNR is nominal referenced to training per-element channel power, not per-test-row received SNR",
+    "zf": "V=Hhat^H pinv(Hhat Hhat^H,rcond=1e-10); W=sqrt(P)*V/||V||F",
+    "rzf": "V=Hhat^H solve(Hhat Hhat^H + alpha I,I), alpha=U*noise_variance/P; same Frobenius normalization",
+    "zero_fallback": "MU all-zero precoder uses first U columns of identity scaled sqrt(P/U); SU zero prediction uses e1. Record fallback fraction. Rank-deficient ZF uses Moore-Penrose solution; do not drop group.",
+    "se": "SINR on true_future, equal independent unit-energy user symbols; sum log2(1+SINR) over users, mean over subcarriers, bps/Hz",
+    "su_beam": "conj(hhat)/||hhat||; eta=abs(h_true@w)^2/||h_true||^2; loss=-10log10(eta)",
+    "ber": "uncoded Gray QPSK and16QAM, unit symbol energy; receiver knows current effective desired diagonal channel, scalar equalizer and nearest constellation decision; MU interference included; common symbols/noise for methods",
+    "approximation": "block fading per OFDM symbol, no ICI; pilot/feedback/CP/scheduling overhead not included; perfect CSI reference is same-precoder reference, not capacity bound"
+  },
+  "test_runner": "python -m unittest discover -s revision/tests -v; scientific interpreter from runtime.json",
+  "formal_test_default_open": false,
+  "formal_test_gate_source": "AI_REVISION/state.json.gates is the sole live authority, read-only to runners; only root writes it. Require exact boolean types for formal_protocol_frozen and formal_test_opened, plus valid formal freeze hash. Never coerce explanatory strings to booleans.",
+  "formal_test_gate_rule": "T18 freezes protocol, T25 registers opening after prerequisite tasks; T19/T20 physical/file QA only. This contract default is a policy, not a second live gate."
+}

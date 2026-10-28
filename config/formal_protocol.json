@@ -1,0 +1,707 @@
+{
+  "schema_version": "1.0",
+  "stage": "formal",
+  "amendment_id": "resource-48h-additional50gb-20261015",
+  "formal_protocol_frozen": true,
+  "formal_test_opened": false,
+  "freeze_means": "Prospective protocol before formal CSI or model test errors; T25 separately authorizes test prediction after accepted training",
+  "resource_budget_sha256": "b9e31fbebddc98efb6d312a751d423d8be61d11d0eb943e550b0f6ee842948fb",
+  "contracts_sha256": "dcacaa68769cf2e039ed42ee6e8fbcaba570194d29a4ccb2a5331cb0608402dd",
+  "candidate_choices_sha256": "a2e29afa3c0a9ac9e69798f4abdd59993d97ea36420e7f5b68a6187cd791b04b",
+  "classical_choices_sha256": "ce8d280b99b4094f357605384fadd703cc75149775939c8cdfea8d3202927733",
+  "classical_choices": {
+    "schema_version": "1.0",
+    "selection_evidence_path": "revision/reports/T17/classical_root_acceptance/root_evidence_20261015T113356_428030Z.json",
+    "selection_evidence_sha256": "91492d2f6d14e16861eb16b6bf1b16403f651b915c01461278eea0532fe2a009",
+    "ranking_path": "revision/reports/T17/classical/final_family_selection_ranking_20261015_v2.json",
+    "ranking_sha256": "583a709de7d39fd75c3079e828f3d6b679424b1ab3d5d9d5739f5420aa920bc0",
+    "families": {
+      "ar": {
+        "configuration": "ar_p10_l1e-09",
+        "history_length": 10,
+        "predictor_config": {
+          "order": 10,
+          "relative_loading": 1e-09
+        },
+        "prototype_config_path": "revision/config/development/classical_trials/T17_classical_ar_p10_l1e-09_s300_h04.json",
+        "prototype_config_sha256": "8667b6d0433d857045a341063d098c8074a545ef24cdd120071882ec1b0602b6",
+        "selection_metric": "equal-condition development validation mean linear NMSE",
+        "formal_data_used": false
+      },
+      "ridge": {
+        "configuration": "ridge_l10_l1e-09",
+        "history_length": 10,
+        "predictor_config": {
+          "relative_loading": 1e-09
+        },
+        "prototype_config_path": "revision/config/development/classical_trials/T17_classical_ridge_l10_l1e-09_s300_h04.json",
+        "prototype_config_sha256": "4fa5fcdeb647ec57aa465bd57df94432a023daf3a9b87a69077ae954837667e9",
+        "selection_metric": "equal-condition development validation mean linear NMSE",
+        "formal_data_used": false
+      },
+      "lmmse": {
+        "configuration": "lmmse_l10_l1e-09",
+        "history_length": 10,
+        "predictor_config": {
+          "relative_loading": 1e-09
+        },
+        "prototype_config_path": "revision/config/development/classical_trials/T17_classical_lmmse_l10_l1e-09_s300_h04.json",
+        "prototype_config_sha256": "4fa5fcdeb647ec57aa465bd57df94432a023daf3a9b87a69077ae954837667e9",
+        "selection_metric": "equal-condition development validation mean linear NMSE",
+        "formal_data_used": false
+      },
+      "kalman": {
+        "configuration": "kalman_p2_q0.1",
+        "history_length": 10,
+        "predictor_config": {
+          "order": 2,
+          "process_noise_scale": 0.1,
+          "relative_loading": 1e-09
+        },
+        "prototype_config_path": "revision/config/development/classical_trials/T17_classical_kalman_p2_q0.1_s300_h04.json",
+        "prototype_config_sha256": "f51bbf4ca7b80cd0cc0961fbb0beadc5d3b33782c92f69736f110660954ea034",
+        "selection_metric": "equal-condition development validation mean linear NMSE",
+        "formal_data_used": false
+      },
+      "esprit": {
+        "configuration": "esprit_r2",
+        "history_length": 10,
+        "predictor_config": {
+          "gain_fit_ridge": 1e-08,
+          "hankel_rows": 5,
+          "rank": 2
+        },
+        "prototype_config_path": "revision/config/development/classical_trials/T17_classical_esprit_r2_s300_h04.json",
+        "prototype_config_sha256": "604a51f2cdf5f5c758f41f8b778f96e55b6fcd2a4e1905b5441cad904c8bf361",
+        "selection_metric": "equal-condition development validation mean linear NMSE",
+        "formal_data_used": false
+      },
+      "persistence": {
+        "configuration": "persistence",
+        "history_length": 10,
+        "predictor_config": {},
+        "formal_data_used": false
+      }
+    },
+    "D1_fit": "Separate D1 main train-only fit per speed, all30groups equalweight; h=[1,2,4,8] direct heads, same selected family configuration, no formal validation retuning",
+    "challenge_fit": "One all90 D1 main train-only mixed state for AR/Kalman/ESPRIT/persistence reused unchanged; mixed Ridge/LMMSE h1-only state deployed via explicitly named recursive_from_direct_h1 wrapper, no unknown-horizon target fitting",
+    "fit_stride": 1,
+    "origin_start": 19,
+    "failure_policy": "Predefined persistence fallback with every status and failed step preserved; no dropped rows",
+    "kalman_noise": "Clean R=0; known nominal history SNR supplied only in predeclared noisy-history tests; never inferred from targets",
+    "implementation_notes": "Featurewise AR-Kalman, empirical finite-history LMMSE and temporal ESPRIT are adaptations. Retain equal validation-score ties and deterministic lexical selected variant."
+  },
+  "formal_run_matrix_sha256": "f7c099ecd4d8994fe6133feaddd9ec621bcd064e5d900b18df94dea13f9651cd",
+  "group_specs_sha256": "030e5a66c2ecc1f967885fb231f5e32c36e589b47ec3c6dffa81de83a028c292",
+  "group_specs_file_sha256": "f3dd28723dd4f2f913bd48b0b28dc86f283ebd3b36fa696e53d4a2223ddce7d5",
+  "development_evidence": {
+    "selection": "revision/reports/T17/model_selection.md",
+    "selection_sha256": "8345efa8e29f11656db36072289b0a150b518d824b610c76c19b721c59c4f8b0",
+    "root_acceptance_sha256": "bcc8dd447eda5aa54d13908ab9d99b4cd84f28624c31b643bd766e5bb606e877",
+    "only_lite_completed_full_hpo": true,
+    "other_families_under_tuned_disclosed": true,
+    "development_results_are_not_formal_results": true
+  },
+  "data": {
+    "D1": {
+      "speeds_kmh": [
+        30,
+        120,
+        300
+      ],
+      "train_groups_per_speed": 30,
+      "val_groups_per_speed": 8,
+      "test_groups_per_speed": 30,
+      "total_groups": 204
+    },
+    "D2": {
+      "unseen_speeds_kmh": [
+        180
+      ],
+      "test_groups_per_speed": 20,
+      "unseen_horizons_ms": [
+        1.5,
+        3
+      ],
+      "dynamic_horizon_switch": true
+    },
+    "D3": {
+      "families": [
+        "variable_speed",
+        "smooth_curve_turn",
+        "cluster_transition"
+      ],
+      "test_groups_per_family": 20,
+      "total_groups": 60,
+      "duration_initial_target_seconds": 2,
+      "physical_qa_has_priority": true
+    },
+    "D4": "deferred; no new UMi matrix",
+    "duration_s": 2.0,
+    "dt_s": 0.0005,
+    "groups_total": 284,
+    "seed_range": [
+      2000000,
+      2000283
+    ],
+    "geometry": {
+      "initial_range_m": [
+        80,
+        250
+      ],
+      "random_azimuth_rad": [
+        0,
+        6.283185307179586
+      ],
+      "acceleration_limit_mps2": 3.0,
+      "lateral_acceleration_limit_mps2": 3.0,
+      "max_speed_kmh": 300,
+      "min_speed_kmh": 20,
+      "rule": "Freeze per-track trajectory parameters before generation; curve radius>=v_max^2/3; all UE on same time axis; no sharp corner or independent CSI splicing.",
+      "scenario_horizontal_distance_bounds_m": [
+        10.0,
+        5000.0
+      ]
+    },
+    "physical_failure_policy": "A failed fixed group/trajectory remains failed with every attempt/output/diagnostic preserved; no replacement ID,seed,shortened duration or silent exclusion. Diagnose without reading model error. Any missing fixed member makes its full panel incomplete and inference unavailable.",
+    "geometry_proposal": "Nonce 0..31, geometry_seed=channel_seed+nonce*10000000; retry solely full-trajectory horizontal-range violation before CSI; preserve rejected proposal and keep channel seed/ID",
+    "physical_qa_access": "Raw geometry, time, array, finite values and file/source QA only; no errors, fitting, normalization or selection on test",
+    "test_environment_ids": {
+      "30": [
+        "FORMAL_RL_20261015_D1_S030_TEST_G001",
+        "FORMAL_RL_20261015_D1_S030_TEST_G002",
+        "FORMAL_RL_20261015_D1_S030_TEST_G003",
+        "FORMAL_RL_20261015_D1_S030_TEST_G004",
+        "FORMAL_RL_20261015_D1_S030_TEST_G005",
+        "FORMAL_RL_20261015_D1_S030_TEST_G006",
+        "FORMAL_RL_20261015_D1_S030_TEST_G007",
+        "FORMAL_RL_20261015_D1_S030_TEST_G008",
+        "FORMAL_RL_20261015_D1_S030_TEST_G009",
+        "FORMAL_RL_20261015_D1_S030_TEST_G010",
+        "FORMAL_RL_20261015_D1_S030_TEST_G011",
+        "FORMAL_RL_20261015_D1_S030_TEST_G012",
+        "FORMAL_RL_20261015_D1_S030_TEST_G013",
+        "FORMAL_RL_20261015_D1_S030_TEST_G014",
+        "FORMAL_RL_20261015_D1_S030_TEST_G015",
+        "FORMAL_RL_20261015_D1_S030_TEST_G016",
+        "FORMAL_RL_20261015_D1_S030_TEST_G017",
+        "FORMAL_RL_20261015_D1_S030_TEST_G018",
+        "FORMAL_RL_20261015_D1_S030_TEST_G019",
+        "FORMAL_RL_20261015_D1_S030_TEST_G020",
+        "FORMAL_RL_20261015_D1_S030_TEST_G021",
+        "FORMAL_RL_20261015_D1_S030_TEST_G022",
+        "FORMAL_RL_20261015_D1_S030_TEST_G023",
+        "FORMAL_RL_20261015_D1_S030_TEST_G024",
+        "FORMAL_RL_20261015_D1_S030_TEST_G025",
+        "FORMAL_RL_20261015_D1_S030_TEST_G026",
+        "FORMAL_RL_20261015_D1_S030_TEST_G027",
+        "FORMAL_RL_20261015_D1_S030_TEST_G028",
+        "FORMAL_RL_20261015_D1_S030_TEST_G029",
+        "FORMAL_RL_20261015_D1_S030_TEST_G030"
+      ],
+      "120": [
+        "FORMAL_RL_20261015_D1_S120_TEST_G001",
+        "FORMAL_RL_20261015_D1_S120_TEST_G002",
+        "FORMAL_RL_20261015_D1_S120_TEST_G003",
+        "FORMAL_RL_20261015_D1_S120_TEST_G004",
+        "FORMAL_RL_20261015_D1_S120_TEST_G005",
+        "FORMAL_RL_20261015_D1_S120_TEST_G006",
+        "FORMAL_RL_20261015_D1_S120_TEST_G007",
+        "FORMAL_RL_20261015_D1_S120_TEST_G008",
+        "FORMAL_RL_20261015_D1_S120_TEST_G009",
+        "FORMAL_RL_20261015_D1_S120_TEST_G010",
+        "FORMAL_RL_20261015_D1_S120_TEST_G011",
+        "FORMAL_RL_20261015_D1_S120_TEST_G012",
+        "FORMAL_RL_20261015_D1_S120_TEST_G013",
+        "FORMAL_RL_20261015_D1_S120_TEST_G014",
+        "FORMAL_RL_20261015_D1_S120_TEST_G015",
+        "FORMAL_RL_20261015_D1_S120_TEST_G016",
+        "FORMAL_RL_20261015_D1_S120_TEST_G017",
+        "FORMAL_RL_20261015_D1_S120_TEST_G018",
+        "FORMAL_RL_20261015_D1_S120_TEST_G019",
+        "FORMAL_RL_20261015_D1_S120_TEST_G020",
+        "FORMAL_RL_20261015_D1_S120_TEST_G021",
+        "FORMAL_RL_20261015_D1_S120_TEST_G022",
+        "FORMAL_RL_20261015_D1_S120_TEST_G023",
+        "FORMAL_RL_20261015_D1_S120_TEST_G024",
+        "FORMAL_RL_20261015_D1_S120_TEST_G025",
+        "FORMAL_RL_20261015_D1_S120_TEST_G026",
+        "FORMAL_RL_20261015_D1_S120_TEST_G027",
+        "FORMAL_RL_20261015_D1_S120_TEST_G028",
+        "FORMAL_RL_20261015_D1_S120_TEST_G029",
+        "FORMAL_RL_20261015_D1_S120_TEST_G030"
+      ],
+      "300": [
+        "FORMAL_RL_20261015_D1_S300_TEST_G001",
+        "FORMAL_RL_20261015_D1_S300_TEST_G002",
+        "FORMAL_RL_20261015_D1_S300_TEST_G003",
+        "FORMAL_RL_20261015_D1_S300_TEST_G004",
+        "FORMAL_RL_20261015_D1_S300_TEST_G005",
+        "FORMAL_RL_20261015_D1_S300_TEST_G006",
+        "FORMAL_RL_20261015_D1_S300_TEST_G007",
+        "FORMAL_RL_20261015_D1_S300_TEST_G008",
+        "FORMAL_RL_20261015_D1_S300_TEST_G009",
+        "FORMAL_RL_20261015_D1_S300_TEST_G010",
+        "FORMAL_RL_20261015_D1_S300_TEST_G011",
+        "FORMAL_RL_20261015_D1_S300_TEST_G012",
+        "FORMAL_RL_20261015_D1_S300_TEST_G013",
+        "FORMAL_RL_20261015_D1_S300_TEST_G014",
+        "FORMAL_RL_20261015_D1_S300_TEST_G015",
+        "FORMAL_RL_20261015_D1_S300_TEST_G016",
+        "FORMAL_RL_20261015_D1_S300_TEST_G017",
+        "FORMAL_RL_20261015_D1_S300_TEST_G018",
+        "FORMAL_RL_20261015_D1_S300_TEST_G019",
+        "FORMAL_RL_20261015_D1_S300_TEST_G020",
+        "FORMAL_RL_20261015_D1_S300_TEST_G021",
+        "FORMAL_RL_20261015_D1_S300_TEST_G022",
+        "FORMAL_RL_20261015_D1_S300_TEST_G023",
+        "FORMAL_RL_20261015_D1_S300_TEST_G024",
+        "FORMAL_RL_20261015_D1_S300_TEST_G025",
+        "FORMAL_RL_20261015_D1_S300_TEST_G026",
+        "FORMAL_RL_20261015_D1_S300_TEST_G027",
+        "FORMAL_RL_20261015_D1_S300_TEST_G028",
+        "FORMAL_RL_20261015_D1_S300_TEST_G029",
+        "FORMAL_RL_20261015_D1_S300_TEST_G030"
+      ]
+    },
+    "dense_sampling_evidence": "revision/reports/T09/dense_sampling/actual_sampling_summary.json",
+    "dense_sampling_limitations": "Small speed-derived Nyquist margin at 300 km/h; same-ray nested-grid evidence does not prove alias-free support",
+    "D3_interpretation": "Variable-speed straight, smooth curve, and scenario-segment LOS/NLOS transition; do not claim continuous physical cluster evolution or paired controls"
+  },
+  "training": {
+    "job_count": 63,
+    "only_jobs_in": "AI_REVISION/resource_budget.json",
+    "dispatch_order_job_keys": [
+      "lite_dedicated_v300_h2_s42",
+      "lite_dedicated_v300_h2_s43",
+      "lite_dedicated_v300_h2_s44",
+      "stemgnn_v300_h2_s42",
+      "stemgnn_v300_h2_s43",
+      "stemgnn_v300_h2_s44",
+      "itransformer_v300_h2_s42",
+      "itransformer_v300_h2_s43",
+      "itransformer_v300_h2_s44",
+      "ablation_causal_k3_v300_h2_s42",
+      "ablation_exact_two_frame_v300_h2_s42",
+      "wireless_linformer_v300_h2_s42",
+      "ablation_causal_k3_v300_h2_s43",
+      "ablation_exact_two_frame_v300_h2_s43",
+      "wireless_linformer_v300_h2_s43",
+      "ablation_causal_k3_v300_h2_s44",
+      "ablation_exact_two_frame_v300_h2_s44",
+      "wireless_linformer_v300_h2_s44",
+      "shared_tau_only_vshared_hshared_s42",
+      "shared_v_tau_vshared_hshared_s42",
+      "shared_tau_only_vshared_hshared_s43",
+      "shared_v_tau_vshared_hshared_s43",
+      "shared_tau_only_vshared_hshared_s44",
+      "shared_v_tau_vshared_hshared_s44",
+      "lite_dedicated_v120_h0.5_s42",
+      "lite_dedicated_v120_h1_s42",
+      "lite_dedicated_v120_h2_s42",
+      "lite_dedicated_v120_h4_s42",
+      "lite_dedicated_v300_h0.5_s42",
+      "lite_dedicated_v300_h1_s42",
+      "lite_dedicated_v300_h4_s42",
+      "lite_dedicated_v30_h0.5_s42",
+      "lite_dedicated_v30_h1_s42",
+      "lite_dedicated_v30_h2_s42",
+      "lite_dedicated_v30_h4_s42",
+      "stemgnn_v120_h0.5_s42",
+      "stemgnn_v120_h1_s42",
+      "stemgnn_v120_h2_s42",
+      "stemgnn_v120_h4_s42",
+      "stemgnn_v300_h0.5_s42",
+      "stemgnn_v300_h1_s42",
+      "stemgnn_v300_h4_s42",
+      "stemgnn_v30_h0.5_s42",
+      "stemgnn_v30_h1_s42",
+      "stemgnn_v30_h2_s42",
+      "stemgnn_v30_h4_s42",
+      "itransformer_v120_h0.5_s42",
+      "itransformer_v120_h1_s42",
+      "itransformer_v120_h2_s42",
+      "itransformer_v120_h4_s42",
+      "itransformer_v300_h0.5_s42",
+      "itransformer_v300_h1_s42",
+      "itransformer_v300_h4_s42",
+      "itransformer_v30_h0.5_s42",
+      "itransformer_v30_h1_s42",
+      "itransformer_v30_h2_s42",
+      "itransformer_v30_h4_s42",
+      "wireless_linformer_v120_h1_s42",
+      "wireless_linformer_v120_h2_s42",
+      "wireless_linformer_v300_h1_s42",
+      "wireless_linformer_v300_h4_s42",
+      "wireless_linformer_v30_h1_s42",
+      "wireless_linformer_v30_h2_s42"
+    ],
+    "retention": "last_best",
+    "epochs_cap": 100,
+    "patience": 15,
+    "training_stride": 1,
+    "validation_stride": 4,
+    "window_origin_start": 19,
+    "sample_cap_dedicated": 4096,
+    "sample_cap_shared": 12288,
+    "batch_floor": "floor(cap/batch)*batch actual presentations; report updates and coverage",
+    "validation": "all 8 groups for each trained speed/horizon; equal-environment linear NMSE for stopping; inverse train-only normalization",
+    "normalization": {
+      "fit_split": "train only",
+      "representation": "stack([H.real,H.imag],axis=-1); RI axis last; shape [B,L,Nt,Nf,2]",
+      "statistics": "one global real mean/std and imaginary mean/std fitted over mixed training records; equal environment contribution when lengths differ; no per-test-speed statistics",
+      "std_floor": 1e-12,
+      "shared_models": "same mixed-training normalizer and one set of weights for all conditions",
+      "dedicated_models": "also use same D1 mixed-training normalizer to simplify fair scaling; D0 legacy bridge uses separately labeled legacy stats",
+      "inverse": "predictions always inverse-transformed before physical metrics/link use; preserve normalizer hash and train environment IDs"
+    },
+    "sampler": "Uniform task, environment, user, valid origin; logical epochs do not claim full passes",
+    "calibration": "First core Lite seed42 run continues normally; first 3 epochs calibrate conservative remaining 100-epoch queue cost. If queue exceeds min(26h training capacity,H32), stop expansion and retain missing jobs",
+    "retry": "Same identity/config/source only, budget/time counted; no new candidates, seeds or conditions",
+    "gpu_policy": "Fresh remaining VRAM measurement plus model envelope and 768MiB margin; serial by default; never terminate external projects"
+  },
+  "evaluation": {
+    "primary_metric": "sum(abs(pred-target)^2)/sum(abs(target)^2), complex128 accumulation",
+    "primary_aggregation": "pool time/subcarrier/antenna/user energies within environment first, then10log10 per environment, then equal-weight environment average; seed axis separate",
+    "seed_axes": "Seed42 complete single-seed table separate from 300km/h 2ms seeds42/43/44; never infer full-grid training-seed stability",
+    "test_origins": "All valid integer origins from19 toT-1-h, stride1, all4 users/all8 antennas/all32 tones; shared comparison rows",
+    "test_model_selection": "Only complete formally trained best validation checkpoint, immutable T25 aggregate authority; T17 forbidden",
+    "noise_inference": {
+      "speed_kmh": 300,
+      "horizon_ms": 2,
+      "snr_db": [
+        "clean",
+        30,
+        20,
+        10
+      ],
+      "methods": [
+        "lite_dedicated",
+        "stemgnn",
+        "itransformer",
+        "wireless_linformer",
+        "shared_tau_only",
+        "shared_v_tau",
+        "persistence",
+        "ar",
+        "ridge",
+        "lmmse",
+        "kalman",
+        "esprit"
+      ],
+      "target": "clean",
+      "training_seed": 42,
+      "random_seed": 2602236,
+      "draw": "Physical complex CN(0,g_train^2*10^(-snr_db/10)) per coefficient added to raw observed history BEFORE saved train normalizer; deterministic environment/origin/user/time/antenna/tone tuple paired across methods; no per-test scaling"
+    },
+    "history_interventions": {
+      "training_seed": 42,
+      "condition": [
+        300,
+        2
+      ],
+      "methods": [
+        "lite_dedicated"
+      ],
+      "variants": [
+        "unaltered",
+        "replace_oldest8_with_latest_observed",
+        "reverse_oldest9_keep_latest"
+      ],
+      "label": "Fixed-weight input intervention separate from independent retrained exact-two-frame and causal-k3 ablations"
+    },
+    "missing": "Explicit missing/failed/status cells; no surviving subset inference, no model/seed/condition changes from test results",
+    "output": "Stream physical complex predictions to metrics/link callbacks; small lossless hash-bound audit shards; never replace samples by average CSI"
+  },
+  "statistics": {
+    "unit": "independent environment group, four users and overlapping windows correlated",
+    "primary_family": [
+      {
+        "condition": [
+          300,
+          2
+        ],
+        "contrast": [
+          "lite_dedicated",
+          "stemgnn"
+        ],
+        "training_seeds": [
+          42,
+          43,
+          44
+        ]
+      },
+      {
+        "condition": [
+          300,
+          2
+        ],
+        "contrast": [
+          "lite_dedicated",
+          "itransformer"
+        ],
+        "training_seeds": [
+          42,
+          43,
+          44
+        ]
+      },
+      {
+        "condition": [
+          300,
+          2
+        ],
+        "contrast": [
+          "lite_dedicated",
+          "wireless_linformer"
+        ],
+        "training_seeds": [
+          42,
+          43,
+          44
+        ]
+      }
+    ],
+    "primary_interval": "Crossed seed/environment paired bootstrap,2000 replicates,seed2602236,95% percentile; keep both axes",
+    "bootstrap_target": "Approximate population mean dB contrast over training random seeds and independent generated environments, with only3seed levels; limited seed resolution disclosed. Shared numeric seed labels define matched method pairs, not identical algorithmic random streams.",
+    "bootstrap_resampling": "Resample the3registered seed labels with replacement once per draw and apply the same labels to both methods; independently resample30environment IDs with replacement once and share these IDs across all sampled seeds/methods. Average the resulting crossed grid. No seed-environment rows treated independent.",
+    "interval_multiplicity": "Each reported95% bootstrap interval is pointwise, not a simultaneous confidence family. Holm adjustment applies to the separately declared conditional t-tests only.",
+    "primary_test": "Two-sided paired environment t-test on seed-mean dB differences,30 environments; Holm across three primary contrasts,alpha.05; assumptions and CI/test estimands disclosed",
+    "secondary_family": "Seed42 Lite-vs-STEM and Lite-vs-iTransformer over12conditions each, Lite-vs-LinFormer over7conditions:31 contrasts, separate Holm family; exploratory no core seed generalization",
+    "secondary_interval": "Environment bootstrap only,2000 replicates,seed2602237; single training seed limitation",
+    "invalid": "Any incomplete paired environment/seed panel or undefined metric produces unavailable inference; no dropped rows or finite flooring",
+    "challenge": "Per-trajectory environment summaries and transition-time bins; no significance-driven subset expansion"
+  },
+  "link": {
+    "settings": {
+      "input": "true_future and prediction [B,U,Nt,Nf] complex physical; transpose each subcarrier to H[U,Nt]",
+      "channel_scale": "single positive scalar g=sqrt(mean(abs(H_train)^2)) from mixed D1 train, no centering; evaluate H/g and prediction/g. g common across all models/test conditions, recorded separately from RI normalizer.",
+      "power_per_subcarrier": 1.0,
+      "noise_variance": "10^(-snr_db/10), circular CN(0,variance); SNR is nominal referenced to training per-element channel power, not per-test-row received SNR",
+      "zf": "V=Hhat^H pinv(Hhat Hhat^H,rcond=1e-10); W=sqrt(P)*V/||V||F",
+      "rzf": "V=Hhat^H solve(Hhat Hhat^H + alpha I,I), alpha=U*noise_variance/P; same Frobenius normalization",
+      "zero_fallback": "MU all-zero precoder uses first U columns of identity scaled sqrt(P/U); SU zero prediction uses e1. Record fallback fraction. Rank-deficient ZF uses Moore-Penrose solution; do not drop group.",
+      "se": "SINR on true_future, equal independent unit-energy user symbols; sum log2(1+SINR) over users, mean over subcarriers, bps/Hz",
+      "su_beam": "conj(hhat)/||hhat||; eta=abs(h_true@w)^2/||h_true||^2; loss=-10log10(eta)",
+      "ber": "uncoded Gray QPSK and16QAM, unit symbol energy; receiver knows current effective desired diagonal channel, scalar equalizer and nearest constellation decision; MU interference included; common symbols/noise for methods",
+      "approximation": "block fading per OFDM symbol, no ICI; pilot/feedback/CP/scheduling overhead not included; perfect CSI reference is same-precoder reference, not capacity bound"
+    },
+    "sources": [
+      "perfect",
+      "outdated",
+      "lite",
+      "stemgnn",
+      "itransformer",
+      "wireless_linformer",
+      "ar",
+      "lmmse",
+      "kalman",
+      "esprit"
+    ],
+    "reference_CSI": "perfect uses true target-time H[t+h]; outdated uses latest actually observed H[t], with same physical scaling. Neither uses a trainable model.",
+    "conditions": [
+      [
+        300,
+        2
+      ],
+      [
+        300,
+        4
+      ],
+      [
+        30,
+        2
+      ],
+      [
+        120,
+        2
+      ]
+    ],
+    "snr_db": [
+      0,
+      10,
+      20
+    ],
+    "metrics": [
+      "SU beamforming loss",
+      "MU ZF sum SE",
+      "MU RZF sum SE"
+    ],
+    "training_seeds": "300/2 core seed42/43/44; other learned cells seed42",
+    "definitions": "Use frozen physical channel convention, common mixed-training scale and total-per-tone power, receiver effective CSI per contracts; no per-test power normalization"
+  },
+  "ber": {
+    "sources": [
+      "perfect",
+      "outdated",
+      "ar",
+      "lite",
+      "itransformer",
+      "wireless_linformer"
+    ],
+    "conditions": [
+      [
+        300,
+        2
+      ],
+      [
+        300,
+        4
+      ]
+    ],
+    "snr_db": [
+      0,
+      10,
+      20
+    ],
+    "modulation": "uncoded QPSK",
+    "precoder": "RZF",
+    "model_training_seed": 42,
+    "environment_ids": [
+      "FORMAL_RL_20261015_D1_S300_TEST_G001",
+      "FORMAL_RL_20261015_D1_S300_TEST_G002",
+      "FORMAL_RL_20261015_D1_S300_TEST_G003",
+      "FORMAL_RL_20261015_D1_S300_TEST_G004",
+      "FORMAL_RL_20261015_D1_S300_TEST_G005",
+      "FORMAL_RL_20261015_D1_S300_TEST_G006",
+      "FORMAL_RL_20261015_D1_S300_TEST_G007",
+      "FORMAL_RL_20261015_D1_S300_TEST_G008",
+      "FORMAL_RL_20261015_D1_S300_TEST_G009",
+      "FORMAL_RL_20261015_D1_S300_TEST_G010",
+      "FORMAL_RL_20261015_D1_S300_TEST_G011",
+      "FORMAL_RL_20261015_D1_S300_TEST_G012",
+      "FORMAL_RL_20261015_D1_S300_TEST_G013",
+      "FORMAL_RL_20261015_D1_S300_TEST_G014",
+      "FORMAL_RL_20261015_D1_S300_TEST_G015",
+      "FORMAL_RL_20261015_D1_S300_TEST_G016",
+      "FORMAL_RL_20261015_D1_S300_TEST_G017",
+      "FORMAL_RL_20261015_D1_S300_TEST_G018",
+      "FORMAL_RL_20261015_D1_S300_TEST_G019",
+      "FORMAL_RL_20261015_D1_S300_TEST_G020"
+    ],
+    "environment_selection": "First20 immutable sorted IDs; no performance selection",
+    "rounds_cap": 10,
+    "bits_per_group_source_round": 1000,
+    "bits_per_cell_cap": 200000,
+    "total_bits_cap": 7200000,
+    "uniform_sampling": "125 independent uniform valid origin/subcarrier MU snapshots per group per round; all4 users*2bits; common history and symbol/noise seeds across six sources",
+    "paired_seeds": "Deterministic SHA256 tuple(environment_id,horizon_steps,SNR,round,channel/csi/symbol/noise label); identical source-independent random streams",
+    "paired_seed_bytes": "SHA256(json.dumps({environment_id,horizon_steps,snr_db,round_index,label},ensure_ascii=True,sort_keys=True,separators=(comma,colon)).encode(ascii)); first8digest bytes big-endian unsigned modulo2**63; round_index1-based; labels channel_seed,csi_seed,symbol_seed,noise_seed; source excluded",
+    "uniform_snapshot_indices": "channel_seed drives uniform valid forecast-origin draws; csi_seed drives uniform0..31 tone draws, with replacement and independent streams;125 MU snapshots per group/round shared by all6sources",
+    "stop": "Only after full balanced20environment round; stop a six-source panel only if all6 sources reach100 errors,else10 rounds; no partial-round formal estimate",
+    "interval": "Group-level bounded-mean simultaneous Hoeffding,alpha.05 across36cells*10looks; allows arbitrary within-environment dependence, independent environments/uniform sampling assumed",
+    "estimand": "Expected uncoded bit error under a new independent environment from frozen generator and uniform valid origin/subcarrier/user/QPSK/noise sampling, averaged equally over environment groups",
+    "simultaneous_interval_halfwidth": 0.489259222845214,
+    "interval_limitations": "Very conservative width with20independent environments, often clipped to[0,1]; no bit-iid precision claim; conditional channel/model and receiver assumptions disclosed",
+    "zero_errors": "Report actual bits and same conservative simultaneous upper bound, never trueBER=0",
+    "time_cap_hours": 4,
+    "history_CSI": "Clean observed history for learned/AR/outdated sources; no added estimation noise in BER. Receiver AWGN and QPSK symbols source-paired. csi_seed identifies uniform history/snapshot selection, not an unreported noise process.",
+    "error_target_not_attained": "After complete round10 retain valid capped estimate with actual errors/bits and status cap_reached_below_error_target for each source under100errors; no extra bits. Timeout/partial round remains incomplete and unavailable for formal aggregation.",
+    "source_contrasts": "Per-source mean simultaneous intervals only; source differences may be descriptive, no source-contrast CI or significance claim is provided by this bound.",
+    "forbidden": [
+      "16-QAM",
+      "BLER"
+    ]
+  },
+  "generalization": {
+    "D2": {
+      "speed_kmh": 180,
+      "horizon_ms": [
+        1.5,
+        3
+      ],
+      "dynamic_horizon_segments_s": [
+        [
+          0,
+          0.5,
+          1.5
+        ],
+        [
+          0.5,
+          1,
+          3
+        ],
+        [
+          1,
+          1.5,
+          1.5
+        ],
+        [
+          1.5,
+          2.0005,
+          3
+        ]
+      ],
+      "dynamic_origin_rule": "Choose horizon from observed origin time_s[t] in left-closed/right-open interval; evaluate integer t>=19 only if chosen t+h<=T-1; exclude only target-outside-record origins, retaining exact row coverage and no performance-dependent selection"
+    },
+    "methods": "Frozen mixed-training classical and tau-only/v+tau shared models; no retraining new-speed dedicated model",
+    "D3": "All20 trajectories per each of three fixed families, static horizons2/4ms only; dynamic schedule belongs toD2. Seed42 full challenge and seeds43/44 only variable-speed straight at2ms",
+    "transition_bins": "For scenario-transition trajectories use origin_time minus fixed1s transition, edges[-1,-0.5,-0.1,0,0.1,0.5,1.0005]seconds, leftclosed/rightopen; separately flag forecasts whose target crosses1s. Equal-environment summary within each bin, absent/empty member explicit rather than silently pooled away.",
+    "speed_condition": {
+      "scope": "v+tau only on both D2 and D3, predeclared tasks above, seed42; oracle current speed reported separately",
+      "variants": [
+        "oracle_current",
+        "delayed_10ms",
+        "biased_plus10percent"
+      ],
+      "separate_not_compound": true,
+      "delayed": "At origin index t use norm(recorded_velocity[max(0,t-20)])*3.6; boundary holds initial available velocity, so origin19 uses index0 with9.5ms age, explicitly flagged boundary_hold. No origins dropped.",
+      "biased": "Use1.1*norm(recorded_velocity[t])*3.6 without clipping to300, label possible off-training-domain conditioning; no added delay",
+      "unavailable_inputs": "If required observed velocity absent/nonfinite mark failed/unavailable, never future-fill or infer from target CSI"
+    },
+    "controls": "No paired straight-vs-curve claims unless generator shares physical random source demonstrably"
+  },
+  "stopping": {
+    "active_wallclock_hours": 48,
+    "clock_start": "2026-10-15T14:54:00+00:00; fixed ledger activity interval, no reset",
+    "count_parallel_intervals_once": true,
+    "exclude_explicit_user_pause_only": true,
+    "schedule_hours": {
+      "maintenance_protocol": 2,
+      "data_qa": 4,
+      "training": 26,
+      "evaluation": 8,
+      "writing_audit": 8
+    },
+    "cleanup_subcap_hours": 1,
+    "ber_subcap_hours": 4,
+    "stop_new_training_at_active_hour": 32,
+    "stop_extra_evaluation_at_active_hour": 40,
+    "hard_stop_at_active_hour": 48,
+    "on_incomplete": "save resumable state and gaps; do not mark project complete"
+  },
+  "storage": {
+    "unit": "decimal_bytes",
+    "baseline_logical_bytes": 30841554657,
+    "baseline_measurement": "revision/reports/storage_20261015/before.json",
+    "baseline_policy": "Do not rebase after cleanup or after new writes. Validate before future execution.",
+    "additional_limit_bytes": 50000000000,
+    "project_equivalent_logical_ceiling_bytes": 80841554657,
+    "include_task_external_cache_growth": true,
+    "compression_credit": "Only verified disk bytes measured on consistent before/after basis",
+    "cleanup_credit": "Only after actual verified deletion; staging is not a saving",
+    "warn_net_growth_bytes": 35000000000,
+    "stop_new_normal_jobs_net_growth_bytes": 40000000000,
+    "hard_net_growth_limit_bytes": 50000000000,
+    "reservations_required": true,
+    "allocation_targets_gb": {
+      "data": 14,
+      "checkpoints": 12,
+      "predictions": 4,
+      "temporary_peak": 8,
+      "environment_caches": 3,
+      "reports_paper": 2,
+      "reserve": 7
+    }
+  },
+  "subbudgets": "Cleanup<=1h is nested inside H0-H2 preparation; BER<=4h is nested inside H32-H40 evaluation (or earlier dependency-correct evaluation). The50MB control-only closeout and final minute H47:59-H48 are nested inside H40-H48 writing/audit. Stop owned science atH47:59. None extends the48h union clock. Ordinary wait/retry counts; only explicit userpause excluded.",
+  "deferred": [
+    "formal ConvLSTM",
+    "new UMi zero-shot matrix",
+    "full length scan",
+    "extra architecture search",
+    "16-QAM",
+    "BLER"
+  ],
+  "release": "No submission/email/publication/purchases; incomplete core evidence yields resource-limited progress package, never all-major-revision-complete"
+}

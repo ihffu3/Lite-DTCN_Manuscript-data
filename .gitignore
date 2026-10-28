@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+*.pt
+*.pth
+*.ckpt
+*.mat
+*.h5
+.env
+.env.*
+*.pem
+*.key
+
+figures/

@@ -1,0 +1,13 @@
+method,family,models_for_12_conditions,structure,params_per_model,files,bytes,bytes_kind,time_s,time_kind,source
+lite_dedicated,neural,12,"one checkpoint per (speed, horizon)",23472.0,12.0,3807808.0,serialized checkpoints incl. optimizer state (12 files),487.351,"final successful invocation, 300km/h-2ms model only",tables/cost_maintenance105.tex
+shared_tau,neural,1,"one checkpoint over all conditions, delay-conditioned only",25072.0,1.0,401536.0,serialized checkpoint,2633.616,final successful invocation,tables/cost_maintenance105.tex
+shared_v_tau,neural,1,one checkpoint over speeds and horizons,25088.0,1.0,404288.0,serialized checkpoint,2649.364,final successful invocation,tables/cost_maintenance105.tex
+stemgnn,neural,12,dedicated per condition,738395.0,,,not tabulated,285.972,"final successful invocation, 300km/h-2ms model only",tables/cost_maintenance105.tex
+itransformer,neural,12,dedicated per condition,266753.0,,,not tabulated,808.481,"final successful invocation, 300km/h-2ms model only",tables/cost_maintenance105.tex
+wireless_linformer,neural,12,dedicated per condition,13138462.0,,,not tabulated,849.339,"final successful invocation, 300km/h-2ms model only",tables/cost_maintenance105.tex
+lmmse,classical,3,one fit per speed holding 4 direct horizon heads,22528.0,,4469394.0,"JSON state artifacts, 3 dedicated + 1 mixed fit",1859.532,predictor fit summed over 3 dedicated + 1 mixed fit (CPU record),tables/cost_maintenance105.tex
+ridge,classical,3,one fit per speed holding 4 direct horizon heads,22528.0,,3246227.0,"JSON state artifacts, 3 dedicated + 1 mixed fit",1749.555,predictor fit summed over 4 fits,tables/cost_maintenance105.tex
+ar,classical,3,"one fit per speed, recursive over horizons",5632.0,,941821.0,"JSON state artifacts, 4 fits",740.803,predictor fit summed over 4 fits,tables/cost_maintenance105.tex
+kalman,classical,3,"one fit per speed, recursive over horizons",2048.0,,544177.0,"JSON state artifacts, 4 fits",144.215,predictor fit summed over 4 fits,tables/cost_maintenance105.tex
+esprit,classical,3,per-window pole estimation at prediction time,,,75746.0,"JSON state artifacts, 4 fits",1.343,predictor fit only; prediction-time SVD dominates and is not timed here,tables/cost_maintenance105.tex
+persistence,classical,0,no fitted state,0.0,,75046.0,JSON state artifacts,1.357,predictor fit summed over 4 fits,tables/cost_maintenance105.tex

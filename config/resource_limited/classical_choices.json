@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0",
+  "selection_evidence_path": "revision/reports/T17/classical_root_acceptance/root_evidence_20261015T113356_428030Z.json",
+  "selection_evidence_sha256": "91492d2f6d14e16861eb16b6bf1b16403f651b915c01461278eea0532fe2a009",
+  "ranking_path": "revision/reports/T17/classical/final_family_selection_ranking_20261015_v2.json",
+  "ranking_sha256": "583a709de7d39fd75c3079e828f3d6b679424b1ab3d5d9d5739f5420aa920bc0",
+  "families": {
+    "ar": {
+      "configuration": "ar_p10_l1e-09",
+      "history_length": 10,
+      "predictor_config": {
+        "order": 10,
+        "relative_loading": 1e-09
+      },
+      "prototype_config_path": "revision/config/development/classical_trials/T17_classical_ar_p10_l1e-09_s300_h04.json",
+      "prototype_config_sha256": "8667b6d0433d857045a341063d098c8074a545ef24cdd120071882ec1b0602b6",
+      "selection_metric": "equal-condition development validation mean linear NMSE",
+      "formal_data_used": false
+    },
+    "ridge": {
+      "configuration": "ridge_l10_l1e-09",
+      "history_length": 10,
+      "predictor_config": {
+        "relative_loading": 1e-09
+      },
+      "prototype_config_path": "revision/config/development/classical_trials/T17_classical_ridge_l10_l1e-09_s300_h04.json",
+      "prototype_config_sha256": "4fa5fcdeb647ec57aa465bd57df94432a023daf3a9b87a69077ae954837667e9",
+      "selection_metric": "equal-condition development validation mean linear NMSE",
+      "formal_data_used": false
+    },
+    "lmmse": {
+      "configuration": "lmmse_l10_l1e-09",
+      "history_length": 10,
+      "predictor_config": {
+        "relative_loading": 1e-09
+      },
+      "prototype_config_path": "revision/config/development/classical_trials/T17_classical_lmmse_l10_l1e-09_s300_h04.json",
+      "prototype_config_sha256": "4fa5fcdeb647ec57aa465bd57df94432a023daf3a9b87a69077ae954837667e9",
+      "selection_metric": "equal-condition development validation mean linear NMSE",
+      "formal_data_used": false
+    },
+    "kalman": {
+      "configuration": "kalman_p2_q0.1",
+      "history_length": 10,
+      "predictor_config": {
+        "order": 2,
+        "process_noise_scale": 0.1,
+        "relative_loading": 1e-09
+      },
+      "prototype_config_path": "revision/config/development/classical_trials/T17_classical_kalman_p2_q0.1_s300_h04.json",
+      "prototype_config_sha256": "f51bbf4ca7b80cd0cc0961fbb0beadc5d3b33782c92f69736f110660954ea034",
+      "selection_metric": "equal-condition development validation mean linear NMSE",
+      "formal_data_used": false
+    },
+    "esprit": {
+      "configuration": "esprit_r2",
+      "history_length": 10,
+      "predictor_config": {
+        "gain_fit_ridge": 1e-08,
+        "hankel_rows": 5,
+        "rank": 2
+      },
+      "prototype_config_path": "revision/config/development/classical_trials/T17_classical_esprit_r2_s300_h04.json",
+      "prototype_config_sha256": "604a51f2cdf5f5c758f41f8b778f96e55b6fcd2a4e1905b5441cad904c8bf361",
+      "selection_metric": "equal-condition development validation mean linear NMSE",
+      "formal_data_used": false
+    },
+    "persistence": {
+      "configuration": "persistence",
+      "history_length": 10,
+      "predictor_config": {},
+      "formal_data_used": false
+    }
+  },
+  "D1_fit": "Separate D1 main train-only fit per speed, all30groups equalweight; h=[1,2,4,8] direct heads, same selected family configuration, no formal validation retuning",
+  "challenge_fit": "One all90 D1 main train-only mixed state for AR/Kalman/ESPRIT/persistence reused unchanged; mixed Ridge/LMMSE h1-only state deployed via explicitly named recursive_from_direct_h1 wrapper, no unknown-horizon target fitting",
+  "fit_stride": 1,
+  "origin_start": 19,
+  "failure_policy": "Predefined persistence fallback with every status and failed step preserved; no dropped rows",
+  "kalman_noise": "Clean R=0; known nominal history SNR supplied only in predeclared noisy-history tests; never inferred from targets",
+  "implementation_notes": "Featurewise AR-Kalman, empirical finite-history LMMSE and temporal ESPRIT are adaptations. Retain equal validation-score ties and deterministic lexical selected variant."
+}

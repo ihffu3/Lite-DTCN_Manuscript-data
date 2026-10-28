@@ -1,0 +1,213 @@
+{
+  "decided_at": "2026-10-15T15:15:03.365118+00:00",
+  "stage": "prospective_formal_candidates_only",
+  "additional_development_allowlist": [],
+  "budget_source": "AI_REVISION/resource_budget.json",
+  "stop_search_reason": "Resource-limited preregistration before any formal data or predictions; stop incomplete tuning comparisons and disclose asymmetry",
+  "families": {
+    "lite": {
+      "prototype_run_id": "T17_select_lite_full10_direct_lr1e3_s300_h04_seed42_r01",
+      "prototype_manifest_sha256": "121e6d2c347a80f91d38cd9f1cd63ce14223d9b9e8442404ff1532fdd9b37bee",
+      "prototype_config_path": "E:\\基于轻量化时空图神经网络的高速移动场景信道状态预测\\revision\\config\\development\\selection_trials\\T17_select_lite_full10_direct_lr1e3_s300_h04_seed42_r01.json",
+      "prototype_config_sha256": "01c8b9e125d0f640ca68b30fb185fe63fbba3f0bd20443af360d2c2e12337eb2",
+      "model": {
+        "family": "lite",
+        "config_id": "full10_direct_lr1e3"
+      },
+      "optimizer": "Adam",
+      "lr": 0.001,
+      "batch_size": 128,
+      "scheduler": "none",
+      "scheduler_parameters": {},
+      "weight_decay": 0.0,
+      "gradient_clip": null,
+      "selection_status": "completed_development_hpo",
+      "formal_data_used": false,
+      "history_length": 10,
+      "epochs": 100,
+      "patience": 15,
+      "windows_per_logical_epoch_cap": 4096,
+      "steps_per_epoch": 32
+    },
+    "stemgnn": {
+      "prototype_run_id": "T17_select_stemgnn_legacy_adaptation_s300_h04_seed42_r01",
+      "prototype_manifest_sha256": "d4f798f7ba13066ba657cf3582c346ef6be4e6ed16e9108c3446bf9c62a2ffae",
+      "prototype_config_path": "E:\\基于轻量化时空图神经网络的高速移动场景信道状态预测\\revision\\config\\development\\selection_trials\\T17_select_stemgnn_legacy_adaptation_s300_h04_seed42_r01.json",
+      "prototype_config_sha256": "6401454903870331bccc23f45bc2f0c595a50c4dffa8183498f203cc0a729d85",
+      "model": {
+        "config_id": "legacy_adaptation",
+        "family": "stemgnn"
+      },
+      "optimizer": "RMSprop",
+      "lr": 0.0001,
+      "batch_size": 50,
+      "scheduler": "ExponentialLR",
+      "scheduler_parameters": {
+        "scheduler_gamma": 0.5,
+        "scheduler_step_every_epochs": 5
+      },
+      "weight_decay": 0.0,
+      "gradient_clip": null,
+      "selection_status": "fixed_prelisted_candidate_not_fully_tuned",
+      "formal_data_used": false,
+      "history_length": 10,
+      "epochs": 100,
+      "patience": 15,
+      "windows_per_logical_epoch_cap": 4096,
+      "steps_per_epoch": 81
+    },
+    "itransformer": {
+      "prototype_run_id": "T17_select_itransformer_legacy_adaptation_lr3e4_s300_h04_seed42_r01",
+      "prototype_manifest_sha256": "7366649f5f2ddd92b37337f0507a3f833753bcd52fa43626e13ca5cfa19f9ea0",
+      "prototype_config_path": "E:\\基于轻量化时空图神经网络的高速移动场景信道状态预测\\revision\\config\\development\\selection_trials\\T17_select_itransformer_legacy_adaptation_lr3e4_s300_h04_seed42_r01.json",
+      "prototype_config_sha256": "d37db7d5d7551540441c3b1d1c9cf1c24ea11e913eb34195b348f6200d2accd5",
+      "model": {
+        "config_id": "legacy_adaptation_lr3e4",
+        "family": "itransformer"
+      },
+      "optimizer": "Adam",
+      "lr": 0.0003,
+      "batch_size": 32,
+      "scheduler": "ReduceLROnPlateau",
+      "scheduler_parameters": {
+        "scheduler_gamma": 0.5,
+        "scheduler_min_lr": 1e-06,
+        "scheduler_patience": 10
+      },
+      "weight_decay": 0.0,
+      "gradient_clip": null,
+      "selection_status": "fixed_prelisted_candidate_not_fully_tuned",
+      "formal_data_used": false,
+      "history_length": 10,
+      "epochs": 100,
+      "patience": 15,
+      "windows_per_logical_epoch_cap": 4096,
+      "steps_per_epoch": 128
+    },
+    "wireless_linformer": {
+      "prototype_run_id": "T17_select_wireless_linformer_paper_scale_direct_adapter_s300_h04_seed42_r01",
+      "prototype_manifest_sha256": "85aa501445cf896a1d58cdd385093be485d451a74dd186b30c3c0d833d112e95",
+      "prototype_config_path": "E:\\基于轻量化时空图神经网络的高速移动场景信道状态预测\\revision\\config\\development\\selection_trials\\T17_select_wireless_linformer_paper_scale_direct_adapter_s300_h04_seed42_r01.json",
+      "prototype_config_sha256": "dd65cfc24fefd5e357674ec45235680f9a2825112f022fca29368c33af433145",
+      "model": {
+        "config_id": "paper_scale_direct_adapter",
+        "family": "wireless_linformer"
+      },
+      "optimizer": "AdamW",
+      "lr": 0.0004,
+      "batch_size": 128,
+      "scheduler": "OneCycle",
+      "scheduler_parameters": {},
+      "weight_decay": 0.01,
+      "gradient_clip": null,
+      "selection_status": "fixed_prelisted_candidate_not_fully_tuned",
+      "formal_data_used": false,
+      "history_length": 10,
+      "epochs": 100,
+      "patience": 15,
+      "windows_per_logical_epoch_cap": 4096,
+      "steps_per_epoch": 32
+    },
+    "shared_tau_only": {
+      "prototype_run_id": "T17_select_shared_tau_only_full10_direct_lr1e3_optlr1e3_seed42_r01",
+      "prototype_manifest_sha256": "1412d0d8b6c5ebc29464c95b9989df4b0ae61c5ba3e0b360dfbcc5aa739fe288",
+      "prototype_config_path": "E:\\基于轻量化时空图神经网络的高速移动场景信道状态预测\\revision\\config\\development\\shared_trials\\selection\\T17_select_shared_tau_only_full10_direct_lr1e3_optlr1e3_seed42_r01.json",
+      "prototype_config_sha256": "669b3abc4f219e8b0d5435be2164077466b013b89d9699b6835fff926fa1c39c",
+      "model": {
+        "family": "tau_only",
+        "config_id": "full10_direct_lr1e3"
+      },
+      "optimizer": "Adam",
+      "lr": 0.001,
+      "batch_size": 128,
+      "scheduler": "none",
+      "scheduler_parameters": {},
+      "weight_decay": 0.0,
+      "gradient_clip": null,
+      "selection_status": "fixed_prelisted_candidate_not_fully_tuned",
+      "formal_data_used": false,
+      "history_length": 10,
+      "epochs": 100,
+      "patience": 15,
+      "windows_per_logical_epoch_cap": 12288,
+      "steps_per_epoch": 96
+    },
+    "shared_v_tau": {
+      "prototype_run_id": "T17_select_shared_speed_tau_full10_direct_lr1e3_optlr1e3_seed42_r01",
+      "prototype_manifest_sha256": "fed1e89bfd981c8a6c104ae3ba521fea355e8eed74c5886d578c8cbc49cea3ef",
+      "prototype_config_path": "E:\\基于轻量化时空图神经网络的高速移动场景信道状态预测\\revision\\config\\development\\shared_trials\\selection\\T17_select_shared_speed_tau_full10_direct_lr1e3_optlr1e3_seed42_r01.json",
+      "prototype_config_sha256": "7841cafaf34745db1734af83f2eed33bc7c36927fd9aea0f95da7a216c9ab1d7",
+      "model": {
+        "family": "speed_tau",
+        "config_id": "full10_direct_lr1e3"
+      },
+      "optimizer": "Adam",
+      "lr": 0.001,
+      "batch_size": 128,
+      "scheduler": "none",
+      "scheduler_parameters": {},
+      "weight_decay": 0.0,
+      "gradient_clip": null,
+      "selection_status": "fixed_prelisted_candidate_smoke_passed_selection_partial",
+      "formal_data_used": false,
+      "history_length": 10,
+      "epochs": 100,
+      "patience": 15,
+      "windows_per_logical_epoch_cap": 12288,
+      "steps_per_epoch": 96
+    },
+    "ablation_exact_two_frame": {
+      "prototype_run_id": "T17_select_lite_two_direct_lr1e3_s300_h04_seed42_r01",
+      "prototype_manifest_sha256": "08076a4fe23acb80d38ecadc2ba1aaf6a9a2970dcbf6971143a597be683b657f",
+      "prototype_config_path": "E:\\基于轻量化时空图神经网络的高速移动场景信道状态预测\\revision\\config\\development\\selection_trials\\T17_select_lite_two_direct_lr1e3_s300_h04_seed42_r01.json",
+      "prototype_config_sha256": "a350d27f395cd81c321214562ea50e1170bb1e06613648cee1bcc663bf504cca",
+      "model": {
+        "config_id": "two_direct_lr1e3",
+        "family": "lite"
+      },
+      "optimizer": "Adam",
+      "lr": 0.001,
+      "batch_size": 128,
+      "scheduler": "none",
+      "scheduler_parameters": {},
+      "weight_decay": 0.0,
+      "gradient_clip": null,
+      "selection_status": "fixed_prelisted_candidate_not_fully_tuned",
+      "formal_data_used": false,
+      "history_length": 2,
+      "epochs": 100,
+      "patience": 15,
+      "windows_per_logical_epoch_cap": 4096,
+      "steps_per_epoch": 32
+    },
+    "ablation_causal_k3": {
+      "prototype_run_id": "T17_select_lite_causal3_direct_lr1e3_s300_h04_seed42_r01",
+      "prototype_manifest_sha256": "215bb7bf05bce7c7b2144b6fa0f64a8d31b9f37e9f4f3f5eb6ff92d99d5332c1",
+      "prototype_config_path": "E:\\基于轻量化时空图神经网络的高速移动场景信道状态预测\\revision\\config\\development\\selection_trials\\T17_select_lite_causal3_direct_lr1e3_s300_h04_seed42_r01.json",
+      "prototype_config_sha256": "34f232a20af683ca41f003944dd69fc6ba432dc65c45a4bb267719131bca1a41",
+      "model": {
+        "config_id": "causal3_direct_lr1e3",
+        "family": "lite"
+      },
+      "optimizer": "Adam",
+      "lr": 0.001,
+      "batch_size": 128,
+      "scheduler": "none",
+      "scheduler_parameters": {},
+      "weight_decay": 0.0,
+      "gradient_clip": null,
+      "selection_status": "fixed_prelisted_candidate_not_fully_tuned",
+      "formal_data_used": false,
+      "history_length": 10,
+      "epochs": 100,
+      "patience": 15,
+      "windows_per_logical_epoch_cap": 4096,
+      "steps_per_epoch": 32
+    }
+  },
+  "limitations": [
+    "Only Lite completed the whole original HPO grid; baseline tuning is limited and unequal. Do not claim universally optimal or SOTA comparison.",
+    "Shared speed+tau full selection remains partial; the fixed candidate has accepted smoke evidence only.",
+    "Historical high-speed validation NMSE near 1 is retained; no victory condition or suppressed negative result."
+  ]
+}

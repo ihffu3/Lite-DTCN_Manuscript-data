@@ -1,0 +1,25 @@
+method,horizon_steps,horizon_ms,counted_real_macs,derivation,config_source
+persistence,1,0.5,0.0,copy last observation,revision/config/formal_classical/persistence_s300.json
+persistence,2,1.0,0.0,copy last observation,revision/config/formal_classical/persistence_s300.json
+persistence,4,2.0,0.0,copy last observation,revision/config/formal_classical/persistence_s300.json
+persistence,8,4.0,0.0,copy last observation,revision/config/formal_classical/persistence_s300.json
+ar,1,0.5,5120.0,recursive: 512 real x order 10 x 1 steps,revision/config/formal_classical/ar_s300.json
+ar,2,1.0,10240.0,recursive: 512 real x order 10 x 2 steps,revision/config/formal_classical/ar_s300.json
+ar,4,2.0,20480.0,recursive: 512 real x order 10 x 4 steps,revision/config/formal_classical/ar_s300.json
+ar,8,4.0,40960.0,recursive: 512 real x order 10 x 8 steps,revision/config/formal_classical/ar_s300.json
+ridge,1,0.5,5120.0,direct head: 512 real features x 10 taps,revision/config/formal_classical/ridge_s300.json
+ridge,2,1.0,5120.0,direct head: 512 real features x 10 taps,revision/config/formal_classical/ridge_s300.json
+ridge,4,2.0,5120.0,direct head: 512 real features x 10 taps,revision/config/formal_classical/ridge_s300.json
+ridge,8,4.0,5120.0,direct head: 512 real features x 10 taps,revision/config/formal_classical/ridge_s300.json
+lmmse,1,0.5,10240.0,direct head: 256 complex coeffs x 10 taps x 4,revision/config/formal_classical/lmmse_s300.json
+lmmse,2,1.0,10240.0,direct head: 256 complex coeffs x 10 taps x 4,revision/config/formal_classical/lmmse_s300.json
+lmmse,4,2.0,10240.0,direct head: 256 complex coeffs x 10 taps x 4,revision/config/formal_classical/lmmse_s300.json
+lmmse,8,4.0,10240.0,direct head: 256 complex coeffs x 10 taps x 4,revision/config/formal_classical/lmmse_s300.json
+kalman,1,0.5,2048.0,clean mode = complex AR(2) recursion: 256 x 2 x 4 x 1 steps,revision/config/formal_classical/kalman_s300.json
+kalman,2,1.0,4096.0,clean mode = complex AR(2) recursion: 256 x 2 x 4 x 2 steps,revision/config/formal_classical/kalman_s300.json
+kalman,4,2.0,8192.0,clean mode = complex AR(2) recursion: 256 x 2 x 4 x 4 steps,revision/config/formal_classical/kalman_s300.json
+kalman,8,4.0,16384.0,clean mode = complex AR(2) recursion: 256 x 2 x 4 x 8 steps,revision/config/formal_classical/kalman_s300.json
+esprit,1,0.5,,"per-window SVD/eig/lstsq (hankel_rows=5, rank=2); not converted to MACs",revision/config/formal_classical/esprit_s300.json
+esprit,2,1.0,,"per-window SVD/eig/lstsq (hankel_rows=5, rank=2); not converted to MACs",revision/config/formal_classical/esprit_s300.json
+esprit,4,2.0,,"per-window SVD/eig/lstsq (hankel_rows=5, rank=2); not converted to MACs",revision/config/formal_classical/esprit_s300.json
+esprit,8,4.0,,"per-window SVD/eig/lstsq (hankel_rows=5, rank=2); not converted to MACs",revision/config/formal_classical/esprit_s300.json

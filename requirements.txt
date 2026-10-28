@@ -1,0 +1,6 @@
+# Reference Python environment used for the selected model and metric code.
+# Choose the PyTorch wheel appropriate for the local CPU/CUDA platform.
+numpy==2.2.6
+scipy==1.15.3
+torch==2.5.1
+matplotlib==3.10.9
