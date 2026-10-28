@@ -15,8 +15,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 8929,
-      "sha256": "d9a385bf5579bafbbe5ded1bc898251006ce54af4c83789ef83bec8e6d528e3b"
+      "bytes": 9282,
+      "sha256": "ee91f6718b63d2f9b30b07a9adb77b5c049d16e93423d394a3fa73887f0e1612"
     },
     {
       "path": "config/contracts.json",
@@ -174,6 +174,11 @@
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
+      "path": "revision/code/algorithm_upgrade_20261020/losses.py",
+      "bytes": 5330,
+      "sha256": "e046e16699247fd976ef4a1d4ffe8a2f201b395969f38ae5bcad517524540e6e"
+    },
+    {
       "path": "revision/code/baselines/__init__.py",
       "bytes": 0,
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
@@ -297,6 +302,11 @@
       "path": "revision/code/models/conditioned.py",
       "bytes": 8171,
       "sha256": "4c9106befbf1045e4a50dc8297be2caede00f88ba8086d0917568e52f2afcc67"
+    },
+    {
+      "path": "revision/code/models/hybrid_residual.py",
+      "bytes": 4965,
+      "sha256": "4ce8ef263e77b93018838a48676bbdb3e8c10162730752cd0ef32739937df05a"
     },
     {
       "path": "revision/code/models/legacy_bridge.py",

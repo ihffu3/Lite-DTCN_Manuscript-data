@@ -41,6 +41,8 @@ The A4 summaries report raw and target-aware diagnostic quantities. NMSE is comp
 
 C2/A4 95% intervals are posthoc pointwise percentile-bootstrap intervals from 10,000 environment resamples (PCG64 seed 42); paired intervals resample matched environments. They are descriptive, conditional on the single neural fit per method-speed condition, and introduce no new hypothesis-test family. The original two families of three primary and 31 secondary contrasts are unchanged.
 
+The release also includes the byte-preserved weighted-loss and PC-Wiener residual model definitions at `revision/code/algorithm_upgrade_20261020/losses.py` and `revision/code/models/hybrid_residual.py`. These are model/loss definitions, not complete training entry points; the width-128 variant uses the existing candidate `temporal_hidden` parameter.
+
 ## A7 follow-up summaries
 
 - **A7a: fixed-weight history-input sensitivity.** The release includes the summary and environment-level CSVs for three specified history inputs evaluated with the same backend, checkpoint and metric path on the same 30 D1 test environments (300 km/h, 2 ms, seed 42). This describes those perturbations only; it does not establish a general history-distribution effect, optimal history length or individual-lag utility. Intervals are posthoc, pointwise paired environment-bootstrap intervals (10,000 resamples; PCG64 seed 20261030).
