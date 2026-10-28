@@ -4,7 +4,7 @@ This repository contains a selected, traceable release of first-party code and s
 
 ## Scope and status
 
-The clean-history baseline uses noise-free CSI histories as prediction inputs. The repository includes selected model, baseline, metric, and link-evaluation source files, QuaDRiGa data-generation adapters, frozen protocol/configuration records, and summary CSVs. Additional noisy-history, amplitude-diagnostic and training follow-ups are not included in this clean-history baseline.
+The clean-history baseline uses noise-free CSI histories as prediction inputs. The repository includes selected model, baseline, metric, and link-evaluation source files, QuaDRiGa data-generation adapters, frozen protocol/configuration records, and summary CSVs. The completed A7 summaries are included below. Other follow-ups, including C2 and A1, remain outside this release; noisy-history and amplitude-diagnostic results are not included.
 
 Raw CSI datasets and trained checkpoints/weights are not included. The summary ledger points to upstream aggregate filenames in its `source_file` column, but the underlying `core_main_nmse.csv` and `core_link_metric_panels.csv` files were not available in this release directory. Some configuration paths are preserved as archival provenance and may refer to the original author's workspace; they are not portable job files.
 
@@ -13,7 +13,7 @@ Raw CSI datasets and trained checkpoints/weights are not included. The summary l
 - `revision/code/core`, `models`, `baselines`, and `link`: selected first-party implementations.
 - `revision/code/data/*.m`: first-party MATLAB adapters for generating development/formal groups and densifying QuaDRiGa tracks. The adapters require an explicit execution flag and external QuaDRiGa installation. QuaDRiGa source code is not redistributed here.
 - `config/`: data contracts, formal protocol, and resource-limited neural/classical candidate choices.
-- `data/summary/`: the fact ledger, development-candidate validation scores, complete shared-model grid, classical/neural rate gains and derived comparison tables.
+- `data/summary/`: the fact ledger, development-candidate validation scores, complete shared-model grid, classical/neural rate gains, derived comparison tables, and A7a/A7b follow-up summaries.
 - `scripts/replot_public_summary.py`: replot the included NMSE–spectral-efficiency trade-off CSV without CSI or neural-inference packages.
 - `scripts/verify_manifest.py` and `manifest.json`: verify the byte size and SHA-256 digest of released source/data files; generated figures are excluded.
 
@@ -31,7 +31,12 @@ In `nmse_se_300_snr10_rzf.csv`, `nmse_gain_db` is outdated-CSI NMSE in dB minus 
 
 The added NMSE tables report environment means, sample SDs and post-hoc pointwise 95% percentile-bootstrap intervals, conditional on each fitted model. The independent units are 30 environment groups per D1 condition; users and overlapping prediction windows are nested. Training seeds remain separate. The NMSE summaries use 10,000 environment resamples and PCG64 seed 20261028. `registered_paired_nmse_contrasts_reused.csv` retains the original primary-three and secondary-31 contrast intervals without replacing their analysis.
 
-The BER files contain 36 cell intervals, 24 Lite-minus-comparator paired-difference intervals and the underlying 20-environment error/bit counts per cell. Each panel uses the same 10,000 sampled environment indices across methods (PCG64 seed 20261029). These are pointwise descriptive intervals, with no simultaneous-coverage or new significance-test claim. The reanalysis used Python 3.13.5 and NumPy 2.1.3. These tables reuse completed clean-history predictions; they contain no result from the local follow-up training or noisy-history evaluation that is still in progress.
+The BER files contain 36 cell intervals, 24 Lite-minus-comparator paired-difference intervals and the underlying 20-environment error/bit counts per cell. Each panel uses the same 10,000 sampled environment indices across methods (PCG64 seed 20261029). These are pointwise descriptive intervals, with no simultaneous-coverage or new significance-test claim. The reanalysis used Python 3.13.5 and NumPy 2.1.3. These tables reuse completed clean-history predictions. The A7 summaries below are separate analyses; C2 and A1 outputs are not included.
+
+## A7 follow-up summaries
+
+- **A7a: fixed-weight history-input sensitivity.** The release includes the summary and environment-level CSVs for three specified history inputs evaluated with the same backend, checkpoint and metric path on the same 30 D1 test environments (300 km/h, 2 ms, seed 42). This describes those perturbations only; it does not establish a general history-distribution effect, optimal history length or individual-lag utility. Intervals are posthoc, pointwise paired environment-bootstrap intervals (10,000 resamples; PCG64 seed 20261030).
+- **A7b: train-only PC-Wiener tap-length scan.** The release includes the 15-cell summary and 450 environment-level rows for tap lengths $L\in\{2,4,6,8,10\}$ at 30, 120 and 300 km/h (30 matched D1 test environments per speed and tap; 4-step/2-ms horizon). Estimates use equal-environment means of environment-level NMSE-dB. Intervals are posthoc, pointwise environment-cluster bootstrap intervals (10,000 resamples; PCG64 seed 20261031), paired across tap lengths within speed. This classical scan does not establish an optimal neural history length; intervals are not simultaneous and add no hypothesis-test family.
 
 ## Environment and data generation
 

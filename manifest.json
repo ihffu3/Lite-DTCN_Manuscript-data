@@ -15,8 +15,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 5768,
-      "sha256": "efae036fd91b1956862e34c9664a3cde609cfed8cc3540b41f8b1fc9f91c43a6"
+      "bytes": 7007,
+      "sha256": "50e88ff6898e8844c850555c87adad2bf20e2da45af21d92e84a6c3809daab22"
     },
     {
       "path": "config/contracts.json",
@@ -37,6 +37,26 @@
       "path": "config/resource_limited/classical_choices.json",
       "bytes": 4150,
       "sha256": "94f2011176df7198574517e545d40810cd43e4d9811194eee55ce1cf6438cd22"
+    },
+    {
+      "path": "data/summary/a7a_same_backend_environment.csv",
+      "bytes": 18879,
+      "sha256": "d9c94e2bf9e4e438d55b68301a790244f04f899dc325e15703b738477d95b64d"
+    },
+    {
+      "path": "data/summary/a7a_same_backend_summary.csv",
+      "bytes": 540,
+      "sha256": "078edef83ebaedd86c5a5b985ec774f0f29301baa4060374e5120664db76a4ee"
+    },
+    {
+      "path": "data/summary/a7b_point_estimates_ci.csv",
+      "bytes": 6371,
+      "sha256": "fec4aa4010df52e34a24304a049473504150bafaaf2ccff48ba1f94b96d52cb3"
+    },
+    {
+      "path": "data/summary/a7b_source_environment_table.csv",
+      "bytes": 107983,
+      "sha256": "30bc4361e25bdc5724bdd4f4b214b267a635e199f661b484a72cc0ea806c5817"
     },
     {
       "path": "data/summary/ber_environment_bootstrap_ci.csv",
@@ -75,8 +95,8 @@
     },
     {
       "path": "data/summary/facts.csv",
-      "bytes": 487542,
-      "sha256": "9ea066914acdba4cfb030e1624f4b81283c045d1ce472c0f7be890e82d8962d5"
+      "bytes": 510272,
+      "sha256": "a14bc0388ae4a19941b3007546d81be0ae6507af5ee2fda1ce08a83a7e335df5"
     },
     {
       "path": "data/summary/lite_vs_lmmse_dominance.csv",
