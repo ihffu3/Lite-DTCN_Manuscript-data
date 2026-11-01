@@ -1,0 +1,145 @@
+{
+  "schema": "width128-h1-posthoc-evaluation-v1",
+  "status": "approved_for_posthoc_formal_test_replay",
+  "authorized_for_posthoc_formal_test_replay": true,
+  "approval_record": {
+    "review_status": "approved",
+    "approved_by": "root",
+    "approved_at_local": "2026-10-29T19:34:33.192620+08:00"
+  },
+  "root_review_required_before_run": true,
+  "scope": "A2-b width-128 Lite-DTCN forward evaluation at 30 km/h and one 0.5-ms prediction step; existing test outcomes were already accessed, so this is a post-hoc descriptive follow-up, not blind or preregistered.",
+  "selection_boundary": {
+    "formal_test_used_for_training_or_checkpoint_selection": false,
+    "formal_test_used_for_protocol_or_model_selection": false,
+    "formal_test_used_for_hyperparameter_tuning": false,
+    "p_values_or_significance_tests": false,
+    "claim_type": "descriptive comparison with the historical accepted Lite baseline only; not a fresh matched C0 replay"
+  },
+  "training_run": {
+    "run_id": "width128_s30_steps1_seed42",
+    "expected_family": "lite_width128",
+    "expected_speed_kmh": 30,
+    "expected_horizon_steps": 1,
+    "expected_horizon_ms": 0.5,
+    "expected_seed": 42,
+    "expected_history_length": 10,
+    "expected_origin_start": 19,
+    "expected_model": {
+      "candidate": "full10_direct_lr1e3",
+      "temporal_hidden": 128,
+      "node_dim": 16,
+      "residual_skip": false
+    },
+    "expected_config_sha256": "9079039af3fbf16ec5facfc31e5125bda686d40ad7a331d08b3dbe1cb97007cd",
+    "expected_training_statistics_sha256": "82b6ef9562250a8be54413ec753e519af836e0cd9cd883958a010ff5eb4f84f0",
+    "expected_normalizer_sha256": "dbf920f617f74305c7d90141600f3fc0de43747e1124f90731af95a029423fca",
+    "expected_best_sha256": "15f46276e72cb1ca3444ff464b6945f3ecfaf3867f05b2867a20d71606e7dbc3",
+    "expected_receipt_sha256": "fe226be99fd43d0446e5428e9d828d2a4b81a1b93ace5d576c80bc44360edd29",
+    "expected_completed_epochs": 100,
+    "expected_best_epoch": 97,
+    "expected_steps_per_epoch": 32,
+    "required_status": "complete",
+    "required_test_files_opened": [],
+    "checkpoint": "revision/paper/remaining_fixes_20261029/training/run_outputs_a2b/runs/width128_s30_steps1_seed42/best.pt",
+    "run_manifest": "revision/paper/remaining_fixes_20261029/training/run_outputs_a2b/runs/width128_s30_steps1_seed42/run_manifest.json",
+    "receipt": "revision/paper/remaining_fixes_20261029/training/run_outputs_a2b/runs/width128_s30_steps1_seed42/receipt.json",
+    "mirror_checkpoint": "revision/paper/remaining_fixes_20261029/training/run_outputs_a2b/mirrored_best/width128_s30_steps1_seed42/best.pt",
+    "mirror_receipt": "revision/paper/remaining_fixes_20261029/training/run_outputs_a2b/mirrored_best/width128_s30_steps1_seed42/receipt.json",
+    "config": "revision/paper/remaining_fixes_20261029/training/run_outputs_a2b/configs/width128_s30_steps1_seed42.json",
+    "training_statistics": "revision/reports/algorithm_upgrade_20261020/training_statistics.json",
+    "checkpoint_policy": "Require run-specific status complete and receipt best_sha256; verify main best.pt and mirrored best.pt against both receipt hashes. Never fall back to last.pt."
+  },
+  "evaluation": {
+    "formal_manifest": "revision/data/formal/manifest.json",
+    "formal_manifest_sha256": "f9fb604cc1d89ecb58a71c2732a454623b3b717489d4276ed1929dd04752d15e",
+    "split": "test",
+    "family": "D1_main",
+    "speed_kmh": 30,
+    "expected_test_environments": 30,
+    "sample_interval_ms": 0.5,
+    "history_length": 10,
+    "origin_start": 19,
+    "horizon_steps": 1,
+    "horizon_ms": 0.5,
+    "stride": 1,
+    "n_users": 4,
+    "n_antennas": 8,
+    "n_subcarriers": 32,
+    "batch_origins": 32,
+    "include_link_metrics": false,
+    "physical_dtype": "complex128",
+    "normalizer_source": "The existing global train-only RI mean/std from training_statistics.json, hash-bound by the width-128 run config; do not refit or recompute it.",
+    "loading_policy": "Load, verify, evaluate, write, and release exactly one test environment at a time. A failed environment makes the run incomplete; do not silently drop it."
+  },
+  "historical_baseline": {
+    "core_summary_csv": "revision/submission/PHYCOM_CORE_TECHNICAL_20261020/evidence/formal165/core_main_nmse.csv",
+    "per_environment_csv": "revision/reports/local_results53/main_per_environment.csv",
+    "selector_from_core_summary": {
+      "family": "lite_dedicated",
+      "model_identity": "F26_lite_dedicated_v30_h0.5_s42_r01",
+      "training_seed": 42,
+      "speed_kmh": 30,
+      "horizon_steps": 1,
+      "n_environments": 30,
+      "status": "descriptive_complete"
+    },
+    "per_environment_join": {
+      "model_run_id": "F26_lite_dedicated_v30_h0.5_s42_r01",
+      "training_seed": 42,
+      "speed_kmh": 30,
+      "horizon_steps": 1,
+      "horizon_ms": 0.5,
+      "status": "ok",
+      "join_key": "environment_id",
+      "expected_rows": 30
+    },
+    "interpretation": "Resolve the accepted family/model identity from core_main_nmse.csv, then join main_per_environment.csv by exact model_run_id and environment_id. Do not infer the accepted horizon from an _h1_ filename fragment. Report per-environment and mean differences descriptively; do not call this a new matched-control replay."
+  },
+  "outputs": {
+    "directory": "revision/paper/remaining_fixes_20261029/width_h1_evaluation/results/width128_s30_steps1_seed42_posthoc",
+    "overwrite_existing": false,
+    "artifacts": [
+      "run_manifest.json",
+      "per_environment.csv",
+      "environments/<environment_id>.json",
+      "summary.json"
+    ],
+    "per_environment_fields": [
+      "environment_id",
+      "split",
+      "family",
+      "speed_kmh",
+      "MAT SHA-256",
+      "job SHA-256",
+      "QA receipt SHA-256",
+      "checkpoint SHA-256",
+      "n_origins",
+      "n_rows",
+      "error_energy",
+      "target_energy",
+      "prediction_energy",
+      "NMSE",
+      "NMSE-dB",
+      "historical_baseline_NMSE-dB",
+      "descriptive_delta_NMSE-dB"
+    ]
+  },
+  "reused_helpers": {
+    "verified_mat_loader": "revision/paper/reviewer_fix_20261028/experiments/c2/formal_data_loader.py::load_verified_record",
+    "environment_evaluator": "revision/code/algorithm_upgrade_20261020/evaluation.py::evaluate_environment",
+    "model_factory": "revision/code/models/candidates.py::create_candidate",
+    "explicit_horizon": "Call evaluate_environment with horizon=1, stride=1, include_link=False; do not use the old replay module's 2-ms fixed horizon or CUDA-only predictor factory."
+  },
+  "offline_selfcheck": {
+    "command": "python -m unittest -v test_runner",
+    "uses_formal_test_manifest_or_mat": false,
+    "loads_checkpoint": false,
+    "uses_gpu": false
+  },
+  "execution_limits": {
+    "cpu_threads": 2,
+    "gpu_allocation_cap_gib": 5,
+    "gpu_concurrency": 1
+  }
+}

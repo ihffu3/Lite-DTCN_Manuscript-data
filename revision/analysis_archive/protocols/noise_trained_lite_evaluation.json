@@ -1,0 +1,116 @@
+{
+  "schema": "noise-trained-lite-fixed-replay-v1",
+  "protocol_id": "noise_trained_lite_480_fixed_replay_v1",
+  "status": "awaiting_root_code_review_fits_not_complete",
+  "scope": "Fixed post-hoc physical replay of the four fresh CPU Lite fits. No test-based tuning, checkpoint selection, or protocol change is allowed.",
+  "training_source": {
+    "protocol_path": "revision/paper/remaining_fixes_20261029/noise_trained_lite_v1/protocol.json",
+    "protocol_sha256": "aa516315925aa8561ec311db27ba0bbcc32304b7576e8fdb563af7093e36c6c4",
+    "runner_path": "revision/paper/remaining_fixes_20261029/noise_trained_lite_v1/runner.py",
+    "runner_sha256": "a212910a4132846b803fe183a04b7c31c0dcc21e445641a866c5246f6ba06141",
+    "root_review_path": "revision/paper/remaining_fixes_20261029/noise_trained_lite_v1/ROOT_LAUNCH_REVIEW.json",
+    "output_root": "revision/paper/remaining_fixes_20261029/noise_trained_lite_v1/run_outputs",
+    "required_run_ids": [
+      "lite_noiseexp_clean_s30_L10_steps4_seed42_cpu",
+      "lite_noiseexp_noiseaug_s30_L10_steps4_seed42_cpu",
+      "lite_noiseexp_clean_s300_L10_steps4_seed42_cpu",
+      "lite_noiseexp_noiseaug_s300_L10_steps4_seed42_cpu"
+    ],
+    "checkpoint_rule": "Use only receipt-selected best.pt. Require config, run manifest, main and mirrored receipts, best, last, and mirrored best to match their recorded identities and hashes. Load model_state with strict=True; never fall back to last.pt."
+  },
+  "formal_data": {
+    "manifest_path": "revision/data/formal/manifest.json",
+    "manifest_sha256": "f9fb604cc1d89ecb58a71c2732a454623b3b717489d4276ed1929dd04752d15e",
+    "family": "D1_main",
+    "split": "test",
+    "speeds_kmh": [30, 300],
+    "environments_per_speed": 30,
+    "expected_time_samples": 4001,
+    "sample_interval_ms": 0.5,
+    "users": 4,
+    "antennas": 8,
+    "subcarriers": 32,
+    "history_length": 10,
+    "origin_start": 19,
+    "horizon_steps": 4,
+    "horizon_ms": 2.0,
+    "stride": 1,
+    "expected_origins_per_environment": 3978,
+    "expected_rows_per_environment": 15912,
+    "training_statistics_path": "revision/reports/algorithm_upgrade_20261020/training_statistics.json",
+    "training_statistics_sha256": "82b6ef9562250a8be54413ec753e519af836e0cd9cd883958a010ff5eb4f84f0",
+    "normalizer_sha256": "dbf920f617f74305c7d90141600f3fc0de43747e1124f90731af95a029423fca",
+    "verified_loader": "revision/paper/reviewer_fix_20261028/experiments/c2/formal_data_loader.py::load_verified_record",
+    "pretest_rule": "Metadata freeze reads the formal manifest and hashes only fit artifacts. It does not hash, open, inspect, or load any test MAT. Test MAT access is allowed only after the exact family manifest, exact root approval, and explicit --open-formal-test are verified."
+  },
+  "evaluation": {
+    "conditions": ["clean_infinite_snr", 10, 20, 30],
+    "history_noise": {
+      "method": "revision/code/runner/formal_noise.py::build_noise_history_transform",
+      "source_protocol_path": "revision/paper/remaining_fixes_20261029/a1_noisy_link_v1/protocol.json",
+      "source_protocol_sha256": "85ebc5c18b43d45d67014f1b43f71de8e8afe14fcad38df12e394b667a5e387c",
+      "seed": 2602236,
+      "addressing": "Frozen paired Philox transform keyed by environment, origin, user, and observed history times; only raw observed histories are perturbed before train-only RI normalization.",
+      "scale": "The exact global train-only channel_scale hash-bound by the noise training protocol and training_statistics.json; never compute a speed-specific or test-derived scale.",
+      "targets": "Clean future target channels are used unchanged under every history condition."
+    },
+    "link": {
+      "receiver_snr_db": 10,
+      "precoder": "RZF",
+      "implementation": "Reuse a1_noisy_link_v1.runner_v2._add_link_chunk and revision.code.link.precoding.evaluate_link; do not duplicate link-rate equations.",
+      "coverage": "Compute receiver-10-dB RZF metrics for every model, every history condition, and every environment. History SNR and receiver SNR remain separate quantities.",
+      "users": "All four users from each origin form one [4,8,32] downlink matrix; groups cannot be split or dropped."
+    },
+    "streaming": {
+      "batch_size_rows": 128,
+      "batch_multiple_of_users": 4,
+      "retain_full_predictions": false,
+      "resume_unit": "one model x history condition x environment JSON receipt",
+      "expected_rows": 480,
+      "row_count_per_receipt": 15912,
+      "link_origins_per_receipt": 3978
+    },
+    "metrics": [
+      "physical environment linear NMSE and dB",
+      "error, target, and prediction energies",
+      "10-dB receiver RZF mean sum spectral efficiency, beam efficiency/loss, fallback and invalid counts",
+      "prediction status counts and complete origin/user row coverage"
+    ],
+    "claim_boundary": {
+      "experimental_unit": "independent formal test environment",
+      "replication": "One seed per speed and training recipe; report descriptive results without inferential claims.",
+      "test_based_selection": false,
+      "test_based_tuning": false,
+      "test_based_protocol_changes": false,
+      "access_disclosure": "This is a fixed post-hoc replay in a project whose formal test outcomes were accessed historically. It creates no new selection or tuning opportunity."
+    }
+  },
+  "source_files": {
+    "revision/paper/remaining_fixes_20261029/noise_trained_lite_v1/runner.py": "a212910a4132846b803fe183a04b7c31c0dcc21e445641a866c5246f6ba06141",
+    "revision/paper/remaining_fixes_20261029/noise_trained_lite_v1/protocol.json": "aa516315925aa8561ec311db27ba0bbcc32304b7576e8fdb563af7093e36c6c4",
+    "revision/paper/remaining_fixes_20261029/a1_noisy_link_v1/runner_v2.py": "2a54638667485694282e0099a3de14305c47bae9d2d60f52b2595ec2ae71c152",
+    "revision/paper/remaining_fixes_20261029/a1_noisy_link_v1/protocol.json": "85ebc5c18b43d45d67014f1b43f71de8e8afe14fcad38df12e394b667a5e387c",
+    "revision/code/runner/formal_noise.py": "45e061035fc3c6fdc3c867e9b506a2b0d7139a3aafb7cfbd7fe43753abf77438",
+    "revision/code/runner/formal_observation_noise.py": "845a0ea0a95a32f30476efcc2d89d5bb93981aecc4f5a02c93bae1004160f3f2",
+    "revision/code/runner/formal_evaluate.py": "73d4474d17b9140fc9c35efa6eb2b128a7d52ceeba2119140fa507c48575609d",
+    "revision/paper/reviewer_fix_20261028/experiments/c2/formal_data_loader.py": "05f4fc9651d4f7a2f2e2b60bf79d824391de995e3152e8d449e96afc6d661446",
+    "revision/code/link/precoding.py": "fe9067d40c586310336403b11e164a4fb9c6e50148e649c13ceab05dfdef2816",
+    "revision/code/models/candidates.py": "9116b880d9dcd14ee8f09ea709f4f3985d40031ff48ea00b1dfcf1a4395e1f2d",
+    "revision/code/core/arrays.py": "d71cf9838cd28af5a177c23cf44b72989c7b35abb89c8c18154b0918aaca385d",
+    "revision/code/core/normalization.py": "02cb56a110b6083ec351627bbc4565e31aacbb378b81225990968fac298d5cd2",
+    "revision/code/data/formal_qa.py": "227c326048141738d7ebe6a7d9c5fc2e715f93cc3153e0ec26dad66dc03d4687",
+    "revision/code/runner/registry.py": "cbc9f7f7d54cc1ac7a53520bb05535c149a8ff0ceb8db5dc8f6335763bd561e3",
+    "revision/config/contracts.json": "dcacaa68769cf2e039ed42ee6e8fbcaba570194d29a4ccb2a5331cb0608402dd"
+  },
+  "gates": {
+    "fit_receipts": "All four listed fresh CPU fits must be complete and match config, training runner/protocol, root launch review, best/last/mirror checkpoint, receipt, and run-manifest hashes.",
+    "freeze": "Create a new immutable pretest manifest after metadata-only validation; do not access any test MAT bytes.",
+    "smoke": "After freezing, strict-load all four real best checkpoints and run CPU-only synthetic forward passes. No formal test MAT access.",
+    "formal_test": "Require a separate root approval bound to the exact pretest manifest SHA-256, evaluation protocol SHA-256, and evaluation runner SHA-256, plus explicit --open-formal-test."
+  },
+  "paths": {
+    "pretest_directory": "revision/paper/remaining_fixes_20261029/noise_trained_lite_v1/evaluation_v1/manifests",
+    "approval_filename": "ROOT_APPROVAL_noise_trained_lite.json",
+    "result_directory": "revision/paper/remaining_fixes_20261029/noise_trained_lite_v1/evaluation_v1/results"
+  }
+}

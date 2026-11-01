@@ -1,0 +1,189 @@
+source_reference,fact_rows,table_map_rows,repository_path,released_csv_rows,status,notes
+a1_noise_environment_rows.csv,144,0,data/summary/a1_noise_environment_rows.csv,1080,included,Existing public summary CSV is included.
+a1_noise_expected_history_snr_summary.csv,24,0,data/summary/a1_noise_expected_history_snr_summary.csv,6,included,Existing public summary CSV is included.
+a1_noise_paired_lite_minus_pcw.csv,24,0,data/summary/a1_noise_paired_lite_minus_pcw.csv,6,included,Existing public summary CSV is included.
+a1_noise_summary.csv,36,0,data/summary/a1_noise_summary.csv,36,included,Existing public summary CSV is included.
+a4_amplitude_summary.csv,424,0,data/summary/a4_amplitude_summary.csv,16,included,Existing public summary CSV is included.
+a4_followup_paired_lite_minus_outdated_summary.csv,16,0,data/summary/a4_followup_paired_lite_minus_outdated_summary.csv,4,included,Existing public summary CSV is included.
+a4_followup_summary.csv,288,0,data/summary/a4_followup_summary.csv,8,included,Existing public summary CSV is included.
+a4_matched_outdated_gains.csv,144,0,data/summary/a4_matched_outdated_gains.csv,36,included,Existing public summary CSV is included.
+a6_oracle_current_environment_rows.csv,9,0,data/summary/a6_oracle_current_environment_rows.csv,180,included,Existing public summary CSV is included.
+a6_paired_challenge_v2_full_environment_rows.csv,45,0,data/summary/a6_paired_challenge_v2_full_environment_rows.csv,900,included,Existing public summary CSV is included.
+a6_paired_challenge_v2_full_paired_ci.csv,135,0,data/summary/a6_paired_challenge_v2_full_paired_ci.csv,45,included,Existing public summary CSV is included.
+a7a_same_backend_summary.csv,12,0,data/summary/a7a_same_backend_summary.csv,3,included,Existing public summary CSV is included.
+analysis/a1_noise_36point_environment_summary.csv,0,36,data/summary/a1_noise_36point_environment_summary.csv,36,included,Existing public summary CSV is included.
+analysis/a4_amplitude_summary.csv,0,16,data/summary/a4_amplitude_summary.csv,16,included,Existing public summary CSV is included.
+analysis/a4_followup_summary.csv,0,8,data/summary/a4_followup_summary.csv,8,included,Existing public summary CSV is included.
+analysis/a6_oracle_current_environment_rows.csv,0,9,data/summary/a6_oracle_current_environment_rows.csv,180,included,Existing public summary CSV is included.
+analysis/a6_paired_challenge_v2_full_environment_rows.csv,0,9,data/summary/a6_paired_challenge_v2_full_environment_rows.csv,900,included,Existing public summary CSV is included.
+analysis/a6_paired_challenge_v2_full_paired_ci.csv,0,45,data/summary/a6_paired_challenge_v2_full_paired_ci.csv,45,included,Existing public summary CSV is included.
+analysis/a7b_point_estimates_ci.csv,45,15,data/summary/a7b_point_estimates_ci.csv,15,included,Existing public summary CSV is included.
+analysis/c2_paired_vs_fresh_a05_c0.csv,0,6,data/summary/c2_paired_vs_fresh_a05_c0.csv,24,included,Existing public summary CSV is included.
+analysis/c2_test_summary.csv,0,12,data/summary/c2_test_summary.csv,12,included,Existing public summary CSV is included.
+analysis\local_resume_20261028\a1_noise_expected_history_snr_summary.csv,0,6,data/summary/a1_noise_expected_history_snr_summary.csv,6,included,Existing public summary CSV is included.
+analysis\local_resume_20261028\a1_noise_paired_lite_minus_pcw.csv,0,6,data/summary/a1_noise_paired_lite_minus_pcw.csv,6,included,Existing public summary CSV is included.
+analysis\local_resume_20261028\statistics\ber_paired_difference_bootstrap_ci.csv,0,24,data/summary/ber_paired_difference_bootstrap_ci.csv,24,included,Existing public summary CSV is included.
+analysis\local_resume_20261028\statistics\core_nmse_environment_stats_seed42.csv,0,16,data/summary/core_nmse_environment_stats_seed42.csv,165,included,Existing public summary CSV is included.
+analytical isotropic Jakes reference,1,0,README.md#metric-definitions,0,formula_described,Analytical reference is described in the metric-definition section; no source dataset is claimed.
+ber36.tex,12,0,,0,manuscript_fragment_omitted,Manuscript table fragment is not part of this repository.
+ber_environment_bootstrap_ci.csv,72,0,data/summary/ber_environment_bootstrap_ci.csv,36,included,Existing public summary CSV is included.
+ber_paired_difference_bootstrap_ci.csv,72,0,data/summary/ber_paired_difference_bootstrap_ci.csv,24,included,Existing public summary CSV is included.
+c2_paired_vs_fresh_a05_c0.csv,96,0,data/summary/c2_paired_vs_fresh_a05_c0.csv,24,included,Existing public summary CSV is included.
+c2_test_summary.csv,108,0,data/summary/c2_test_summary.csv,12,included,Existing public summary CSV is included.
+classical_d1_environment_metrics.csv,84,0,data/summary/classical_d1_environment_metrics.csv,2880,sanitized_copy,Public CSV omits local result_path; metric rows and hashes are retained.
+core3.tex,12,0,,0,manuscript_fragment_omitted,Manuscript table fragment is not part of this repository.
+core_history_panels.csv,3,0,data/summary/core_history_panels.csv,3,sanitized_copy,Local result_path omitted; metrics and hashes retained.
+core_link_metric_panels.csv,1680,0,data/summary/core_link_metric_panels.csv,2016,included,Mapped summary/provenance CSV is included in this repository.
+core_main_nmse.csv,69,0,data/summary/core_main_nmse.csv,225,included,Mapped summary/provenance CSV is included in this repository.
+core_nmse_environment_stats_seed42.csv,459,0,data/summary/core_nmse_environment_stats_seed42.csv,165,included,Existing public summary CSV is included.
+cost_maintenance105.tex,12,0,,0,manuscript_fragment_omitted,Manuscript table fragment is not part of this repository.
+existing accepted facts.csv binding,0,3,data/summary/facts.csv,4936,included,Mapped summary/provenance CSV is included in this repository.
+facts.csv,1,0,data/summary/facts.csv,4936,included,Mapped summary/provenance CSV is included in this repository.
+original_f26_formal_panel_crosscheck.csv,12,0,data/summary/original_f26_formal_panel_crosscheck.csv,2,included,Existing public summary CSV is included.
+results/a7a_same_backend_local_20261028/evaluation/a7a_same_backend_summary.csv,0,3,data/summary/a7a_same_backend_summary.csv,3,included,Existing public summary CSV is included.
+revision/config/contracts.json,4,0,config/contracts.json,0,included,Existing public configuration file is included.
+revision/paper/remaining_fixes_20261029/a1_noisy_link_v1/analysis_v2/figure_source.csv,108,72,data/summary/a1_noisy_link_figure_source.csv,72,included,Mapped summary/provenance CSV is included in this repository.
+revision/paper/remaining_fixes_20261029/a1_noisy_link_v1/analysis_v2/integration_candidate/highlight_preparation/prepared_source/a1_noisy_link_highlight_source.csv,0,36,data/summary/a1_noisy_link_highlight_source.csv,36,included,Mapped summary/provenance CSV is included in this repository.
+revision/paper/remaining_fixes_20261029/a1_noisy_link_v1/analysis_v2/paired_rate.csv,18,6,data/summary/a1_noisy_link_paired_rate.csv,6,included,Mapped summary/provenance CSV is included in this repository.
+revision/paper/remaining_fixes_20261029/a7_lite_integration/a7_lite_paired.csv,18,6,data/summary/a7_lite_history_paired.csv,6,included,Mapped summary/provenance CSV is included in this repository.
+revision/paper/remaining_fixes_20261029/a7_lite_integration/a7_lite_parameter_counts.csv,3,0,data/summary/a7_lite_parameter_counts.csv,3,included,Mapped summary/provenance CSV is included in this repository.
+revision/paper/remaining_fixes_20261029/a7_lite_integration/a7_lite_points.csv,27,0,data/summary/a7_lite_history_points.csv,9,included,Mapped summary/provenance CSV is included in this repository.
+revision/paper/remaining_fixes_20261029/audit/A2E_SELECTED_COST_PREPARATION.json,2,0,data/summary/a2e_selected_cost_source.csv,2,source_receipt_omitted_summary_included,Internal receipt/status JSON is omitted; mapped outcome CSV is included.
+revision/paper/remaining_fixes_20261029/audit/A2E_SELECTED_COST_SOURCE.csv,0,1,data/summary/a2e_selected_cost_source.csv,2,sanitized_copy,Public CSV omits source_json path and retains values plus source hash.
+revision/paper/remaining_fixes_20261029/classical_analysis/a6c_heldout_v3/source_data.csv,18,9,data/summary/esprit_a6c_heldout_source_data.csv,180,included,Mapped summary/provenance CSV is included in this repository.
+revision/paper/remaining_fixes_20261029/classical_analysis/a6c_heldout_v3/verification.json,54,0,data/summary/esprit_a6c_challenge_summary.csv,9,source_receipt_omitted_summary_included,Internal receipt/status JSON is omitted; mapped outcome CSV is included.
+revision/paper/remaining_fixes_20261029/classical_analysis/d1_heldout_v1/source_data.csv,24,0,data/summary/esprit_d1_heldout_source_data.csv,360,included,Mapped summary/provenance CSV is included in this repository.
+revision/paper/remaining_fixes_20261029/classical_analysis/d1_validation_selection/source_data.csv,20,20,data/summary/esprit_d1_validation_selection.csv,20,included,Mapped summary/provenance CSV is included in this repository.
+revision/paper/remaining_fixes_20261029/classical_analysis/integration_preparation/candidate_outputs_post_result_review/d1_esprit_comparison_source_data.csv,0,12,data/summary/esprit_d1_comparison_source_data.csv,12,included,Mapped summary/provenance CSV is included in this repository.
+revision/paper/remaining_fixes_20261029/extensions/joint_wiener/analysis/summary.csv,10,2,data/summary/joint_wiener_summary.csv,2,included,Mapped summary/provenance CSV is included in this repository.
+revision/paper/remaining_fixes_20261029/extensions/joint_wiener/protocol_v1.json,1,0,revision/analysis_archive/protocols/joint_wiener.json,0,included_protocol,Archival protocol copied byte-for-byte; input artifacts may be omitted.
+revision/paper/remaining_fixes_20261029/itransformer_control_analysis/paired.csv,4,0,data/summary/itransformer_control_paired.csv,2,included,Mapped summary/provenance CSV is included in this repository.
+revision/paper/remaining_fixes_20261029/itransformer_control_analysis/summary.csv,8,2,data/summary/itransformer_control_summary.csv,4,included,Mapped summary/provenance CSV is included in this repository.
+revision/paper/remaining_fixes_20261029/noise_trained_lite_v1/analysis_v1/results/f03ac8d2175b36a5/figure_source.csv,96,0,data/summary/noise_trained_lite_figure_source.csv,32,included,Mapped summary/provenance CSV is included in this repository.
+revision/paper/remaining_fixes_20261029/noise_trained_lite_v1/analysis_v1/results/f03ac8d2175b36a5/paired_contrasts.csv,48,8,data/summary/noise_trained_lite_paired_contrasts.csv,16,included,Mapped summary/provenance CSV is included in this repository.
+revision/paper/remaining_fixes_20261029/noise_trained_lite_v1/pcw_cross_comparison_v1/results/f03ac8d2175b36a5_4ebed6a57f1b935c/paired_contrasts.csv,72,12,data/summary/noise_trained_lite_pcw_cross_paired_contrasts.csv,24,included,Mapped summary/provenance CSV is included in this repository.
+revision/paper/remaining_fixes_20261029/power_audit/panel_correlations.csv,298,4,data/summary/power_panel_correlations.csv,153,included,Mapped summary/provenance CSV is included in this repository.
+revision/paper/remaining_fixes_20261029/training/a2e_dev_search_analysis_v1/candidate_exports/r02/candidate_results.csv,0,8,data/summary/a2e_dev_candidate_results.csv,8,included,Mapped summary/provenance CSV is included in this repository.
+revision/paper/remaining_fixes_20261029/training/a2e_result_analysis_v2/results/78a6830c1160e601/horizon_seed_dispersion.csv,12,12,data/summary/a2e_formal_horizon_seed_dispersion.csv,4,included,Mapped summary/provenance CSV is included in this repository.
+revision/paper/remaining_fixes_20261029/training/a2e_result_analysis_v2/results/78a6830c1160e601/seed_means.csv,12,4,data/summary/a2e_formal_seed_means.csv,12,included,Mapped summary/provenance CSV is included in this repository.
+revision/paper/remaining_fixes_20261029/width_h1_evaluation/results/width128_s30_steps1_seed42_posthoc/per_environment.csv,2,1,data/summary/width128_s30_h1_per_environment.csv,30,included,Mapped summary/provenance CSV is included in this repository.
+revision/reports/a2e_baseline_reference_20261030/baseline_reference_120.csv,0,4,data/summary/a2e_baseline_reference_120.csv,120,included,Mapped summary/provenance CSV is included in this repository.
+revision/reports/parallel_materials66/nmse_estimands_by_seed_corrected_labels.csv,1,0,data/summary/neural_nmse_environment_stats_seedwise.csv,129,included,Mapped summary/provenance CSV is included in this repository.
+revision/runs/A2e_itransformer_dev_search_20261029_r02/selection_receipt.json,32,0,data/summary/a2e_dev_candidate_results.csv,8,source_receipt_omitted_summary_included,Internal receipt/status JSON is omitted; mapped outcome CSV is included.
+revision\reports\parallel_materials66\nmse_estimands_by_seed_corrected_labels.csv,5,0,data/summary/neural_nmse_environment_stats_seedwise.csv,129,included,Mapped summary/provenance CSV is included in this repository.
+revision/reports/core_closure162/summary165/final/core_main_nmse.csv,0,0,data/summary/core_main_nmse.csv,225,included,Core NMSE summary.
+revision/reports/core_closure162/summary165/final/core_link_metric_panels.csv,0,0,data/summary/core_link_metric_panels.csv,2016,included,Core link-metric summary.
+revision/reports/core_closure162/summary165/final/core_history_panels.csv,0,0,data/summary/core_history_panels.csv,3,included,Local result_path omitted.
+revision/reports/core_closure162/summary165/final/classical_d1_environment_metrics.csv,0,0,data/summary/classical_d1_environment_metrics.csv,2880,included,Local result_path omitted.
+revision/runs/A2e_itransformer_formal_replay_20261030_v2/78a6830c1160e601ce089320864417be63b7c7a93a1c4382d31a22ce94b5501b/per_environment.csv,0,0,data/summary/a2e_formal_per_environment.csv,360,included,A2e 360 environment rows; source hash matches maintainer-supplied SHA-256.
+revision/paper/remaining_fixes_20261029/noise_trained_lite_v1/evaluation_v1/results/f03ac8d2175b36a5426bee63ae66b5a1dce884a2b86e596ba3591aa72bf83d47/environments/*.json,0,0,data/summary/noise_trained_lite_per_environment.csv,480,included,Flattened 480 complete results; source JSON receipts omitted.
+revision/paper/remaining_fixes_20261029/a1_noisy_link_v1/analysis_v2/summary.csv,0,0,data/summary/a1_noisy_link_summary.csv,36,included,A1 noisy-link summary.
+revision/paper/remaining_fixes_20261029/a1_noisy_link_v1/analysis_v2/environment_rows.csv,0,0,data/summary/a1_noisy_link_environment_rows.csv,1080,included,Sanitized; local receipt_path omitted.
+revision/paper/remaining_fixes_20261029/a1_noisy_link_v1/analysis_v2/reference_rows.csv,0,0,data/summary/a1_noisy_link_reference_rows.csv,120,included,Sanitized; local receipt_path omitted.
+revision/paper/remaining_fixes_20261029/classical_analysis/a6c_challenge_candidate_v1/candidate_outputs/esprit_a6c_challenge_summary.csv,0,0,data/summary/esprit_a6c_challenge_summary.csv,9,included,ESPRIT A6 challenge summary.
+revision/paper/figure_redraw_20261029/a7b_lite_history_composite_candidate_20261029_v2/figure_source_data.csv,0,0,data/summary/a7b_lite_history_composite_source.csv,24,included,A7 Lite/PC-Wiener composite source.
+revision/paper/figure_redraw_20261029/a7b_lite_history_composite_candidate_20261029_v2/lite_environment_bootstrap_input.csv,0,0,data/summary/a7b_lite_environment_bootstrap_input.csv,270,included,A7 Lite bootstrap input.
+revision/paper/figure_redraw_20261029/a7b_lite_history_composite_candidate_20261029_v2/lite_paired_contrasts.csv,0,0,data/summary/a7b_lite_paired_contrasts.csv,6,included,A7 Lite paired contrasts.
+revision/paper/remaining_fixes_20261029/extensions/joint_wiener/analysis/paired_environment.csv,0,0,data/summary/joint_wiener_paired_environment.csv,60,included,Joint-Wiener paired environment rows.
+revision/paper/figure_redraw_20261029/analysis/facts.csv,0,0,data/summary/facts.csv,4936,included,"Latest facts ledger, 4,936 records."
+revision/paper/figure_redraw_20261029/analysis/point_map.csv,0,0,data/summary/figure_point_map.csv,546,included,"Latest point map, 546 records."
+revision/paper/figure_redraw_20261029/analysis/table_statistic_map.csv,0,0,data/summary/table_statistic_map.csv,433,included,"Latest table map, 433 records."
+repository artifact: data/summary/a1_clean_infinity_reference_environments.csv,0,0,data/summary/a1_clean_infinity_reference_environments.csv,120,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/a1_clean_infinity_reference_summary.csv,0,0,data/summary/a1_clean_infinity_reference_summary.csv,4,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/a1_noise_36point_environment_summary.csv,0,0,data/summary/a1_noise_36point_environment_summary.csv,36,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/a1_noise_environment_rows.csv,0,0,data/summary/a1_noise_environment_rows.csv,1080,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/a1_noise_expected_history_snr_by_environment.csv,0,0,data/summary/a1_noise_expected_history_snr_by_environment.csv,180,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/a1_noise_expected_history_snr_summary.csv,0,0,data/summary/a1_noise_expected_history_snr_summary.csv,6,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/a1_noise_paired_lite_minus_pcw.csv,0,0,data/summary/a1_noise_paired_lite_minus_pcw.csv,6,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/a1_noise_summary.csv,0,0,data/summary/a1_noise_summary.csv,36,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/a1_noisy_link_environment_rows.csv,0,0,data/summary/a1_noisy_link_environment_rows.csv,1080,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/a1_noisy_link_figure_source.csv,0,0,data/summary/a1_noisy_link_figure_source.csv,72,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/a1_noisy_link_highlight_source.csv,0,0,data/summary/a1_noisy_link_highlight_source.csv,36,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/a1_noisy_link_paired_rate.csv,0,0,data/summary/a1_noisy_link_paired_rate.csv,6,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/a1_noisy_link_reference_rows.csv,0,0,data/summary/a1_noisy_link_reference_rows.csv,120,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/a1_noisy_link_summary.csv,0,0,data/summary/a1_noisy_link_summary.csv,36,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/a2e_baseline_reference_120.csv,0,0,data/summary/a2e_baseline_reference_120.csv,120,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/a2e_dev_candidate_facts.csv,0,0,data/summary/a2e_dev_candidate_facts.csv,32,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/a2e_dev_candidate_results.csv,0,0,data/summary/a2e_dev_candidate_results.csv,8,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/a2e_dev_candidate_table_statistic_map.csv,0,0,data/summary/a2e_dev_candidate_table_statistic_map.csv,8,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/a2e_formal_candidate_facts.csv,0,0,data/summary/a2e_formal_candidate_facts.csv,24,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/a2e_formal_candidate_table_statistic_map.csv,0,0,data/summary/a2e_formal_candidate_table_statistic_map.csv,8,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/a2e_formal_horizon_seed_dispersion.csv,0,0,data/summary/a2e_formal_horizon_seed_dispersion.csv,4,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/a2e_formal_per_environment.csv,0,0,data/summary/a2e_formal_per_environment.csv,360,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/a2e_formal_seed_means.csv,0,0,data/summary/a2e_formal_seed_means.csv,12,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/a2e_selected_cost_source.csv,0,0,data/summary/a2e_selected_cost_source.csv,2,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/a4_amplitude_summary.csv,0,0,data/summary/a4_amplitude_summary.csv,16,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/a4_followup_paired_lite_minus_outdated_by_environment.csv,0,0,data/summary/a4_followup_paired_lite_minus_outdated_by_environment.csv,60,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/a4_followup_paired_lite_minus_outdated_summary.csv,0,0,data/summary/a4_followup_paired_lite_minus_outdated_summary.csv,4,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/a4_followup_summary.csv,0,0,data/summary/a4_followup_summary.csv,8,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/a4_matched_outdated_gains.csv,0,0,data/summary/a4_matched_outdated_gains.csv,36,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/a6_oracle_current_environment_rows.csv,0,0,data/summary/a6_oracle_current_environment_rows.csv,180,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/a6_paired_challenge_v2_full_environment_rows.csv,0,0,data/summary/a6_paired_challenge_v2_full_environment_rows.csv,900,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/a6_paired_challenge_v2_full_paired_ci.csv,0,0,data/summary/a6_paired_challenge_v2_full_paired_ci.csv,45,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/a6_paired_challenge_v2_full_summary.csv,0,0,data/summary/a6_paired_challenge_v2_full_summary.csv,45,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/a7a_same_backend_environment.csv,0,0,data/summary/a7a_same_backend_environment.csv,90,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/a7a_same_backend_summary.csv,0,0,data/summary/a7a_same_backend_summary.csv,3,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/a7b_lite_environment_bootstrap_input.csv,0,0,data/summary/a7b_lite_environment_bootstrap_input.csv,270,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/a7b_lite_history_composite_source.csv,0,0,data/summary/a7b_lite_history_composite_source.csv,24,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/a7b_lite_paired_contrasts.csv,0,0,data/summary/a7b_lite_paired_contrasts.csv,6,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/a7b_point_estimates_ci.csv,0,0,data/summary/a7b_point_estimates_ci.csv,15,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/a7b_source_environment_table.csv,0,0,data/summary/a7b_source_environment_table.csv,450,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/a7_lite_history_paired.csv,0,0,data/summary/a7_lite_history_paired.csv,6,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/a7_lite_history_points.csv,0,0,data/summary/a7_lite_history_points.csv,9,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/a7_lite_parameter_counts.csv,0,0,data/summary/a7_lite_parameter_counts.csv,3,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/analysis_source_index.csv,0,0,data/summary/analysis_source_index.csv,23,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/ber_environment_bootstrap_ci.csv,0,0,data/summary/ber_environment_bootstrap_ci.csv,36,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/ber_environment_group_records.csv,0,0,data/summary/ber_environment_group_records.csv,720,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/ber_paired_difference_bootstrap_ci.csv,0,0,data/summary/ber_paired_difference_bootstrap_ci.csv,24,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/c2_paired_vs_fresh_a05_c0.csv,0,0,data/summary/c2_paired_vs_fresh_a05_c0.csv,24,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/c2_test_summary.csv,0,0,data/summary/c2_test_summary.csv,12,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/classical_complexity.csv,0,0,data/summary/classical_complexity.csv,24,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/classical_d1_environment_metrics.csv,0,0,data/summary/classical_d1_environment_metrics.csv,2880,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/core_history_panels.csv,0,0,data/summary/core_history_panels.csv,3,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/core_link_metric_panels.csv,0,0,data/summary/core_link_metric_panels.csv,2016,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/core_main_nmse.csv,0,0,data/summary/core_main_nmse.csv,225,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/core_nmse_environment_stats_seed42.csv,0,0,data/summary/core_nmse_environment_stats_seed42.csv,165,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/deployment_scope.csv,0,0,data/summary/deployment_scope.csv,12,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/development_candidate_scores.csv,0,0,data/summary/development_candidate_scores.csv,24,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/esprit_a6c_challenge_summary.csv,0,0,data/summary/esprit_a6c_challenge_summary.csv,9,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/esprit_a6c_heldout_source_data.csv,0,0,data/summary/esprit_a6c_heldout_source_data.csv,180,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/esprit_d1_comparison_source_data.csv,0,0,data/summary/esprit_d1_comparison_source_data.csv,12,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/esprit_d1_heldout_source_data.csv,0,0,data/summary/esprit_d1_heldout_source_data.csv,360,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/esprit_d1_validation_selection.csv,0,0,data/summary/esprit_d1_validation_selection.csv,20,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/facts.csv,0,0,data/summary/facts.csv,4936,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/figure_point_map.csv,0,0,data/summary/figure_point_map.csv,546,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/itransformer_control_paired.csv,0,0,data/summary/itransformer_control_paired.csv,2,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/itransformer_control_summary.csv,0,0,data/summary/itransformer_control_summary.csv,4,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/joint_wiener_paired_environment.csv,0,0,data/summary/joint_wiener_paired_environment.csv,60,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/joint_wiener_summary.csv,0,0,data/summary/joint_wiener_summary.csv,2,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/lite_vs_lmmse_dominance.csv,0,0,data/summary/lite_vs_lmmse_dominance.csv,12,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/local_control_amplitude_environment_metrics.csv,0,0,data/summary/local_control_amplitude_environment_metrics.csv,720,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/low_speed_rate_gains.csv,0,0,data/summary/low_speed_rate_gains.csv,42,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/neural_nmse_environment_stats_seedwise.csv,0,0,data/summary/neural_nmse_environment_stats_seedwise.csv,129,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/nmse_se_300_snr10_rzf.csv,0,0,data/summary/nmse_se_300_snr10_rzf.csv,16,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/noise_trained_lite_figure_source.csv,0,0,data/summary/noise_trained_lite_figure_source.csv,32,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/noise_trained_lite_paired_contrasts.csv,0,0,data/summary/noise_trained_lite_paired_contrasts.csv,16,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/noise_trained_lite_pcw_cross_paired_contrasts.csv,0,0,data/summary/noise_trained_lite_pcw_cross_paired_contrasts.csv,24,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/noise_trained_lite_per_environment.csv,0,0,data/summary/noise_trained_lite_per_environment.csv,480,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/original_f26_formal_mean_crosscheck.csv,0,0,data/summary/original_f26_formal_mean_crosscheck.csv,2,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/original_f26_formal_panel_crosscheck.csv,0,0,data/summary/original_f26_formal_panel_crosscheck.csv,2,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/pareto_membership.csv,0,0,data/summary/pareto_membership.csv,151,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/power_panel_correlations.csv,0,0,data/summary/power_panel_correlations.csv,153,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/registered_paired_nmse_contrasts_reused.csv,0,0,data/summary/registered_paired_nmse_contrasts_reused.csv,34,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/release_identity.csv,0,0,data/summary/release_identity.csv,3,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/shared_grid_nmse.csv,0,0,data/summary/shared_grid_nmse.csv,36,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/table_statistic_map.csv,0,0,data/summary/table_statistic_map.csv,433,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/width128_s30_h1_per_environment.csv,0,0,data/summary/width128_s30_h1_per_environment.csv,30,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/width128_s30_h1_summary.csv,0,0,data/summary/width128_s30_h1_summary.csv,1,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/archive_20261028/facts.csv,0,0,data/summary/archive_20261028/facts.csv,4049,included,Included CSV artifact; see README for contents.
+repository artifact: data/summary/archive_20261028/figure_point_map.csv,0,0,data/summary/archive_20261028/figure_point_map.csv,425,included,Included CSV artifact; see README for contents.
+revision/paper/remaining_fixes_20261029/training/a2e_formal_replay_v2/protocol.json,0,0,revision/analysis_archive/protocols/a2e_formal_replay_v2.json,,included_protocol,Archival protocol copy; local absolute paths redacted and raw inputs omitted.
+revision/paper/remaining_fixes_20261029/noise_trained_lite_v1/protocol.json,0,0,revision/analysis_archive/protocols/noise_trained_lite_training.json,,included_protocol,Archival protocol copy; local absolute paths redacted and raw inputs omitted.
+revision/paper/remaining_fixes_20261029/noise_trained_lite_v1/evaluation_v1/protocol.json,0,0,revision/analysis_archive/protocols/noise_trained_lite_evaluation.json,,included_protocol,Archival protocol copy; input artifacts may be omitted.
+revision/paper/remaining_fixes_20261029/noise_trained_lite_v1/analysis_v1/protocol.json,0,0,revision/analysis_archive/protocols/noise_trained_lite_analysis.json,,included_protocol,Archival protocol copy; input artifacts may be omitted.
+revision/paper/remaining_fixes_20261029/noise_trained_lite_v1/pcw_cross_comparison_v1/protocol.json,0,0,revision/analysis_archive/protocols/noise_trained_lite_pcw_cross.json,,included_protocol,Archival protocol copy; input artifacts may be omitted.
+revision/paper/remaining_fixes_20261029/a1_noisy_link_v1/protocol.json,0,0,revision/analysis_archive/protocols/a1_noisy_link.json,,included_protocol,Archival protocol copy; input artifacts may be omitted.
+revision/paper/remaining_fixes_20261029/classical/protocol.json,0,0,revision/analysis_archive/protocols/classical_esprit_challenge.json,,included_protocol,Archival protocol copy; input artifacts may be omitted.
+revision/paper/remaining_fixes_20261029/width_h1_evaluation/protocol.json,0,0,revision/analysis_archive/protocols/width_h1_evaluation.json,,included_protocol,Archival protocol copy; input artifacts may be omitted.
+revision/paper/remaining_fixes_20261029/power_audit/protocol.json,0,0,revision/analysis_archive/protocols/power_audit.json,,included_protocol,Archival protocol copy; input artifacts may be omitted.
+revision/paper/remaining_fixes_20261029/fixed_checkpoint_replay_v1/protocol.json,0,0,revision/analysis_archive/protocols/fixed_checkpoint_replay.json,,included_protocol,Archival protocol copy; input artifacts may be omitted.

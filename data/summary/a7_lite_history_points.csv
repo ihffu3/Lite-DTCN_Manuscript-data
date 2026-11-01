@@ -1,0 +1,10 @@
+speed_kmh,history_length,run_id,n_environments,mean_nmse_db,ci95_low_db,ci95_high_db,bootstrap_replicates,bootstrap_seed,resampling_unit
+30,2,lite_fullwindow_s30_L2_steps4_seed42,30,-6.5743313011787539,-6.8945441470465312,-6.2394851055590808,10000,20261059,environment_id; paired across L within speed
+30,5,lite_fullwindow_s30_L5_steps4_seed42,30,-5.9267209854536169,-6.3172511315234647,-5.5075787553862341,10000,20261059,environment_id; paired across L within speed
+30,10,lite_fullwindow_s30_L10_steps4_seed42,30,-8.9302283270899263,-9.3475008343114414,-8.5013070111255349,10000,20261059,environment_id; paired across L within speed
+120,2,lite_fullwindow_s120_L2_steps4_seed42,30,-1.105224635756948,-1.3200320677652406,-0.89975311512275713,10000,20261149,environment_id; paired across L within speed
+120,5,lite_fullwindow_s120_L5_steps4_seed42,30,-1.3953236992864193,-1.6570909739466388,-1.1392784026989295,10000,20261149,environment_id; paired across L within speed
+120,10,lite_fullwindow_s120_L10_steps4_seed42,30,-1.5279778323071216,-1.7971345836564623,-1.2618902168339916,10000,20261149,environment_id; paired across L within speed
+300,2,lite_fullwindow_s300_L2_steps4_seed42,30,-0.39356176213164829,-0.58373877524207973,-0.22556629192250932,10000,20261329,environment_id; paired across L within speed
+300,5,lite_fullwindow_s300_L5_steps4_seed42,30,-0.54553157029448063,-0.77392793696477924,-0.33399618567183453,10000,20261329,environment_id; paired across L within speed
+300,10,lite_fullwindow_s300_L10_steps4_seed42,30,-0.6105380030866765,-0.84321753960836343,-0.39409423402283739,10000,20261329,environment_id; paired across L within speed

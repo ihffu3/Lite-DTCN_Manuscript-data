@@ -1,0 +1,143 @@
+{
+  "schema_version": "1.0",
+  "followup_id": "A3b_A6c_local_classical_20261029",
+  "stage": "exploratory_post_test_access_followup",
+  "status": "root_review_approved_for_A3b_validation_scan_before_launch",
+  "authorization_receipt": {
+    "path": "revision/paper/remaining_fixes_20261029/classical/authorization_receipt.json",
+    "sha256": "fdcc46b7c705d15eafc8017164842a6cc71d0a4897e0ed96577aa2cbbc82d265"
+  },
+  "execution_scope": {
+    "local_only": true,
+    "server_compute": false,
+    "gpu_compute": false,
+    "maximum_cpu_threads": 2,
+    "maximum_additional_ram_gib": 4,
+    "canonical_source_modified": false,
+    "old_result_or_test_seal_modified": false,
+    "formal_test_opened_gate_rewritten": false
+  },
+  "test_access_truth": {
+    "live_AI_REVISION_state_formal_test_opened": true,
+    "live_state_sha256_at_protocol_creation": "55d75f3f429468f626710cd8830a4ab36a9588678937fd0e1e1b7af57d3ec5c2",
+    "historical_formal_protocol_formal_test_opened": false,
+    "interpretation": "Prior test access is already recorded in live state and A6 results. This follow-up is post-exposure; the historical false field is preserved as history and is not copied as current truth.",
+    "A3b_D1_test_read_by_new_scan": false,
+    "A3b_test_used_for_selection": false,
+    "A6c_D2_D3_test_used_for_evaluation_after_selection_lock": true,
+    "A6c_test_used_for_fit_or_selection": false
+  },
+  "data_binding": {
+    "formal_protocol_path": "revision/config/formal_protocol.json",
+    "formal_protocol_sha256": "0313336670b34448f7d14fee8a3a0ffb975c866852212493818a00c059ee9424",
+    "formal_manifest_path": "revision/data/formal/manifest.json",
+    "formal_manifest_sha256": "f9fb604cc1d89ecb58a71c2732a454623b3b717489d4276ed1929dd04752d15e",
+    "generation_fingerprint": "eb54040f2bc5be4d8c0f8560a52e6da314ee9ff3372485b599872ff249b57d15",
+    "contracts_sha256": "dcacaa68769cf2e039ed42ee6e8fbcaba570194d29a4ccb2a5331cb0608402dd",
+    "D1_split_counts_by_speed": {
+      "30_kmh": {"train": 30, "validation": 8},
+      "120_kmh": {"train": 30, "validation": 8},
+      "300_kmh": {"train": 30, "validation": 8}
+    },
+    "train_CSI_loaded": false,
+    "train_role": "The current ESPRIT estimator has no learned coefficients; D1 train group identities bind its speed-specific/mixed scope. The complete D1 validation split selects the shared rank/Hankel configuration.",
+    "validation_CSI_opened_by_planned_scan": "D1 main UMa validation groups only, loaded one at a time after the scan is launched",
+    "test_files_or_test_CSI_opened_by_planned_A3b_scan": false
+  },
+  "source_binding": {
+    "revision/code/baselines/classical/predictors.py": "da1cfcc5b5cbb6eccfb9a276434f2864ea964b892127dc794a951c3fcf488b3b",
+    "revision/code/runner/formal_dataset.py": "8fa0e84c3582bebeae9a30484b391a0a3468f8f9e4860fb937c8a8b78057bfb8",
+    "revision/code/runner/formal_classical_challenge.py": "150c40cfabcba49774b93afdc34f658162a7ddcc16a8b1bfdfe9ef26d09fa032",
+    "revision/code/runner/challenge_protocol.py": "ff5d2f826750b5995dafa1a2b8017c66198b955c4861beb1ac5ac7efabcbb3c6",
+    "revision/paper/reviewer_fix_20261028/results/a6_paired_challenge_v2_full_local_20261029_000300/classical_predictors.snapshot.py": "da1cfcc5b5cbb6eccfb9a276434f2864ea964b892127dc794a951c3fcf488b3b",
+    "revision/paper/reviewer_fix_20261028/results/a6_paired_challenge_v2_full_local_20261029_000300/formal_classical_challenge.snapshot.py": "150c40cfabcba49774b93afdc34f658162a7ddcc16a8b1bfdfe9ef26d09fa032",
+    "AI_REVISION/gpu_esprit68.py_reviewed_not_used": "9933f255211e974c49d606d4b7b7418ae17e20e6899435f95b137f971b1cb5dc",
+    "AI_REVISION/gpu_esprit70.py_reviewed_not_used": "1f9c40cfde7a515845aa6c8314f78bf3c18388a09eb8339b33588dc564e3b96a",
+    "AI_REVISION/server_esprit70_worker.py_reviewed_not_used": "54a0487bd1168c2918366fc5e514207ba5b825231548939d6adc69727957f0fa"
+  },
+  "A3b_validation_scan": {
+    "algorithm": "Existing revision.code.baselines.classical.predictors.ClassicalPredictor._predict_esprit implementation; no canonical code change",
+    "history_length": 10,
+    "origin_start": 19,
+    "validation_origin_grid_stride": 1,
+    "origins_per_environment_horizon": 4,
+    "origin_selection": "Four unique indices at the first, approximately one-third, approximately two-thirds, and last positions of the complete target-valid D1 validation origin grid for each horizon.",
+    "horizon_steps": [1, 2, 4, 8],
+    "gain_fit_ridge": 1e-8,
+    "rank_hankel_grid_rule": "For history length L=10 and rows r in 2..9, include every integer rank q from 1 through min(r-1, L-r).",
+    "candidate_count": 20,
+    "candidate_grid_rows_rank": [
+      [2, 1],
+      [3, 1], [3, 2],
+      [4, 1], [4, 2], [4, 3],
+      [5, 1], [5, 2], [5, 3], [5, 4],
+      [6, 1], [6, 2], [6, 3], [6, 4],
+      [7, 1], [7, 2], [7, 3],
+      [8, 1], [8, 2],
+      [9, 1]
+    ],
+    "maximum_identifiable_rank": 4,
+    "rank_6_infeasible_for_L10": true,
+    "score": "Arithmetic mean of the 24 validation environment x 4 horizon NMSE-dB cells. Each cell sums the same four selected origins, all four users, all eight antennas, and all 32 subcarriers. Persistence fallback rows remain in the score and fallback counts are retained.",
+    "tie_break": ["fewer fallback user-rows", "existing rank=2, rows=5 setting", "lower rank", "lower Hankel row count"],
+    "selection_freeze": "Write one selected configuration from D1 validation before any D2/D3 challenge predictions; no later challenge result may change it.",
+    "sparse_validation_limit": "This is a predeclared 4-origin-per-environment/horizon parameter-selection slice, not a full-grid D1 validation performance estimate."
+  },
+  "A6c_challenge_extension": {
+    "existing_result_path": "revision/paper/reviewer_fix_20261028/results/a6_paired_challenge_v2_full_local_20261029_000300/a6_paired_challenge_v2_full.json",
+    "existing_result_sha256": "172363dcd1c0fac8cb541b16dd65e14bbc94df83cfb875accba092eb5e0e743f",
+    "existing_corrected_summary_path": "revision/paper/reviewer_fix_20261028/results/a6_paired_challenge_v2_full_local_20261029_000300/a6_paired_challenge_v2_full_summary_corrected.json",
+    "existing_corrected_summary_sha256": "1bf4ce1805489563246b7bdc96110629320aa42b1147cf0dd2d61a1826871839",
+    "existing_a6_raw_status": "incomplete_due_to_paired_summary_method_key_bug",
+    "existing_a6_raw_status_note": "The raw paired-summary code keyed rows by row.method although the frozen per-environment rows store the method under source.",
+    "existing_a6_corrected_summary_status": "complete",
+    "existing_a6_corrected_summary_complete": true,
+    "existing_a6_corrected_rows": 900,
+    "existing_a6_corrected_methods": 5,
+    "existing_a6_corrected_summary_recomputed_from": "Existing frozen per_environment.source/task_id/environment_id/paired_delta_db rows only; no model or challenge evaluation rerun.",
+    "existing_a6_formal_test_data_used_for_evaluation_only": true,
+    "existing_a6_test_used_for_fit_or_selection": false,
+    "existing_a6_fit_performed": false,
+    "existing_classical_methods": ["ar", "kalman", "lmmse", "persistence", "ridge"],
+    "missing_method": "esprit",
+    "challenge_task_cells": 9,
+    "environments_per_task_cell": 20,
+    "target_esprit_environment_task_cells": 180,
+    "pairing_rule": "Use the exact existing A6 challenge task definitions, environment IDs, origin/target indices, and paired neural anchor. Emit one ESPRIT result for every expected environment-task cell; never choose/tune configuration on those results.",
+    "output_custody": "New result under this follow-up directory only; do not amend the existing A6 result, summary, source custody, or formal-test seals.",
+    "status": "ESPRIT_only_addition_pending_optimized_CPU_adapter_and_root_review_of_benchmark",
+    "legacy_scalar_estimate_is_not_an_authorization_to_run_full_challenge": true,
+    "full_challenge_start_gate": "Implement separate batched CPU adapter; compare prediction, whole-row persistence fallback, first failure reason, and failure counts with the canonical scalar implementation on synthetic edge cases plus preauthorized D1 train histories; measure the adapter before deciding whether a full challenge fits the local budget."
+  },
+  "resource_estimate": {
+    "resource_profile": "CPU only, maximum 2 threads, no more than 4 GiB additional RAM",
+    "D1_validation_sampling": {
+      "validation_environments": 24,
+      "feature_horizon_sequences_per_candidate": 393216,
+      "candidate_count": 20,
+      "feature_horizon_sequences_total": 7864320,
+      "approximate_small_SVD_calls_total": 15728640,
+      "validation_mat_compressed_bytes_total": 1061304711,
+      "streaming_peak_memory_estimate_gib": "under 1",
+      "synthetic_baseline_microbenchmark": {
+        "source": "current CPU _esprit_forecast rank=2, rows=5; synthetic exact two-tone sequence only",
+        "calls": 1000,
+        "elapsed_seconds": 0.172129,
+        "microseconds_per_call": 172.13,
+        "estimated_serial_time_at_that_rate_minutes": 22.5,
+        "planning_wall_time_minutes": "25-45",
+        "launch_state": "approved_by_root_protocol_review_and_starting_after_protocol_freeze"
+      }
+    },
+    "D2_D3_full_challenge": {
+      "environment_task_cells": 180,
+      "feature_horizon_sequences_estimate": 733593600,
+      "estimated_serial_cpu_hours_at_synthetic_baseline_rate": 35.1,
+      "estimated_wall_hours_with_2_cpu_workers": "18-42",
+      "streaming_peak_memory_estimate_gib": "under 1",
+      "launch_state": "not_started_pending_batched_adapter_equivalence_and_benchmark",
+      "legacy_scalar_reference_only": true,
+      "batched_adapter_target": "Minutes to a few hours if numerical equivalence and a measured speedup support a bounded full challenge"
+    }
+  }
+}

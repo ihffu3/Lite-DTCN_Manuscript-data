@@ -1,0 +1,2 @@
+n_environments,mean_environment_nmse_db,historical_baseline_mean_nmse_db,mean_descriptive_delta_nmse_db,comparison_basis,p_values_reported,test_based_selection
+30,-17.552381923360258,-10.922649776515861,-6.629732146844395,historical baseline; not a fresh matched C0 replay,false,false

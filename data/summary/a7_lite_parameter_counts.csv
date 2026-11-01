@@ -1,0 +1,4 @@
+history_length,trainable_parameters,model,n_tx,n_freq,node_dim,temporal_hidden,residual,source_file,source_sha256
+2,22448,FullWindowLiteDTCN,8,32,16,32,False,revision/code/models/candidates.py,9116b880d9dcd14ee8f09ea709f4f3985d40031ff48ea00b1dfcf1a4395e1f2d
+5,22832,FullWindowLiteDTCN,8,32,16,32,False,revision/code/models/candidates.py,9116b880d9dcd14ee8f09ea709f4f3985d40031ff48ea00b1dfcf1a4395e1f2d
+10,23472,FullWindowLiteDTCN,8,32,16,32,False,revision/code/models/candidates.py,9116b880d9dcd14ee8f09ea709f4f3985d40031ff48ea00b1dfcf1a4395e1f2d

@@ -1,0 +1,18 @@
+{
+  "scope": "A2-d optional posthoc descriptive association, all existing panels",
+  "independent_unit": "environment; 30 environments per panel; no pooling of repeated conditions/seeds",
+  "x": "10*log10(target_energy/(n_rows*256 complex coefficients)); each row is one forecast origin-user pair, not one unique user",
+  "y": "existing per-environment NMSE-dB",
+  "estimators": [
+    "Pearson correlation with log power",
+    "Spearman rank correlation"
+  ],
+  "undefined_policy": "retain panel and mark undefined; do not drop or replace nonfinite/reference-zero values",
+  "inference": "No p-values, new significance family, causal attribution, or test-driven tuning",
+  "access": "Existing formal test results already accessed; no raw MAT or weights opened",
+  "inputs": {
+    "revision\\reports\\local_results53\\main_per_environment.csv": "35854d995aa2bb513ba49660a7ec207f6666124f75c59ee14a024f71c9697dc8",
+    "revision\\submission\\PHYCOM_CORE_TECHNICAL_20261020\\evidence\\formal165\\core_main_nmse.csv": "eb3f9a5ff6c9095de67b26e7aec711a027965f311b831a89fbdb6c63b594461e",
+    "revision\\paper\\reviewer_fix_20261028\\analysis\\local_control_amplitude_environment_metrics.csv": "a0c654c57bb9fd3148fc908511116c6a059f5ddb8b8ef0b65ad6f96be0b88585"
+  }
+}

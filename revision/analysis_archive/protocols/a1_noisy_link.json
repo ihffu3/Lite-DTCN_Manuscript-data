@@ -1,0 +1,103 @@
+{
+  "schema_version": "1.0",
+  "protocol_id": "A1_noisy_input_RZF_link_reconstruction_v1",
+  "status": "review_required_not_run",
+  "scope": "Reconstruct the already reported A1 noisy-history NMSE panel from the exact prior recipe and add paired, same-origin four-user downlink RZF metrics for all six predictors at every history-noise level.",
+  "formal_test_gate": {
+    "open_by_default": false,
+    "runner_requires_explicit_flag": "--open-formal-test",
+    "required_before_run": "Root review of protocol, runner, hashes, and synthetic tests.",
+    "test_access_disclosure": "The formal test panel was accessed for the historical A1 result. This is a fixed post hoc replay; no tuning or model selection is permitted from these outputs."
+  },
+  "formal_manifest_sha256": "f9fb604cc1d89ecb58a71c2732a454623b3b717489d4276ed1929dd04752d15e",
+  "source_files": {
+    "revision/paper/reviewer_fix_20261028/tools/c1_evidence_runner_v2.py": "9eb597244ce8ed77a3b23da06047b2dc921200c1133d7bebeca8a3175528e195",
+    "revision/code/runner/formal_observation_noise.py": "845a0ea0a95a32f30476efcc2d89d5bb93981aecc4f5a02c93bae1004160f3f2",
+    "revision/code/runner/formal_noise.py": "45e061035fc3c6fdc3c867e9b506a2b0d7139a3aafb7cfbd7fe43753abf77438",
+    "revision/code/runner/formal_evaluate.py": "73d4474d17b9140fc9c35efa6eb2b128a7d52ceeba2119140fa507c48575609d",
+    "revision/code/runner/formal_classical_evaluate.py": "89c28cf976a0a54ea831af8c617e333a1ccc62d69b259abe715ab90db366688a",
+    "revision/code/baselines/classical/predictors.py": "da1cfcc5b5cbb6eccfb9a276434f2864ea964b892127dc794a951c3fcf488b3b",
+    "revision/code/link/precoding.py": "fe9067d40c586310336403b11e164a4fb9c6e50148e649c13ceab05dfdef2816",
+    "revision/code/runner/registry.py": "cbc9f7f7d54cc1ac7a53520bb05535c149a8ff0ceb8db5dc8f6335763bd561e3",
+    "revision/code/data/formal_qa.py": "227c326048141738d7ebe6a7d9c5fc2e715f93cc3153e0ec26dad66dc03d4687",
+    "revision/code/runner/train.py": "8ac15ba3d2c02912500e6c1d72c93305f5e56b23d66db48ad970a08481b67ba2"
+  },
+  "prior_a1_binding": {
+    "result_json": "revision/paper/reviewer_fix_20261028/results/a1_noise_full_local_v2_20261028_232500/a1_noise_full_local_v2.json",
+    "result_json_sha256": "53f0a347c6a65826381ebfc762c503657583d77071f16a5cf4c6455f4a2dc65c",
+    "environment_rows": "revision/paper/reviewer_fix_20261028/results/a1_noise_full_local_v2_20261028_232500/a1_noise_environment_rows.csv",
+    "environment_rows_sha256": "f3b1a293939c91c2d58db94ea5e444a0db55d95fca4ab06d9f56d9794a6b5d1a",
+    "postprocess_report": "revision/paper/reviewer_fix_20261028/results/a1_noise_full_local_v2_20261028_232500/a1_noise_postprocess_report.json",
+    "postprocess_report_sha256": "ec999a2ba6e27b15242d5e35b9ac7baa6bb5fe5e0bd91c6d9d9b65ab806f1143",
+    "source_runner_sha256": "9eb597244ce8ed77a3b23da06047b2dc921200c1133d7bebeca8a3175528e195",
+    "historical_device": "cpu",
+    "expected_rows": 1080,
+    "comparison": "Reconstructed environment NMSE for Lite/LMMSE/Ridge/AR/Kalman/Persistence must match the original row with the same speed, nominal history SNR, environment ID, and MAT SHA.",
+    "tolerance": {
+      "relative": 2e-9,
+      "absolute": 1e-12
+    },
+    "lmmse_label_mapping": "A1 result method=LMMSE is reported as PC-Wiener in method_label."
+  },
+  "panel": {
+    "family": "D1_main",
+    "speeds_kmh": [30, 300],
+    "train_environments_per_speed": 30,
+    "test_environments_per_speed": 30,
+    "history_length": 10,
+    "horizon_steps": 4,
+    "step_ms": 0.5,
+    "horizon_ms": 2.0,
+    "origin_start": 19,
+    "stride": 1,
+    "users": 4,
+    "no_drop_rule": "Every eligible origin and all four users must appear exactly once; any non-ok model prediction is a cell failure."
+  },
+  "noise": {
+    "seed": 2602236,
+    "history_snr_db": [10, 20, 30],
+    "variance": "channel_scale^2 * 10^(-nominal_history_snr_db/10)",
+    "channel_scale_source": "The train-only channel_scale in the exact C0 checkpoint run manifest loaded by the historical A1 runner.",
+    "addressing": "The existing Philox transform is keyed by environment/origin/user and observed time coordinates. The same transform output is deterministically reproduced across chunk boundaries and methods.",
+    "scope": "Noise is added only to raw observed history before the saved train normalizer; future targets remain clean."
+  },
+  "fit_recipe": {
+    "execution_device": "CPU, matching the historical A1 run to keep NMSE replay numerically comparable.",
+    "Lite": "Reuse the same complete C0 speed-specific checkpoint, run manifest, normalizer, and strict state restore used by historical A1.",
+    "PC-Wiener": "Reconstruct the historical direct LMMSE empirical moment fit at the same history SNR, with train-only noisy histories and clean targets.",
+    "Ridge": "Reconstruct the historical train-only noisy-history direct Ridge moment fit with clean targets.",
+    "AR": "Use the historical clean train-only AR fit once per speed; noisy test histories are input at prediction time.",
+    "Kalman": "Use the historical clean train-only Kalman fit; pass the nominal history-noise SNR into the frozen measurement-noise branch and keep its loop-parity check.",
+    "Persistence": "Use the noisy history's last observed snapshot; no fitted parameters.",
+    "reference_fit_scope": "No fit or selection on test data. Classic states are reconstructed because the historical cache contains metrics only."
+  },
+  "link": {
+    "evaluation": "RZF at fixed receiver nominal SNR 10 dB, using the existing physical evaluation and precoding implementation. This receiver-side AWGN setting is independent of the history-noise SNR.",
+    "history_conditions": "For each of the 10/20/30 dB history-noise cells, compute link metrics for all six predictors; receiver SNR remains 10 dB in every cell.",
+    "coverage": {
+      "model_conditions": "2 speeds x 3 history-noise SNRs x 6 predictors = 36 conditions, each evaluated on 30 environments (1080 environment-condition link records).",
+      "clean_references": "At each speed and environment, compute Perfect and Outdated once in the 10-dB history cell, then reference that same-environment receipt by relative path and SHA-256 in the 20- and 30-dB history cells (60 environment references x 2 methods, 120 reference records total)."
+    },
+    "matrix": "For each exact environment/origin, construct one [4 users, 8 Tx, 32 subcarriers] downlink matrix. Evaluate all four users together; do not split or drop users.",
+    "clean_references": {
+      "Perfect": "Clean future target channel used as the ideal prediction reference.",
+      "Outdated": "Clean channel at the observed origin, without added observation noise."
+    },
+    "streaming": "One verified test environment and one aligned prediction chunk at a time. Retain environment summaries and identities only; do not save full predictions or noise caches. The Perfect/Outdated results are evaluated in the 10-dB history cell once per environment; 20- and 30-dB cells must verify and reuse the same-speed, same-environment receipt by SHA-256.",
+    "required_environment_metrics": [
+      "mean_sum_se_bps_hz",
+      "mean_beam_efficiency",
+      "mean_beam_loss_db",
+      "precoder_fallback_subcarriers",
+      "su_fallback_user_subcarriers",
+      "invalid_true_user_subcarriers",
+      "n_link_origins"
+    ]
+  },
+  "analysis_boundary": {
+    "experimental_unit": "independent formal environment",
+    "summary": "Per-environment physical NMSE and RZF metrics; origins/users/subcarriers are within-environment observations, not independent replicates.",
+    "claim_limit": "Descriptive receiver-link consequences under this fixed A1 noise recipe only. Do not infer causal effects or tune from formal test results."
+  },
+  "noise_trained_lite_drafts": "noise_trained_lite_protocol_draft.json"
+}

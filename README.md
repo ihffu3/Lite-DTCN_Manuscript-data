@@ -1,21 +1,37 @@
 # Lite-DTCN_Manuscript-data
 
-This repository contains a selected, traceable release of first-party code and summary data for the clean-history CSI-prediction baseline and its completed A1/A6/A7/C2/A4 analyses. It is an archival research artifact, not a turnkey reproduction package.
+This repository contains selected, traceable first-party code and summary data for the Lite-DTCN CSI-prediction study. It is an archival research release, not a turnkey reproduction package. This release includes the A2e, noise-trained Lite, A1 link, ESPRIT, A7 Lite-history and control summaries alongside the earlier analyses.
 
 ## Scope and status
 
-The clean-history baseline uses noise-free CSI histories as prediction inputs. The repository includes selected model, baseline, metric, and link-evaluation source files, QuaDRiGa data-generation adapters, frozen protocol/configuration records, and summary CSVs. The release includes completed A1 noise-sensitivity, A6 classical-challenge, A7, and C2/A4 follow-ups. These are separate analyses with their own stated scopes.
+The clean-history baseline uses noise-free CSI histories as prediction inputs. The repository includes selected model, baseline, metric, and link-evaluation source files, QuaDRiGa data-generation adapters, frozen protocol/configuration records, and summary CSVs. The package includes completed A1 noise-sensitivity and noisy-link analyses, A2e candidate/formal summaries, noise-trained Lite comparisons, D1/A6 ESPRIT comparisons, A7 and Lite-history follow-ups, joint-Wiener and width controls, power correlations, and C2/A4 follow-ups. These are separate analyses with their own stated scopes.
 
-Raw CSI datasets, channel/prediction matrices, and trained checkpoints/weights are not included or uploaded. The CSVs contain aggregate or per-environment metrics and provenance hashes. The summary ledger points to upstream aggregate filenames in its `source_file` column, but the underlying `core_main_nmse.csv` and `core_link_metric_panels.csv` files were not available in this release directory. Some configuration paths are preserved as archival provenance and may refer to the original author's workspace; they are not portable job files.
+Raw CSI datasets, channel/prediction matrices, trained checkpoints/weights, per-run receipt JSONs, and private logs are not included. The CSVs contain aggregate or per-environment metrics and provenance hashes. The current `facts.csv` has 4,936 records, `figure_point_map.csv` has 546 points, and `table_statistic_map.csv` has 433 table-statistic mappings. The previously released 4,049-record fact ledger, 425-point map, and manifest snapshot are preserved under `data/summary/archive_20261028/`; the root `manifest.json` is the active verifier input. The formerly missing `core_main_nmse.csv` and `core_link_metric_panels.csv` are now included, along with `classical_d1_environment_metrics.csv`; `result_file_map.csv` resolves ledger source references to included files or records exclusions. Some configuration paths remain archival provenance and are not portable job files.
 
 ## Contents
 
 - `revision/code/core`, `models`, `baselines`, and `link`: selected first-party implementations.
 - `revision/code/data/*.m`: first-party MATLAB adapters for generating development/formal groups and densifying QuaDRiGa tracks. The adapters require an explicit execution flag and external QuaDRiGa installation. QuaDRiGa source code is not redistributed here.
 - `config/`: data contracts, formal protocol, and resource-limited neural/classical candidate choices.
-- `data/summary/`: the fact ledger, development-candidate validation scores, complete shared-model grid, classical/neural rate gains, derived comparison tables, A1/A6/A7/C2/A4 summaries and environment-level metrics, and `figure_point_map.csv` with 425 figure-point mappings.
+- `data/summary/`: the current facts, figure-point and table-statistic ledgers; core NMSE, link-metric and classical D1 source summaries; A2e dev/formal tables (including 12 fit summaries and 360 environment rows); noise-trained Lite tables (480 environment rows) and PC-Wiener cross-comparisons; A1 noisy-link/RZF tables; ESPRIT D1/challenge tables; A7 Lite-history and bootstrap tables; joint-Wiener, width-128, power and iTransformer control tables; source/result maps; and the dated 2026-10-28 ledger snapshot.
 - `scripts/replot_public_summary.py`: replot the included NMSE–spectral-efficiency trade-off CSV without CSI or neural-inference packages.
+- `revision/analysis_archive/code/` and `revision/analysis_archive/protocols/`: selected analysis scripts and protocol records, indexed in `data/summary/analysis_source_index.csv`. Their original input data and model artifacts are not all included.
+- `data/summary/result_file_map.csv` and `release_identity.csv`: map ledger sources and record pre-publication manuscript-snapshot hashes plus the previous public commit; the PDFs themselves are not part of this repository.
 - `scripts/verify_manifest.py` and `manifest.json`: verify the byte size and SHA-256 digest of released source/data files; generated figures are excluded.
+
+## Release identity
+
+The previous public repository commit `ec0df9a` is recorded in `data/summary/release_identity.csv` as the earlier public snapshot. The manuscript availability statement for this release will identify the actual repository commit created for this publication; no commit hash is predeclared here. The two PDF hashes in that CSV identify manuscript snapshots compiled before the repository-link update, not the final PDFs for this release. Final PDF identities are recorded in the local audit outside this repository. Manuscript PDFs and source are not included here.
+
+## Added result tables
+
+- **A2e iTransformer candidate/formal results.** `a2e_dev_candidate_results.csv` contains 8 development candidate rows. The formal summary has 12 fit rows, 4 horizon/seed dispersion rows, and `a2e_formal_per_environment.csv` has 360 environment rows across 12 fits. `a2e_baseline_reference_120.csv` contains 120 baseline reference rows. `a2e_selected_cost_source.csv` retains the two cost values and source hash while omitting the local JSON path.
+- **Noise-trained Lite.** `noise_trained_lite_per_environment.csv` contains 480 environment rows in 16 groups of 30. The 32 rows in `noise_trained_lite_figure_source.csv` were checked against equal-environment means from those rows. The package also includes 16 paired contrasts and 24 PC-Wiener cross-comparison rows. The original per-environment receipt JSONs are not included; row-level provenance hashes remain in the CSV.
+- **A1 noisy-link/RZF analysis.** The package contains 36 method-condition summaries, 72 figure-source rows, 6 paired rate contrasts, 1,080 method-environment rows, and 120 reference rows. The environment/reference copies omit local `receipt_path` fields but retain result and receipt hashes.
+- **ESPRIT comparisons.** The D1 validation-selection source has 20 rows, the held-out D1 source has 360, and the D1 comparison table has 12. The A6 challenge package has 180 held-out rows and 9 summary rows. Internal verification/status JSONs are omitted; the included outcome tables are mapped in `result_file_map.csv`.
+- **A7 Lite-history and controls.** The package includes 9 Lite-history points, 6 paired contrasts, 3 parameter-count rows, 24 composite source rows, 270 environment bootstrap-input rows, and 6 paired composite contrasts. The joint-Wiener results include 60 paired environment rows and 2 summary rows. The width-128 H1 result includes 30 environment rows and a one-row descriptive summary; its historical baseline comparison is not a fresh matched replay and does not report a p-value. Power analysis contains 153 panel correlations, and the iTransformer control tables contain 4 summary and 2 paired rows.
+
+These files preserve completed results and selected analysis/protocol material. They do not provide full training entry points, raw CSI, checkpoints, or all per-run receipts, and they do not claim exact CSI regeneration or automatic reproduction of the manuscript.
 
 ## Metric definitions
 
@@ -80,6 +96,10 @@ python scripts/verify_manifest.py
 
 Neither command regenerates CSI, retrains models, or reproduces the full manuscript analysis.
 
-## Reuse
+## Reuse and licenses
 
-No open-source license has been selected for this repository. Reuse permissions remain subject to applicable copyright until the repository owner adds license terms.
+First-party code under `revision/code/`, `revision/analysis_archive/code/`, and `scripts/` is licensed under the MIT License in `LICENSE`. Author-owned summary and mapping CSVs under `data/summary/` are licensed under CC BY 4.0; attribution and scope are stated in `DATA_LICENSE.md` and `LICENSE_SCOPE.md`. CC BY 4.0 permits sharing and adaptation, including commercial use, with appropriate attribution, a license link, and an indication of changes ([official deed](https://creativecommons.org/licenses/by/4.0/); [legal code](https://creativecommons.org/licenses/by/4.0/legalcode)).
+
+Neither grant covers the manuscript PDFs or source, third-party materials, external dependencies, or QuaDRiGa. Protocol JSONs are archival records and are outside these license scopes.
+
+`data/summary/result_file_map.csv` gives the source-to-release path for ledger records and selected follow-ups. `data/summary/analysis_source_index.csv` maps the archived analysis scripts and protocols. The current `manifest.json` covers all included files except generated figures and itself; use `python scripts/verify_manifest.py` to check it.

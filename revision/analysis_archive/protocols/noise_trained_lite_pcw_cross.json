@@ -1,0 +1,110 @@
+{
+  "schema": "noise-lite-vs-a1-pcw-paired-analysis-v1",
+  "status": "source_prepared_waiting_for_root_review_and_complete_a1_v2",
+  "estimand": {
+    "contrast": "fresh noise-trained Lite recipe minus A1 PC-Wiener (A1 method LMMSE), paired within environment",
+    "favorable_sign": {
+      "nmse_db": "negative favors fresh Lite",
+      "rzf_sum_se": "positive favors fresh Lite"
+    },
+    "test_access": "fixed post-hoc comparison in a project whose formal test outcomes were historically accessed; not blind and not causal"
+  },
+  "inputs": {
+    "noise_lite": {
+      "analysis_reader_path": "revision/paper/remaining_fixes_20261029/noise_trained_lite_v1/analysis_v1/analyze_noise_replay.py",
+      "analysis_reader_sha256": "8bc0feafb1fcaa714467306c5716c481d61205b61181b1fab92246e2a7069bc4",
+      "analysis_protocol_path": "revision/paper/remaining_fixes_20261029/noise_trained_lite_v1/analysis_v1/protocol.json",
+      "analysis_protocol_sha256": "5f9ccda32fbe8bae65bb027777b330525d6a31ca8bcc0a34a0e29831ec83a7ae",
+      "evaluation_runner_path": "revision/paper/remaining_fixes_20261029/noise_trained_lite_v1/evaluation_v1/runner.py",
+      "evaluation_runner_sha256": "cc8068aec8eaf070974a0f9400252ce38b851133d30eae3e9c65b5166eccb50b",
+      "evaluation_protocol_path": "revision/paper/remaining_fixes_20261029/noise_trained_lite_v1/evaluation_v1/protocol.json",
+      "evaluation_protocol_sha256": "f4352e6940b699ff15ed8015c1ee9ae7b7dca91451ebfdaf02a4b92169704f99",
+      "pretest_manifest_path": "revision/paper/remaining_fixes_20261029/noise_trained_lite_v1/evaluation_v1/manifests/PRETEST_noise_trained_lite_c8e2a156fb51a7ac.json",
+      "required_reader": "load_validated_replay; require exact manifest, CPU smoke, root approval, replay identity, complete 480-row summary and every row receipt before returning records"
+    },
+    "a1_pcw": {
+      "analysis_reader_path": "revision/paper/remaining_fixes_20261029/a1_noisy_link_v1/analysis_v2/analyze_a1_noisy_link_v2.py",
+      "analysis_reader_sha256": "263b0f5f495d5a90b171989364ac7b6390126d3ea3dadb8353e274bc3e82295f",
+      "runner_path": "revision/paper/remaining_fixes_20261029/a1_noisy_link_v1/runner_v2.py",
+      "runner_sha256": "2a54638667485694282e0099a3de14305c47bae9d2d60f52b2595ec2ae71c152",
+      "protocol_path": "revision/paper/remaining_fixes_20261029/a1_noisy_link_v1/protocol.json",
+      "protocol_sha256": "85ebc5c18b43d45d67014f1b43f71de8e8afe14fcad38df12e394b667a5e387c",
+      "results_directory": "revision/paper/remaining_fixes_20261029/a1_noisy_link_v1/results_v2",
+      "required_reader": "read_complete_marker first, then analyze_completed_run; require the exact six-cell completion ledger, all 1080 model rows and their bound environment receipts",
+      "pcw_method": "LMMSE",
+      "pcw_label": "PC-Wiener"
+    },
+    "shared_noise_sources": {
+      "formal_noise_path": "revision/code/runner/formal_noise.py",
+      "formal_noise_sha256": "45e061035fc3c6fdc3c867e9b506a2b0d7139a3aafb7cfbd7fe43753abf77438",
+      "formal_observation_noise_path": "revision/code/runner/formal_observation_noise.py",
+      "formal_observation_noise_sha256": "845a0ea0a95a32f30476efcc2d89d5bb93981aecc4f5a02c93bae1004160f3f2",
+      "formal_evaluate_sha256": "73d4474d17b9140fc9c35efa6eb2b128a7d52ceeba2119140fa507c48575609d",
+      "formal_classical_evaluate_sha256": "89c28cf976a0a54ea831af8c617e333a1ccc62d69b259abe715ab90db366688a"
+    }
+  },
+  "grid": {
+    "training_recipes": ["clean", "noiseaug"],
+    "metrics": ["nmse_db", "rzf_sum_se"],
+    "speeds_kmh": [30, 300],
+    "history_snr_db": [10, 20, 30],
+    "environments_per_speed": 30,
+    "paired_contrasts": 24,
+    "environment_pairs_per_contrast": 30,
+    "row_count_per_environment": 15912,
+    "a1_model_rows_required": 1080,
+    "noise_lite_rows_required": 480
+  },
+  "pairing_contract": {
+    "alignment_fields": [
+      "speed_kmh", "history_snr_db", "environment_id", "mat_sha256", "job_sha256",
+      "qa_receipt_sha256", "full_prediction_row_count", "target_energy"
+    ],
+    "target_energy_match": "math.isclose(rel_tol=1e-12, abs_tol=1e-18); noise-Lite cells must also retain the same exact target-energy value within each environment",
+    "global_channel_scale": "For each speed, the A1 fit channel_scale must equal the frozen noise-Lite replay snapshot global channel_scale exactly; reject any mismatch.",
+    "normalizer": "A1 fit normalizer SHA must equal the noise-Lite replay snapshot normalizer SHA.",
+    "receiver_snr_db": 10,
+    "history_noise_seed": 2602236,
+    "history_length": 10,
+    "origin_start": 19,
+    "horizon_steps": 4,
+    "stride": 1,
+    "users_per_origin": 4,
+    "row_identity_failure": "Any missing, duplicate, unexpected, nonfinite, nonpaired, or incomplete row fails the whole comparison; never filter bad rows or select favorable conditions."
+  },
+  "noise_identity_audit": {
+    "transform": "Both frozen evaluators call revision.code.runner.formal_noise.build_noise_history_transform and revision.code.runner.formal_observation_noise.add_paired_history_noise.",
+    "philox_key_fields": ["scheme", "random_seed", "environment_id", "origin", "user_id"],
+    "method_or_source_in_rng_key": false,
+    "time_coordinates": "The transform verifies the observed origin-9 through origin coordinates; the keyed helper draws the same full ten-frame board per environment/origin/user. It does not put the predictor method/source in the RNG key.",
+    "same_observation_condition": "Same raw MAT history and exact global channel_scale, seed, SNR, environment, origin, user, and ten-frame geometry imply identical noise-added history values across A1 PC-Wiener and both fresh Lite recipes. Runtime channel_scale and normalizer equality are fail-closed checks.",
+    "audit_exposure": "A prior repository-wide metadata search returned only A1 result-file paths and method_label lines; no row was opened as a result table, parsed, summarized, or used in this source preparation."
+  },
+  "bootstrap": {
+    "generator": "NumPy PCG64",
+    "draws": 10000,
+    "base_seed": 20261030,
+    "seed_rule": "base_seed + speed_kmh",
+    "shared_resamples": "One 10000 x 30 environment-index matrix per speed is reused for all 12 recipe/history/metric contrasts at that speed.",
+    "interval": "Pointwise percentile 95% interval of the equal-environment paired difference; NumPy linear quantiles.",
+    "inference": "No p-values, no additional significance family, no seed-robustness claim."
+  },
+  "outputs": {
+    "paired_contrasts_csv": "paired_contrasts.csv",
+    "paired_contrasts_rows": 24,
+    "paired_contrasts_columns": [
+      "metric", "training_recipe", "speed_kmh", "history_snr_db", "contrast",
+      "mean_difference", "ci95_low", "ci95_high", "n_environments"
+    ],
+    "verification_json": "verification.json",
+    "output_root": "revision/paper/remaining_fixes_20261029/noise_trained_lite_v1/pcw_cross_comparison_v1/results"
+  },
+  "access_boundary": {
+    "status": "source_only_until_root_review_and_both_complete_readers_pass",
+    "this_preparation_opens_a1_result_rows": false,
+    "this_preparation_computes_real_contrasts": false,
+    "consumer_opens_mat_or_replays_models": false,
+    "consumer_requires_root_verified_complete": true,
+    "posthoc_disclosure_required": true
+  }
+}

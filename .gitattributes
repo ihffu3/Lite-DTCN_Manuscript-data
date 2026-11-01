@@ -1,1 +1,2 @@
-* text eol=lf
+# Preserve bytes covered by the SHA-256 manifest.
+* -text

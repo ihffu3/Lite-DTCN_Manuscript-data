@@ -1,0 +1,7 @@
+speed_kmh,contrast,mean_delta_nmse_db,ci95_low_db,ci95_high_db,n_paired_environments,bootstrap_replicates,bootstrap_seed,interpretation
+30,L5 minus L2,0.6476103157251362,0.4432397917461511,0.8584678607194902,30,10000,20261059,paired descriptive contrast; one training seed; no inferential test
+30,L10 minus L2,-2.355897025911172,-2.4892889855396176,-2.216261922636424,30,10000,20261059,paired descriptive contrast; one training seed; no inferential test
+120,L5 minus L2,-0.2900990635294714,-0.3495580213777959,-0.2317620250689822,30,10000,20261149,paired descriptive contrast; one training seed; no inferential test
+120,L10 minus L2,-0.4227531965501735,-0.4888016397878688,-0.3551391429707328,30,10000,20261149,paired descriptive contrast; one training seed; no inferential test
+300,L5 minus L2,-0.15196980816283231,-0.20795683761775685,-0.09605452200482432,30,10000,20261329,paired descriptive contrast; one training seed; no inferential test
+300,L10 minus L2,-0.21697624095502827,-0.27766291158588347,-0.15452332397381108,30,10000,20261329,paired descriptive contrast; one training seed; no inferential test

@@ -1,0 +1,272 @@
+{
+  "schema": "noise-trained-lite-paired-cpu-protocol-v1",
+  "protocol_id": "noise_augmented_lite_l10_d1_v1",
+  "status": "ready_for_root_review_no_training_started",
+  "purpose": "Prepare matched CPU clean-history and noise-augmented Lite L10 fits at 30 and 300 km/h, then compare both training recipes on clean and paired noisy test histories after a separate root-approved fixed replay.",
+  "scope_boundary": {
+    "comparison": "Primary comparison is fresh clean-history versus 10/20/30 dB history-noise-augmented training at the same speed. All four fits share CPU backend, seed, initialization, first clean sample batch, optimizer budget, and the same fixed 20 dB noisy validation selector.",
+    "claim_limit": "Describe the paired training-recipe difference under the fixed 20 dB validation selection rule. This does not identify an optimal noise-level policy, prove seed robustness, or isolate robustness across other selection rules.",
+    "replication": "One seed per speed; do not claim seed robustness or perform inferential tests.",
+    "test_access": "Formal test artifacts were accessed historically. This follow-up remains non-blind; training and validation selection must exclude test, and later fixed test replay requires its own exact root approval."
+  },
+  "formal_data": {
+    "manifest": "revision/data/formal/manifest.json",
+    "manifest_sha256": "f9fb604cc1d89ecb58a71c2732a454623b3b717489d4276ed1929dd04752d15e",
+    "input_inventory": "revision/reports/algorithm_upgrade_20261020/input_manifest_v2.json",
+    "input_inventory_sha256": "57135099f1212de42c60e8fe800989f35d51f81ccb84bfce15f43b61a0648265",
+    "training_statistics": "revision/reports/algorithm_upgrade_20261020/training_statistics.json",
+    "training_statistics_sha256": "82b6ef9562250a8be54413ec753e519af836e0cd9cd883958a010ff5eb4f84f0",
+    "normalizer_sha256": "dbf920f617f74305c7d90141600f3fc0de43747e1124f90731af95a029423fca",
+    "train_validation_inventory": {
+      "train_environments_all_speeds": 90,
+      "validation_environments_all_speeds": 24,
+      "test_files_opened_during_training": false
+    }
+  },
+  "a7_preflight_reuse": {
+    "preflight_path": "revision/paper/remaining_fixes_20261029/training/a7b_lite_history_steps4_v1/run_outputs/preflight.json",
+    "preflight_sha256": "aaf80038a035a2068987251c5369d667a5515cc7f8df9d03dc6855b379cbeca4",
+    "source_manifest_path": "revision/paper/remaining_fixes_20261029/training/a7b_lite_history_steps4_v1/run_outputs/source_manifest.json",
+    "source_manifest_sha256": "af471679d59ca676d95257b429b3eca98caa8cc176b716f7a90291a566c4b0fa",
+    "reuse_rule": "Reuse the A7 hash-only train/validation inventory as data provenance only, never its fitted weights as the primary control. Verify exact preflight/source hashes, sidecars, execution identity, all nine completed receipts/configs/best/last/mirror hashes, 90/24 inventory, normalizer, and test_files_opened=[]; copy immutable bytes into this run output before fitting."
+  },
+  "shared_recipe": {
+    "family": "D1_main",
+    "speeds_kmh": [
+      30,
+      300
+    ],
+    "history_length": 10,
+    "horizon_steps": 4,
+    "sample_step_ms": 0.5,
+    "horizon_ms": 2.0,
+    "origin_start": 19,
+    "training_stride": 1,
+    "validation_stride": 4,
+    "windows_per_epoch": 4096,
+    "batch_size": 128,
+    "steps_per_epoch": 32,
+    "epoch_cap": 100,
+    "early_stopping_patience": 15,
+    "seed": 42,
+    "loss": "C0 normalized RI MSE over clean future targets",
+    "optimizer": {
+      "name": "Adam",
+      "learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "scheduler": "none"
+    },
+    "model": {
+      "family": "Lite-DTCN",
+      "constructor": "FullWindowLiteDTCN(history_length=10,n_tx=8,n_freq=32,node_dim=16,temporal_hidden=32,residual=False)",
+      "trainable_parameters": 23472
+    },
+    "normalizer": "Reuse the exact A7 global RI mean/std fitted on only the 90 D1 training environments; never refit from validation or test.",
+    "channel_scale": {
+      "rule": "Use the single global C0 channel_scale fitted on all 90 D1 training environments across speeds. Reconstruct g as sqrt(sum(mean_RI^2 + std_RI^2)) from the equal-environment train-only RI normalizer moments; never replace it with a 30-environment speed-subset RMS.",
+      "expected_value": 6.0079268032373814e-06,
+      "reconciliation": "Require the exact hash-bound training_statistics.json, exact 90 training IDs in both the normalizer and energy inventory, fit_splits=[train], equal-environment weighting, and agreement of stored global channel_scale with sqrt(sum(mean_RI^2 + std_RI^2)) within relative tolerance 1e-12. Verify the source-definition file hashes. Also require the 30/300 km/h historical C0 manifests to bind this same global value. Speed-subset RMS is logged only as a diagnostic.",
+      "30_kmh_run_manifest": "revision/config/algorithm_upgrade_20261020/reused_inputs/C0_30_run_manifest.json",
+      "30_kmh_run_manifest_sha256": "0f74ad4d5eb1346d46a60c2f801c7a71fea5524ec595157ed7b446899d9cc36c",
+      "300_kmh_run_manifest": "revision/config/algorithm_upgrade_20261020/reused_inputs/C0_300_run_manifest.json",
+      "300_kmh_run_manifest_sha256": "38ac8a1f78411a21fd36e06df44de2052a39e33df2ed03d75d48fa52e843438c",
+      "source_definition": [
+        {
+          "path": "revision/code/algorithm_upgrade_20261020/audit_data.py",
+          "sha256": "ba9c4c8be343c0cc50f3213499ac6fb951e3f9ff535afa18fac7934c28f2d8ba",
+          "definition": "sqrt(mean over all 90 train environments of each environment mean |H|^2)"
+        },
+        {
+          "path": "revision/code/core/normalization.py",
+          "sha256": "02cb56a110b6083ec351627bbc4565e31aacbb378b81225990968fac298d5cd2",
+          "definition": "equal-environment RI mean/std; global second moment equals sum(mean_RI^2 + std_RI^2)"
+        }
+      ]
+    }
+  },
+  "history_noise_training": {
+    "snr_db": [
+      10,
+      20,
+      30
+    ],
+    "allocation_per_epoch": {
+      "windows_per_epoch": 4096,
+      "counts": "1366,1365,1365; rotate the extra window across SNR levels in epoch order",
+      "schedule_rng": "noise_augmentation_rng, independent of the uniform sampler RNG"
+    },
+    "complex_variance": "global_channel_scale^2 * 10^(-assigned_history_snr_db/10)",
+    "component_std": "global_channel_scale * 10^(-assigned_history_snr_db/20) / sqrt(2)",
+    "domain": "Add independent complex Gaussian perturbations to raw observed histories before train-only RI normalization. Keep every future target clean and unchanged.",
+    "sampler_rng_seed": 42,
+    "noise_augmentation_rng_seed": 2602236,
+    "repeat_draws": "Noise is newly generated per sampled window presentation; the noise RNG state is saved and restored separately from the sampler RNG.",
+    "clean_control": "No history perturbation. It uses the same clean sampled histories, first-batch sampler addresses, initialization seed, optimizer, epoch schedule, validation noise, and selection metric as its speed-matched noiseaug fit.",
+    "noise_rng": "One independent NumPy PCG64 Generator seeded 2602236. For each presented row, draw a standard-normal array with the fixed [10,8,32,2] shape and scale it for that row SNR. There are no per-row child generators. Given the same row presentation order, splitting calls into minibatches does not change the noise stream.",
+    "reference_scale": "The single fixed global train-only channel_scale reconstructed from the exact 90-environment normalizer; it is shared by the 30/300 km/h fits, validation, and later test SNR definitions."
+  },
+  "validation_selection": {
+    "history_noise_snr_db": 20,
+    "seed": 2602237,
+    "fixed_across_epochs": true,
+    "noise_scope": "Apply fixed 20 dB complex AWGN to raw validation histories using the same global training channel_scale for every recipe and epoch; future targets remain clean.",
+    "metric": "Equal-environment mean physical linear NMSE across the eight speed-matched validation environments.",
+    "rule": "Strict minimum; stop after 15 epochs without improvement. Regenerate identical address-paired validation input noise from the fixed seed for every environment/origin/user each epoch; the noise is invariant to batching/order. Never inspect test to select a checkpoint.",
+    "address_key": "Fixed seed + environment ID + origin + user; therefore validation noise is invariant to evaluation batch size and processing order.",
+    "comparison": "All four clean/noise fits use the same fixed 20 dB validation condition, seed, eight environments, equal-environment mean physical linear NMSE, and strict-minimum selection rule.",
+    "noise_generator": "Validation-only SHA-256-addressed NumPy PCG64 noise keyed by seed 2602237, environment ID, origin, and user. This differs from the frozen A1/Philox test-history transform; do not reuse the validation seed or transform for test."
+  },
+  "precision_and_resources": {
+    "device": "local CPU only for all four primary fits",
+    "cpu_threads": 2,
+    "gpu_used": false,
+    "gpu_memory_cap_gib": 0.0,
+    "gpu_training_concurrency": 0,
+    "deterministic_algorithms": true,
+    "tf32_matmul_allow": false,
+    "tf32_cudnn_allow": false,
+    "cudnn_benchmark": false,
+    "runtime_recording": "Set both TF32 flags explicitly in each child process and record actual backend values in config, execution record, and last checkpoint. CPU backend is shared by the four primary clean/noise fits; existing A7 GPU fits are secondary references, not the matched control."
+  },
+  "checkpoint_and_recovery": {
+    "authoritative_checkpoint": "Atomic last.pt after every completed epoch.",
+    "last_state_includes": [
+      "current model state",
+      "best selected model state and epoch/score",
+      "full learning curve through the committed epoch",
+      "optimizer state",
+      "sampler RNG state and per-environment/row counters",
+      "noise augmentation RNG state",
+      "Python, NumPy, Torch CPU RNG state and an empty CUDA RNG list because every primary fit is CPU-only",
+      "stateless validation address seed and algorithm",
+      "early stopping counters",
+      "run/config/source/preflight hashes and actual precision flags"
+    ],
+    "resume_rule": "Resume only from an identity-matched last.pt at an epoch boundary. Restore model with strict=True, optimizer, all RNGs, sampler counters, best state, and full curve. Rebuild a stale best/mirror or derived curve only from the authoritative last.pt and preserve changed artifacts as hash-named snapshots.",
+    "selected_model": "best.pt stores the strict-validation-minimum model; mirror best.pt must match its SHA-256."
+  },
+  "clean_comparator": {
+    "primary_control": "Fresh clean-history fit from scratch at the same speed on CPU under the same seed and validation/selection rule.",
+    "run_id_pattern": "lite_noiseexp_clean_s{speed}_L10_steps4_seed42_cpu",
+    "historical_a7_role": "The existing A7 L10 checkpoint was trained on CUDA and is secondary context only; it is not the primary matched control."
+  },
+  "runs": [
+    {
+      "run_id": "lite_noiseexp_clean_s30_L10_steps4_seed42_cpu",
+      "speed_kmh": 30,
+      "history_recipe": "clean",
+      "train_environment_count": 30,
+      "validation_environment_count": 8,
+      "history_length": 10,
+      "horizon_steps": 4,
+      "horizon_ms": 2.0,
+      "origin_start": 19,
+      "seed": 42,
+      "fit_from_scratch": true,
+      "channel_scale_reference": "same global 90-train C0 channel_scale"
+    },
+    {
+      "run_id": "lite_noiseexp_noiseaug_s30_L10_steps4_seed42_cpu",
+      "speed_kmh": 30,
+      "history_recipe": "noiseaug",
+      "train_environment_count": 30,
+      "validation_environment_count": 8,
+      "history_length": 10,
+      "horizon_steps": 4,
+      "horizon_ms": 2.0,
+      "origin_start": 19,
+      "seed": 42,
+      "fit_from_scratch": true,
+      "channel_scale_reference": "same global 90-train C0 channel_scale"
+    },
+    {
+      "run_id": "lite_noiseexp_clean_s300_L10_steps4_seed42_cpu",
+      "speed_kmh": 300,
+      "history_recipe": "clean",
+      "train_environment_count": 30,
+      "validation_environment_count": 8,
+      "history_length": 10,
+      "horizon_steps": 4,
+      "horizon_ms": 2.0,
+      "origin_start": 19,
+      "seed": 42,
+      "fit_from_scratch": true,
+      "channel_scale_reference": "same global 90-train C0 channel_scale"
+    },
+    {
+      "run_id": "lite_noiseexp_noiseaug_s300_L10_steps4_seed42_cpu",
+      "speed_kmh": 300,
+      "history_recipe": "noiseaug",
+      "train_environment_count": 30,
+      "validation_environment_count": 8,
+      "history_length": 10,
+      "horizon_steps": 4,
+      "horizon_ms": 2.0,
+      "origin_start": 19,
+      "seed": 42,
+      "fit_from_scratch": true,
+      "channel_scale_reference": "same global 90-train C0 channel_scale"
+    }
+  ],
+  "post_training_test_plan": {
+    "status": "closed_pending_four_fits_and_root_approval",
+    "input_history_conditions": [
+      "clean_infinite_snr",
+      10,
+      20,
+      30
+    ],
+    "target_condition": "Clean future targets at every input condition.",
+    "noise_rule": "For 10/20/30 dB, use the exact frozen A1 history-noise transform: Philox with seed 2602236 and the single global train-only channel_scale, paired by environment/origin/user/time across clean/noise-trained fits. Clean-infinite-SNR inputs receive no noise. Do not reuse validation seed 2602237 or its SHA-addressed PCG64 transform.",
+    "panel": "2 speeds x 2 CPU-fitted recipes x 4 input-history conditions x 30 environments = 480 environment-condition rows.",
+    "evaluation": {
+      "history_length": 10,
+      "horizon_steps": 4,
+      "horizon_ms": 2.0,
+      "origin_start": 19,
+      "stride": 1,
+      "metrics": [
+        "physical environment NMSE",
+        "receiver-10-dB RZF mean sum spectral efficiency",
+        "fallback/invalid counts"
+      ],
+      "experimental_unit": "independent environment; origins, users, and subcarriers are within-environment observations"
+    },
+    "selection_boundary": "No test-based selection, tuning, or protocol changes. Report the clean-to-noisy-input degradation separately from the clean-trained-versus-noiseaug training-recipe comparison. The fixed 20 dB validation selector does not establish an optimal noise-level policy.",
+    "requires": [
+      "all four fit receipts complete",
+      "all four best checkpoints and mirrors hash-matched",
+      "separate root approval bound to the fixed manifest and runner hashes"
+    ],
+    "implementation_state": "This training runner does not read or evaluate test data. A separate fixed evaluator must be reviewed after both fitted bundles are frozen.",
+    "matched_comparison": "Primary fit-recipe comparison is noiseaug versus clean-history at the same speed, with both fitted on CPU and selected under the identical fixed 20 dB validation protocol. Existing CUDA-fitted A7 checkpoints are secondary context only.",
+    "noise_reference_scale": "The same hash-bound global training_statistics.json channel_scale defines SNR for both speeds, validation, and test."
+  },
+  "launch_review_contract": {
+    "required_file": "ROOT_LAUNCH_REVIEW.json",
+    "required_fields": [
+      "status containing approved",
+      "protocol_sha256",
+      "runner_sha256",
+      "run_ids in protocol order",
+      "preflight_sha256"
+    ],
+    "root_review_required_before_any_gpu_work": false,
+    "root_review_required_before_any_fit": true,
+    "run_ids": [
+      "lite_noiseexp_clean_s30_L10_steps4_seed42_cpu",
+      "lite_noiseexp_noiseaug_s30_L10_steps4_seed42_cpu",
+      "lite_noiseexp_clean_s300_L10_steps4_seed42_cpu",
+      "lite_noiseexp_noiseaug_s300_L10_steps4_seed42_cpu"
+    ],
+    "concurrency": "A single OS-managed exclusive output lock serializes all four child fits; it is released automatically when the process exits."
+  },
+  "runtime_paths": {
+    "python": "[local path omitted; input not included]",
+    "output_directory": "revision/paper/remaining_fixes_20261029/noise_trained_lite_v1/run_outputs",
+    "local_only": true,
+    "server_connections": false,
+    "packaging": false,
+    "publication": false
+  }
+}

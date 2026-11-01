@@ -1,0 +1,136 @@
+{
+  "schema": "fixed-checkpoint-replay-v1",
+  "status": "awaiting_root_code_review",
+  "scope": "Post-hoc physical replay for the independently gated A2d iTransformer family and A7 Lite history family. Existing formal-test outcomes were accessed historically; no new test-based selection or retuning is permitted.",
+  "formal_data": {
+    "manifest": "revision/data/formal/manifest.json",
+    "manifest_sha256": "f9fb604cc1d89ecb58a71c2732a454623b3b717489d4276ed1929dd04752d15e",
+    "family": "D1_main",
+    "split": "test",
+    "expected_environments_per_speed": 30,
+    "expected_time_samples": 4001,
+    "sample_interval_ms": 0.5,
+    "n_users": 4,
+    "n_antennas": 8,
+    "n_subcarriers": 32,
+    "horizon_steps": 4,
+    "horizon_ms": 2.0,
+    "origin_start": 19,
+    "stride": 1,
+    "batch_origins": 32,
+    "normalizer_sha256": "dbf920f617f74305c7d90141600f3fc0de43747e1124f90731af95a029423fca",
+    "training_statistics": "revision/reports/algorithm_upgrade_20261020/training_statistics.json",
+    "training_statistics_sha256": "82b6ef9562250a8be54413ec753e519af836e0cd9cd883958a010ff5eb4f84f0",
+    "train_validation_inventory_sha256": "57135099f1212de42c60e8fe800989f35d51f81ccb84bfce15f43b61a0648265",
+    "verified_mat_loader": "revision/paper/reviewer_fix_20261028/experiments/c2/formal_data_loader.py::load_verified_record",
+    "environment_evaluator": "revision/code/algorithm_upgrade_20261020/evaluation.py::evaluate_environment",
+    "mat_access_rule": "Freeze records manifest-declared test MAT paths and hashes only. It must not read or hash a test MAT. A run may open a test MAT only after the matching family manifest and root approval have been verified."
+  },
+  "families": {
+    "itransformer": {
+      "review_item": "A2d",
+      "training_protocol": "revision/paper/remaining_fixes_20261029/training/a2d_itransformer_steps4_v2/training_protocol_v2.json",
+      "training_protocol_sha256": "2b06a6edda0c9920580b563887e05ece762e9b4a3393353a09bbe931bb5319b5",
+      "training_source_manifest": "revision/paper/remaining_fixes_20261029/training/a2d_itransformer_steps4_v2/run_outputs/source_manifest.json",
+      "training_source_manifest_sha256": "546f9c0343cb31176520513ca5c0f658f925709a5876ec4e5d3b989ef8fdff35",
+      "run_root": "revision/paper/remaining_fixes_20261029/training/a2d_itransformer_steps4_v2/run_outputs",
+      "run_ids": [
+        "itransformer_s30_steps4_c0_seed42",
+        "itransformer_s30_steps4_c1_seed42",
+        "itransformer_s300_steps4_c0_seed42",
+        "itransformer_s300_steps4_c1_seed42"
+      ],
+      "model": {
+        "constructor": "revision.code.baselines.itransformer.build_itransformer(config='legacy_adaptation_lr3e4', history_length=10)",
+        "config_id": "legacy_adaptation_lr3e4",
+        "state_key": "model",
+        "history_length": 10,
+        "normalizer_sha256": "dbf920f617f74305c7d90141600f3fc0de43747e1124f90731af95a029423fca"
+      },
+      "baseline_replays": {
+        "30": [
+          {
+            "label": "PC-Wiener",
+            "path": "revision/paper/reviewer_fix_20261028/experiments/c2/restart_local_r2/results/clean_replay_local_v2/PC-Wiener_s30_D1test.json",
+            "sha256": "af2e497f990f694d3da8f25ba976721dea0cdfc1827151b5fc6be7f1e68c1987"
+          },
+          {
+            "label": "Original-F26-Lite",
+            "path": "revision/paper/reviewer_fix_20261028/experiments/c2/restart_local_r2/results/clean_replay_local_v2/Original-F26-Lite_s30_D1test.json",
+            "sha256": "e17a654495e9a6147b1b44281927b2872d0824fb80c327c73d2c1c44dfc18811"
+          }
+        ],
+        "300": [
+          {
+            "label": "PC-Wiener",
+            "path": "revision/paper/reviewer_fix_20261028/experiments/c2/restart_local_r2/results/clean_replay_local_v2/PC-Wiener_s300_D1test.json",
+            "sha256": "9ada6a51ed9ef14bdae1e6df4e8a280a06627d248e28c2261838347e95f05e55"
+          },
+          {
+            "label": "Original-F26-Lite",
+            "path": "revision/paper/reviewer_fix_20261028/experiments/c2/restart_local_r2/results/clean_replay_local_v2/Original-F26-Lite_s300_D1test.json",
+            "sha256": "6ff024af318e5bf109148efef6e455c1b2d64db032a6e48791cc28150c439f40"
+          }
+        ]
+      },
+      "link_metric": {
+        "enabled": true,
+        "scheme": "RZF",
+        "snr_db": 10.0,
+        "aggregation": "per-environment mean_sum_se from evaluate_environment; descriptive joins use exact test environment IDs"
+      }
+    },
+    "lite_history": {
+      "review_item": "A7",
+      "training_protocol": "revision/paper/remaining_fixes_20261029/training/a7b_lite_history_steps4_v1/training_protocol_v1.json",
+      "training_protocol_sha256": "49db6a9b02dd55d5a1d2f9f3f3256c0e38c431f79a616876b913cc2e6cbf7b03",
+      "training_source_manifest": "revision/paper/remaining_fixes_20261029/training/a7b_lite_history_steps4_v1/run_outputs/source_manifest.json",
+      "training_source_manifest_sha256": "af471679d59ca676d95257b429b3eca98caa8cc176b716f7a90291a566c4b0fa",
+      "run_root": "revision/paper/remaining_fixes_20261029/training/a7b_lite_history_steps4_v1/run_outputs",
+      "run_ids": [
+        "lite_fullwindow_s30_L2_steps4_seed42",
+        "lite_fullwindow_s30_L5_steps4_seed42",
+        "lite_fullwindow_s30_L10_steps4_seed42",
+        "lite_fullwindow_s120_L2_steps4_seed42",
+        "lite_fullwindow_s120_L5_steps4_seed42",
+        "lite_fullwindow_s120_L10_steps4_seed42",
+        "lite_fullwindow_s300_L2_steps4_seed42",
+        "lite_fullwindow_s300_L5_steps4_seed42",
+        "lite_fullwindow_s300_L10_steps4_seed42"
+      ],
+      "model": {
+        "constructor": "revision.code.models.candidates.FullWindowLiteDTCN(history_length=L,n_tx=8,n_freq=32,node_dim=16,temporal_hidden=32,residual=False)",
+        "state_key": "model_state",
+        "history_lengths": [2, 5, 10],
+        "normalizer_sha256": "dbf920f617f74305c7d90141600f3fc0de43747e1124f90731af95a029423fca",
+        "evaluator_input_adapter": "evaluate_environment supplies 10 history rows; keep only the final L rows before RI normalization and model inference"
+      },
+      "link_metric": {
+        "enabled": false,
+        "reason": "A7 requires the matched physical NMSE history-length scan only."
+      }
+    }
+  },
+  "replay_contract": {
+    "gate_scope": "family_independent",
+    "fit_requirements": {
+      "itransformer": "All four listed A2d runs must be complete and hash-verified; the A7 family is not a prerequisite.",
+      "lite_history": "All nine listed A7 runs must be complete and hash-verified; the iTransformer family is not a prerequisite."
+    },
+    "checkpoint_policy": "Use the receipt-selected best.pt only. Main and mirrored best.pt must hash-match both the receipt and each other. Never fall back to last.pt.",
+    "state_dict_policy": "Load the family-specific state key with torch.load(map_location='cpu', weights_only=False) and model.load_state_dict(state, strict=True). Missing or unexpected keys fail closed.",
+    "selection_boundary": {
+      "test_based_selection": false,
+      "test_based_tuning": false,
+      "test_based_protocol_changes": false,
+      "inferential_tests": false,
+      "scope": "post-hoc descriptive evidence only; one seed per cell"
+    },
+    "output_directory": "revision/paper/remaining_fixes_20261029/fixed_checkpoint_replay_v1/results",
+    "pretest_manifest_directory": "revision/paper/remaining_fixes_20261029/fixed_checkpoint_replay_v1/manifests",
+    "root_approval_filename": "ROOT_APPROVAL_{family}.json",
+    "cpu_threads": 2,
+    "gpu_memory_cap_gib": 5,
+    "default_device": "cpu"
+  }
+}

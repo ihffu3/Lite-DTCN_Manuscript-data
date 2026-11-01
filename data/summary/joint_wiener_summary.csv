@@ -1,0 +1,3 @@
+speed_kmh,joint_nmse_db,pcw_nmse_db,delta_nmse_db,ci95_low,ci95_high,selected_ridge,n_environments,reference_file,reference_sha256
+30,-37.81908031532932,-36.48169422209947,-1.3373860932298514,-1.9063306028894513,-0.782007539140294,1e-08,30,revision\paper\reviewer_fix_20261028\experiments\c2\restart_local_r2\results\clean_replay_local_v2\PC-Wiener_s30_D1test.json,af2e497f990f694d3da8f25ba976721dea0cdfc1827151b5fc6be7f1e68c1987
+300,-1.5375357521144155,-1.733805697562551,0.1962699454481352,0.15276217516487695,0.2425567752602996,0.01,30,revision\paper\reviewer_fix_20261028\experiments\c2\restart_local_r2\results\clean_replay_local_v2\PC-Wiener_s300_D1test.json,9ada6a51ed9ef14bdae1e6df4e8a280a06627d248e28c2261838347e95f05e55

@@ -1,0 +1,54 @@
+{
+  "schema": "noise-trained-lite-complete-analysis-v1",
+  "status": "source_prepared_waiting_for_complete_approved_replay",
+  "evaluation_source": {
+    "runner_path": "revision/paper/remaining_fixes_20261029/noise_trained_lite_v1/evaluation_v1/runner.py",
+    "runner_sha256": "cc8068aec8eaf070974a0f9400252ce38b851133d30eae3e9c65b5166eccb50b",
+    "protocol_path": "revision/paper/remaining_fixes_20261029/noise_trained_lite_v1/evaluation_v1/protocol.json",
+    "protocol_sha256": "f4352e6940b699ff15ed8015c1ee9ae7b7dca91451ebfdaf02a4b92169704f99"
+  },
+  "input_contract": {
+    "complete_model_condition_environment_rows": 480,
+    "fresh_fits": 4,
+    "fit_seed": 42,
+    "speeds_kmh": [30, 300],
+    "training_recipes": ["clean", "noiseaug"],
+    "history_conditions": ["10", "20", "30", "clean_infinite_snr"],
+    "environments_per_speed": 30,
+    "pairing": "Within speed and environment, require all eight recipe-condition rows, identical MAT SHA-256 and exactly equal saved target energy."
+  },
+  "analysis": {
+    "environment_unit": "independent formal test environment",
+    "metrics": {
+      "nmse_db": "Saved physical environment NMSE dB",
+      "rzf_sum_se": "Saved receiver-10-dB RZF mean sum spectral efficiency in bit/s/Hz"
+    },
+    "history_noise_test_seed": 2602236,
+    "bootstrap": {
+      "generator": "numpy.random.PCG64",
+      "replicates": 10000,
+      "base_seed": 20261030,
+      "seed_rule": "base_seed + speed_kmh",
+      "interval": "Pointwise percentile 95% interval of the equal-environment mean",
+      "resampling": "One 10000 by 30 environment-index matrix per speed, reused for all eight recipe-condition cells, both metrics, and their paired contrasts."
+    },
+    "paired_contrast": "noiseaug minus clean, paired by speed, environment, and history condition; no p-values or seed-robustness claim."
+  },
+  "outputs": {
+    "figure_source_csv": "figure_source.csv",
+    "figure_source_columns": [
+      "metric", "training_recipe", "speed_kmh", "history_condition",
+      "mean", "ci95_low", "ci95_high", "n_environments"
+    ],
+    "figure_source_rows": 32,
+    "paired_contrasts_csv": "paired_contrasts.csv",
+    "paired_contrast_rows": 16,
+    "verification_json": "verification.json"
+  },
+  "access_boundary": {
+    "replay_results_are_posthoc": true,
+    "this_analysis_opens_test_mat_files": false,
+    "this_analysis_reruns_model_or_link_evaluation": false,
+    "test_based_selection_or_tuning": false
+  }
+}

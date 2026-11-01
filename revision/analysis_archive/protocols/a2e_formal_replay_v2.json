@@ -1,0 +1,160 @@
+{
+  "schema": "a2e-formal-fixed-checkpoint-replay-v1",
+  "status": "source_preparation_only",
+  "scope": "Post-hoc descriptive physical-NMSE replay of the completed A2e formal 300 km/h horizon-by-seed fits. Historical formal-test outcomes were accessed earlier; this replay is nonblind and cannot drive training, selection, or retuning.",
+  "mechanical_compatibility_fix": {
+    "issue": "The frozen formal loader returns test-group speed_kmh as the manifest's JSON float 300.0, while replay v1's saved-row reader required a built-in integer. Its loader-side rounded comparison also admitted values such as 300.1.",
+    "resolution": "Replay v2 accepts finite non-boolean integer or float speed metadata only when it equals exactly 300.0; no rounding or coercion is used. The fit grid, checkpoint selection, targets, metrics, and replay cells are unchanged.",
+    "prior_runner": "revision/paper/remaining_fixes_20261029/training/a2e_formal_replay_v1/runner.py",
+    "prior_runner_sha256": "9a063c46510a75144972c7cbe547fecb96edcdde6529ba02d70c08bd2f4f5bec",
+    "prior_protocol": "revision/paper/remaining_fixes_20261029/training/a2e_formal_replay_v1/protocol.json",
+    "prior_protocol_sha256": "1f2bfa0784fe51f3e5f963d7f91747f759aeabbb18ef0eb80e250a0a360e4dd1",
+    "reproduction_log": "revision/paper/remaining_fixes_20261029/resume_parallel_20261029/a2e_formal_replay_20261030_r01/stderr.log",
+    "reproduction_log_sha256": "54d30c748db3b6d348246a87abf1b92cfaf17de8ec15762791c447e7e723bd5d"
+  },
+  "training": {
+    "runner": "revision/paper/remaining_fixes_20261029/training/a2e_itransformer_formal_12seed_v1/a2e_itransformer_formal_12seed_v1.py",
+    "runner_sha256": "2c6f1385abdd795db7e4b3fb003f412dc147f1da9d99ea40c766666fc4f6ca91",
+    "protocol": "revision/paper/remaining_fixes_20261029/training/a2e_itransformer_formal_12seed_v1/training_protocol_v1.json",
+    "protocol_sha256": "a98e73cae71ee69aa20c2c55cd0ea58c4ef49ba86a4e340fd10b919747d0f888",
+    "source_preparation_review": "revision/paper/remaining_fixes_20261029/training/a2e_itransformer_formal_12seed_v1/ROOT_SOURCE_PREPARATION_REVIEW_V3.json",
+    "source_preparation_review_sha256": "a78bad64dd78e37f869d5107b0bdc3a7fb5690ac7b546e9f94215f0082747f3c",
+    "root_launch_review": "revision/paper/remaining_fixes_20261029/training/a2e_itransformer_formal_12seed_v1/ROOT_A2E_FORMAL_12SEED_REVIEW.json",
+    "selection_receipt": "revision/runs/A2e_itransformer_dev_search_20261029_r02/selection_receipt.json",
+    "run_root": "revision/runs/A2e_itransformer_formal_12seed_20261029_r01",
+    "execution": "revision/runs/A2e_itransformer_formal_12seed_20261029_r01/execution.json",
+    "closeout_schema": "a2e-formal-verification-closeout-v1",
+    "required_closeout": "execution.json.latest_verification_closeout_path"
+  },
+  "source_bindings": {
+    "revision/paper/remaining_fixes_20261029/fixed_checkpoint_replay_v1/runner.py": "0b6765cec7c94665a920433d03e2af93928aac3ba469297e2320442ec014be82",
+    "revision/paper/reviewer_fix_20261028/experiments/c2/formal_data_loader.py": "05f4fc9651d4f7a2f2e2b60bf79d824391de995e3152e8d449e96afc6d661446",
+    "revision/paper/remaining_fixes_20261029/noise_trained_lite_v1/runner.py": "a212910a4132846b803fe183a04b7c31c0dcc21e445641a866c5246f6ba06141",
+    "revision/code/algorithm_upgrade_20261020/evaluation.py": "abeea576f2e38267206666bace8ffd846736415b62b22b46635cb995635b955f",
+    "revision/code/baselines/itransformer.py": "9c859f528215e9ce44c6a33f254b11bd22b50f42148b2a919ddd6fa68d657b83",
+    "revision/code/core/arrays.py": "d71cf9838cd28af5a177c23cf44b72989c7b35abb89c8c18154b0918aaca385d",
+    "revision/data/formal/manifest.json": "f9fb604cc1d89ecb58a71c2732a454623b3b717489d4276ed1929dd04752d15e",
+    "revision/reports/algorithm_upgrade_20261020/training_statistics.json": "82b6ef9562250a8be54413ec753e519af836e0cd9cd883958a010ff5eb4f84f0",
+    "revision/paper/remaining_fixes_20261029/training/a2e_formal_replay_v1/runner.py": "9a063c46510a75144972c7cbe547fecb96edcdde6529ba02d70c08bd2f4f5bec",
+    "revision/paper/remaining_fixes_20261029/training/a2e_formal_replay_v1/protocol.json": "1f2bfa0784fe51f3e5f963d7f91747f759aeabbb18ef0eb80e250a0a360e4dd1",
+    "revision/paper/remaining_fixes_20261029/resume_parallel_20261029/a2e_formal_replay_20261030_r01/stderr.log": "54d30c748db3b6d348246a87abf1b92cfaf17de8ec15762791c447e7e723bd5d"
+  },
+  "formal_data": {
+    "manifest": "revision/data/formal/manifest.json",
+    "manifest_sha256": "f9fb604cc1d89ecb58a71c2732a454623b3b717489d4276ed1929dd04752d15e",
+    "family": "D1_main",
+    "split": "test",
+    "speed_kmh": 300,
+    "expected_environments": 30,
+    "expected_environments_per_speed": 30,
+    "expected_time_samples": 4001,
+    "sample_interval_ms": 0.5,
+    "n_users": 4,
+    "n_antennas": 8,
+    "n_subcarriers": 32,
+    "history_length": 10,
+    "origin_start": 19,
+    "stride": 1,
+    "horizon_steps": [
+      1,
+      2,
+      4,
+      8
+    ],
+    "horizon_ms": [
+      0.5,
+      1.0,
+      2.0,
+      4.0
+    ],
+    "rows_per_environment_rule": "4 * (4001 - horizon_steps - 19)"
+  },
+  "training_statistics": {
+    "path": "revision/reports/algorithm_upgrade_20261020/training_statistics.json",
+    "sha256": "82b6ef9562250a8be54413ec753e519af836e0cd9cd883958a010ff5eb4f84f0",
+    "normalizer_sha256": "dbf920f617f74305c7d90141600f3fc0de43747e1124f90731af95a029423fca"
+  },
+  "evaluation_grid": {
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "fit_count": 12,
+    "environments_per_fit": 30,
+    "environment_rows": 360,
+    "one_source_a2d_reuse_allowed_only_for": {
+      "speed_kmh": 300,
+      "horizon_steps": 4,
+      "seed": 42,
+      "selected_config": "d_model128/layers2/learning_rate3e-4",
+      "otherwise": "train_all_12"
+    }
+  },
+  "evaluation": {
+    "verified_loader": "revision/paper/reviewer_fix_20261028/experiments/c2/formal_data_loader.py::load_verified_record",
+    "physical_nmse_core": "revision/code/algorithm_upgrade_20261020/evaluation.py::evaluate_environment",
+    "metric_set": [
+      "physical NMSE",
+      "physical NMSE-dB",
+      "error energy",
+      "target energy",
+      "prediction energy",
+      "origin count",
+      "row count"
+    ],
+    "link_metrics": false,
+    "full_rows_only": true,
+    "data_identity_fields": [
+      "mat_sha256",
+      "job_sha256",
+      "qa_receipt_sha256"
+    ],
+    "device": "cuda:0",
+    "cpu_formal_test_replay": false,
+    "batch_origins": 32
+  },
+  "execution": {
+    "local_only": true,
+    "server_connections": false,
+    "packaging": false,
+    "publication": false,
+    "gpu_memory_cap_gib": 5,
+    "required_device": "cuda:0",
+    "training_queue_must_be_inactive": true,
+    "training_queue_scope": "a2e_formal_training_queue_only",
+    "required_free_memory_gib": 2,
+    "required_stable_memory_samples": 3,
+    "approval_memory_sample_interval_seconds": 15,
+    "runtime_memory_sample_interval_seconds": 1,
+    "cpu_threads": 2,
+    "pinned_interpreter": "[local path omitted; input not included]",
+    "run_lock_helper": "revision/paper/remaining_fixes_20261029/noise_trained_lite_v1/runner.py",
+    "cublas_workspace_config": ":4096:8",
+    "tf32": false,
+    "deterministic_algorithms": true,
+    "exact_root_replay_approval_required": true,
+    "approval_schema": "a2e-formal-replay-root-approval-v1"
+  },
+  "artifacts": {
+    "pretest_manifest_directory": "revision/paper/remaining_fixes_20261029/training/a2e_formal_replay_v2/manifests",
+    "root_approval_filename": "ROOT_APPROVAL_A2E_FORMAL_REPLAY.json",
+    "output_directory": "revision/runs/A2e_itransformer_formal_replay_20261030_v2",
+    "per_environment_json_pattern": "environments/{run_id}/{environment_id}.json",
+    "row_hash_ledger": "row_hash_ledger.json",
+    "run_lock_filename": ".active.lock",
+    "summary": "summary.json",
+    "csv": "per_environment.csv",
+    "run_manifest": "run_manifest.json"
+  },
+  "access_boundary": {
+    "historical_formal_test_access": true,
+    "blind_status": "nonblind_posthoc",
+    "test_data_before_exact_approval": "manifest metadata only; no MAT/job/QA file reads",
+    "test_data_after_approval": "The hash-bound formal loader reads verified test MAT files plus their job JSON, QA receipts, and contract metadata; outputs are used only for descriptive NMSE.",
+    "test_based_selection": false,
+    "test_based_tuning": false,
+    "test_based_training": false,
+    "inferential_tests": false
+  }
+}

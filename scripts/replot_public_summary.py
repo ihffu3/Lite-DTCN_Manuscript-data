@@ -24,7 +24,11 @@ def draw():
     with (ROOT/'data/summary/nmse_se_300_snr10_rzf.csv').open(encoding='utf-8',newline='') as f:
         rows = list(csv.DictReader(f))
     with (ROOT/'data/summary/facts.csv').open(encoding='utf-8',newline='') as f:
-        facts = {r['fact_id']: float(r['value']) for r in csv.DictReader(f)}
+        fact_rows = csv.DictReader(f)
+        facts = {r['fact_id']: float(r['value']) for r in fact_rows if r.get('value', '').strip()}
+    required_facts = {f'nmse_outdated_v300_h{h}' for h in (2., 4.)}
+    missing_facts = required_facts - facts.keys()
+    assert not missing_facts, f'Missing plot reference facts: {sorted(missing_facts)}'
     assert len(rows) == 16 and {(float(r['horizon_ms']),r['method']) for r in rows} == {
         (h,m) for h in (2.,4.) for m in STYLE
     }, 'Retain eight methods at both horizons.'

@@ -1,0 +1,3 @@
+speed_kmh,n_paired_environments,mean_delta_nmse_db_C1_minus_C0,mean_delta_rzf_sum_se_10db_C1_minus_C0,C0_mean_environment_nmse_db,C1_mean_environment_nmse_db,C0_mean_environment_rzf_sum_se_10db,C1_mean_environment_rzf_sum_se_10db,exact_environment_pairing,target_energy_equal_per_environment
+30,30,-1.2294955541391743,0.011366491703035149,-23.711746096882905,-24.94124165102208,6.442030964197372,6.453397455900406,True,True
+300,30,-0.3868736897442912,0.12519560427160972,-0.9167986358595978,-1.303672325603889,1.7713325087912568,1.8965281130628666,True,True

@@ -1,0 +1,37 @@
+{
+  "scope": "Additional blocked joint antenna/frequency temporal Wiener reference; not a theoretical or empirical upper bound",
+  "post_test_access": true,
+  "preregistered": false,
+  "local_only": true,
+  "gpu_used": false,
+  "cpu_threads": 2,
+  "speeds_kmh": [
+    30,
+    300
+  ],
+  "history_length": 10,
+  "horizon_steps": 4,
+  "horizon_ms": 2.0,
+  "origin_start": 19,
+  "fit_stride": 4,
+  "validation_stride": 4,
+  "test_stride": 1,
+  "frequency_block_width": 4,
+  "n_frequency_blocks": 8,
+  "input_dimension_per_block": 320,
+  "output_dimension_per_block": 32,
+  "relative_ridges": [
+    1e-08,
+    1e-06,
+    0.0001,
+    0.01
+  ],
+  "ridge_definition": "lambda times mean Gram diagonal; zero intercept, complex128 normal equations",
+  "selection": "Minimum equal-eight-validation-environment physical linear NMSE; listed grid order breaks exact ties; no test fitting or selection",
+  "training_environments_per_speed": 30,
+  "validation_environments_per_speed": 8,
+  "test_environments_per_speed": 30,
+  "formal_manifest_sha256": "f9fb604cc1d89ecb58a71c2732a454623b3b717489d4276ed1929dd04752d15e",
+  "failure_policy": "Nonfinite input/output or failed solve is an explicit failure; no rows omitted; all grid validation rows retained",
+  "no_packaging": true
+}
